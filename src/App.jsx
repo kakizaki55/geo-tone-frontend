@@ -1,4 +1,4 @@
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import About from './views/About/About';
 import CreateProfile from './views/CreateProfile/CreateProfile';
@@ -13,32 +13,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/signin">
-            <SignIn />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/user/new">
-            <CreateProfile />
-          </Route>
-          <Route exact path="/user/:username/edit">
-            <EditProfile />
-          </Route>
-          <Route exact path="/project/:project_id">
-            <Project />
-          </Route>
-          <Route exact path="/explore">
-            <Explore />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/signin" element={<SignIn />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/user/new" element={<CreateProfile />} />
+          <Route exact path="/user/:username/edit" element={<EditProfile />} />
+          <Route exact path="/project/:project_id" element={<Project />} />
+          <Route exact path="/explore" element={<Explore />} />
+        </Routes>
       </Layout>
     </BrowserRouter>
   );
