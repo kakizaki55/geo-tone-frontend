@@ -32,8 +32,11 @@ export default function App() {
           <Route exact path="/user/:username/edit">
             <EditProfile />
           </Route>
-          <Route exact path="/project/:project_id">
+          <Route exact path="/project">
             <Project />
+          </Route>
+          <Route exact path="/project/:project_id">
+            <Project isLoggedIn />
           </Route>
           <Route exact path="/explore">
             <Explore />
