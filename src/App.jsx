@@ -3,7 +3,9 @@ import Layout from './components/Layout/Layout';
 import About from './views/About/About';
 import CreateProfile from './views/CreateProfile/CreateProfile';
 import EditProfile from './views/EditProfile/EditProfile';
+import Explore from './views/Explore/Explore';
 import Home from './views/Home/Home';
+import Project from './views/Project/Project';
 import Register from './views/Register/Register';
 import SignIn from './views/SignIn/SignIn';
 
@@ -29,6 +31,12 @@ export default function App() {
           </Route>
           <Route exact path="/user/:username/edit">
             <EditProfile />
+          </Route>
+          <Route exact path="/project/:project_id">
+            <Project />
+          </Route>
+          <Route exact path="/explore">
+            <Explore />
           </Route>
         </Switch>
       </Layout>
