@@ -3,12 +3,15 @@ import { useForm } from '../../hooks/useForm';
 import styles from './ProfileForm.css';
 
 export default function ProfileForm({ isEditing = false }) {
+  // REFACTOR THIS STATE INTO THE VIEW COMPONENT?
+  // pass down to form as props?
   const { formState, formError, handleFormChange, setFormError } = useForm();
   console.log('formState', formState);
   // isEditing booleon is working as intended
   console.log('isEditing', isEditing);
 
   const handleFormSubmit = () => {
+    // BACKEND CONNECTION?
     // this is where we send the Profile to the back end
     // if isEditing is true its a patch route instead of a post route
   };
