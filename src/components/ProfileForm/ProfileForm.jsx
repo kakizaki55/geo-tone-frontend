@@ -15,7 +15,7 @@ export default function ProfileForm({ isEditing = false }) {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className={styles.profileForm}>
         <label>
           Bio:
           <input
