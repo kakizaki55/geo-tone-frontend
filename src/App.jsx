@@ -8,6 +8,7 @@ import Home from './views/Home/Home';
 import Project from './views/Project/Project';
 import Register from './views/Register/Register';
 import SignIn from './views/SignIn/SignIn';
+import Profile from './views/Profile/Profile';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route exact path="/signin" element={<SignIn />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/user/new" element={<CreateProfile />} />
+          <Route exact path="/user/:username" element={<Profile />} />
           <Route exact path="/user/:username/edit" element={<EditProfile />} />
           <Route exact path="/project/:project_id" element={<Project />} />
           <Route exact path="/explore" element={<Explore />} />
