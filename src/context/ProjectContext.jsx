@@ -49,7 +49,7 @@ function projectReducer(project, action) {
 const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
-  const { id } = useParams;
+  const { id } = useParams();
   const projectId = id;
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState('untitled'); //TODO: add editing functionality
