@@ -77,6 +77,11 @@
 }
 
 .controls input[type='range'] {
+  display: block;
   width: 100%;
   max-width: fit-content;
+}
+
+.controls label {
+  display: block;
 }

@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import styles from './Channel.css';
 import Row from './Row';
 import Dropdown from './Dropdown';
+import Controls from './Controls';
 
 export default function Channel({ channel }) {
   const [instrument, setInstrument] = useState(channel.type);
@@ -91,7 +92,7 @@ export default function Channel({ channel }) {
       {/* Display components below*/}
       <Row {...{ notes, handleNoteChange }} />
       <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} />
-      {/* <ChannelControls {...{ channelId, volume, setVolume, fx, setFx }} /> */}
+      <Controls {...{ channelId, volume, setVolume, fx, setFx }} />
     </div>
   );
 }
