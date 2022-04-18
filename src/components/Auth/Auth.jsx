@@ -1,23 +1,19 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import styles from './Auth.css';
+import { registerUser, signInUser } from '../../services/users';
 
 export default function Auth({ isRegistering = false }) {
-  // BACKEND CONNECTION
-  // if isRegistering
-
-  // else
-  // POST/PATCH??
   const { formState, formError, handleFormChange, setFormError } = useForm();
 
   console.log('isRegistering', isRegistering);
 
-  const handleAuthSubmit = () => {
+  const handleAuthSubmit = (e) => {
+    e.preventDefault();
     if (isRegistering) {
-      // Create account (user and profile)
-      // POST to users and profiles
+      registerUser(formState.username, formState.password);
     } else {
-      // Log In
+      signInUser(formState.username, formState.password);
     }
   };
 
