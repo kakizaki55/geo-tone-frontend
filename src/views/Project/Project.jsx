@@ -4,6 +4,7 @@ import { useProject } from '../../context/ProjectContext';
 import { handleSaveProject } from '../../services/project';
 import GlobalControls from '../../components/Controls/GlobalControls';
 import Channel from '../../components/Channel/Channel';
+import Dropdown from '../../components/Channel/Dropdown';
 
 export default function Project({ isLoggedIn = false }) {
   // BACKEND CONNECTION
@@ -33,6 +34,12 @@ export default function Project({ isLoggedIn = false }) {
             <Channel key={`channel-${channel.id}`} channel={channel} />
           ))}
         </Sequencer>
+
+        {addingChannel ? (
+          <Dropdown {...{ handleAddChannel }} />
+        ) : (
+          <button onClick={() => setAddingChannel(true)}>+</button>
+        )}
       </div>
     </>
   );
