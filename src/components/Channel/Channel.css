@@ -36,10 +36,6 @@
   cursor: pointer;
 }
 
-.step:hover {
-  overflow-y: scroll;
-}
-
 .active {
   border: rgb(152, 226, 201) solid 3px;
 }

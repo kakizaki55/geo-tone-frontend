@@ -3,6 +3,7 @@ import { Song as Sequencer } from 'reactronica';
 import { useProject } from '../../context/ProjectContext';
 import { handleSaveProject } from '../../services/project';
 import GlobalControls from '../../components/Controls/GlobalControls';
+import Channel from '../../components/Channel/Channel';
 
 export default function Project({ isLoggedIn = false }) {
   // BACKEND CONNECTION
@@ -28,6 +29,9 @@ export default function Project({ isLoggedIn = false }) {
 
         <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
           <GlobalControls start={start} setStart={setStart} />
+          {project.channels.map((channel) => (
+            <Channel key={`channel-${channel.id}`} channel={channel} />
+          ))}
         </Sequencer>
       </div>
     </>

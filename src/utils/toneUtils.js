@@ -1,5 +1,5 @@
 // global data for sequencer
-// import styles from '../components/Channel/Channel.css';
+import styles from '../components/Channel/Channel.css';
 
 const keyCMajorPentatonic = ['C3', 'D3', 'E3', 'G3', 'A3', 'C4'];
 

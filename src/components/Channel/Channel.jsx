@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { useProject } from '../../context/ProjectContext';
-import { keyArray } from '../../data/data';
-import { setPitchColor } from '../../utils/utils';
+import { keyCMajorPentatonic, setPitchColor } from '../../utils/toneUtils';
 
 import classNames from 'classnames';
 import styles from './Channel.css';
+import Row from './Row';
 
 export default function Channel({ channel }) {
   const [instrument, setInstrument] = useState(channel.type);
   const [oscillator, setOscillator] = useState(channel.osc);
   const [volume, setVolume] = useState(channel.volume);
+  const [keyArray, setKeyArray] = useState(keyCMajorPentatonic);
   const [notes, setNotes] = useState(channel.steps);
   const [fx, setFx] = useState({
     reverb: channel.reverb,
@@ -76,22 +77,20 @@ export default function Channel({ channel }) {
       <Track
         steps={notes}
         volume={volume}
-        pan={0}
-        mute={false}
         onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
       >
         <Instrument
           type={instrument}
-          envelope={{ attack: attack, release: release }}
+          envelope={{ attack: 0.2, release: 0.5 }}
           oscillator={{ type: oscillator }}
         />
         <Effect type="freeverb" wet={fx.reverb} />
       </Track>
 
       {/* Display components below*/}
-      {/* <Row {...{ notes, handleNoteChange }} />
-      <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} />
-      <ChannelControls {...{ channelId, volume, setVolume, fx, setFx }} /> */}
+      <Row {...{ notes, handleNoteChange }} />
+      {/* <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} /> */}
+      {/* <ChannelControls {...{ channelId, volume, setVolume, fx, setFx }} /> */}
     </div>
   );
 }
