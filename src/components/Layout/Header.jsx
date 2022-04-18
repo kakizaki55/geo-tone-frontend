@@ -11,6 +11,7 @@ export default function Header() {
       {/* // pass user into path as template literals to access the logged in users
       //profile. */}
       <NavLink to="/user/space-lady">Profile</NavLink>
+      <NavLink to="/project/1">Project</NavLink>
     </header>
   );
 }
