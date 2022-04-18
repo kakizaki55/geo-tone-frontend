@@ -11,7 +11,6 @@ const registerUser = async (username, password) => {
     credentials: 'include',
     mode: 'cors',
   });
-
   return await resp.json();
 };
 
