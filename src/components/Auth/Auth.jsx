@@ -16,6 +16,7 @@ export default function Auth({ isRegistering = false }) {
       const user = await registerUser(formState.username, formState.password);
       if (user?.username) {
         setFormMessage('you are registered');
+        navigate(`/user/new`, { push: true });
       }
     } else {
       const { message } = await signInUser(
