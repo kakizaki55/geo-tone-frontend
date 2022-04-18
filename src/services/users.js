@@ -25,7 +25,6 @@ const signInUser = async (username, password) => {
     credentials: 'include',
     mode: 'cors',
   });
-  console.log('resp', await resp.json());
   return await resp.json();
 };
 

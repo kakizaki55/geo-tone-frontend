@@ -2,18 +2,28 @@ import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import styles from './Auth.css';
 import { registerUser, signInUser } from '../../services/users';
+import { useNavigate } from 'react-router-dom';
 
 export default function Auth({ isRegistering = false }) {
-  const { formState, formError, handleFormChange, setFormError } = useForm();
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
 
-  console.log('isRegistering', isRegistering);
+  const navigate = useNavigate();
 
-  const handleAuthSubmit = (e) => {
+  const handleAuthSubmit = async (e) => {
     e.preventDefault();
     if (isRegistering) {
-      registerUser(formState.username, formState.password);
+      const user = await registerUser(formState.username, formState.password);
+      if (user?.username) {
+        setFormMessage('you are registered');
+      }
     } else {
-      signInUser(formState.username, formState.password);
+      const { message } = await signInUser(
+        formState.username,
+        formState.password
+      );
+      setFormMessage(message);
+      navigate(`/user/${formState.username}`, { push: true });
     }
   };
 
@@ -40,6 +50,7 @@ export default function Auth({ isRegistering = false }) {
         />
       </label>
       <button>{isRegistering ? 'Register' : 'Log In'}</button>
+      <div>{formMessage}</div>
     </form>
   );
 }

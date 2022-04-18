@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export function useForm(inputs = {}) {
   const [formState, setFormState] = useState(inputs);
-  const [formError, setFormError] = useState('');
+  const [formMessage, setFormMessage] = useState('');
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -11,5 +11,5 @@ export function useForm(inputs = {}) {
     });
   };
 
-  return { formState, formError, handleFormChange, setFormError };
+  return { formState, formMessage, handleFormChange, setFormMessage };
 }
