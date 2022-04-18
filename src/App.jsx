@@ -22,7 +22,7 @@ export default function App() {
           <Route exact path="/user/new" element={<CreateProfile />} />
           <Route exact path="/user/:username" element={<Profile />} />
           <Route exact path="/user/:username/edit" element={<EditProfile />} />
-          <Route exact path="/project/:project_id" element={<Project />} />
+          <Route exact path="/project/:id" element={<Project />} />
           <Route exact path="/explore" element={<Explore />} />
         </Routes>
       </Layout>
