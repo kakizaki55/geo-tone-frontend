@@ -116,7 +116,7 @@ const ProjectProvider = ({ children }) => {
 
   const contextValue = {
     projectId,
-    project: { title, isLoading, addingChannel, setAddingChannel, project },
+    project: { isLoading, addingChannel, setAddingChannel, project },
     handleProjectVolume,
     handleSongBPM,
     handleUpdateChannel,

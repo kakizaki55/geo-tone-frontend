@@ -12,7 +12,7 @@ export default function Project({ isLoggedIn = false }) {
   const [start, setStart] = useState(false);
   const {
     projectId,
-    project: { title, isLoading, addingChannel, setAddingChannel, project },
+    project: { isLoading, addingChannel, setAddingChannel, project },
     handleAddChannel,
   } = useProject();
 
@@ -20,7 +20,7 @@ export default function Project({ isLoggedIn = false }) {
   return (
     <>
       <div>
-        <h1>{title}</h1>
+        <h1>{project.title}</h1>
         <button onClick={() => handleSaveProject({ projectId, project })}>
           Save Project
         </button>
