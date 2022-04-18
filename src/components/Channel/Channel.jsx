@@ -6,6 +6,7 @@ import { keyCMajorPentatonic, setPitchColor } from '../../utils/toneUtils';
 import classNames from 'classnames';
 import styles from './Channel.css';
 import Row from './Row';
+import Dropdown from './Dropdown';
 
 export default function Channel({ channel }) {
   const [instrument, setInstrument] = useState(channel.type);
@@ -89,7 +90,7 @@ export default function Channel({ channel }) {
 
       {/* Display components below*/}
       <Row {...{ notes, handleNoteChange }} />
-      {/* <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} /> */}
+      <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} />
       {/* <ChannelControls {...{ channelId, volume, setVolume, fx, setFx }} /> */}
     </div>
   );
