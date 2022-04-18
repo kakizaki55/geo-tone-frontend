@@ -1,17 +1,23 @@
-import { useContext, useState, useMemo, createContext } from 'react';
+import { useContext, useState, useMemo, createContext, useEffect } from 'react';
 import { getUser } from '../services/users';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const currentUser = getUser();
-  const [user, setUser] = useState(
-    currentUser
-      ? { id: currentUser.id, username: currentUser.username }
-      : { id: 'fake id', username: 'fake username' }
-  );
+  const [currentUser, setCurrentUser] = useState({});
 
-  const value = useMemo(() => ({ user, setUser }), [user]);
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const data = await getUser();
+      console.log('data', data);
+      data
+        ? setCurrentUser(data)
+        : setCurrentUser({ id: 'fake id', username: 'fake username' });
+    };
+    fetchCurrentUser();
+  }, []);
+
+  const value = useMemo(() => ({ currentUser, setCurrentUser }), [currentUser]);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
