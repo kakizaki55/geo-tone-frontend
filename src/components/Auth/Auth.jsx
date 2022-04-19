@@ -2,13 +2,13 @@ import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import styles from './Auth.css';
 import { registerUser, signInUser } from '../../services/users';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export default function Auth({ isRegistering = false }) {
   const { formState, formMessage, handleFormChange, setFormMessage } =
     useForm();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function Auth({ isRegistering = false }) {
       const user = await registerUser(formState.username, formState.password);
       if (user?.username) {
         setFormMessage('you are registered');
-        navigate(`/signin`, { push: true });
+        // navigate(`/signin`, { push: true });
       }
     } else {
       const { message } = await signInUser(
@@ -24,7 +24,7 @@ export default function Auth({ isRegistering = false }) {
         formState.password
       );
       setFormMessage(message);
-      navigate(`/user/${formState.username}`, { push: true });
+      // navigate(`/user/${formState.username}`, { push: true });
     }
   };
 
