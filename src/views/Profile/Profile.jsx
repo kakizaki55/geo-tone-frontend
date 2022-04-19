@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/user';
 import { findProfileByUsername } from '../../services/profiles';
+import { findProjectsByUserId } from '../../services/project';
 
 // BACKEND CONNECTION
 
@@ -17,6 +18,7 @@ export default function Profile() {
   const { username } = useParams();
 
   const [userProfile, setUserProfile] = useState({});
+  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -30,8 +32,12 @@ export default function Profile() {
       try {
         const data = await findProfileByUsername(username);
         setUserProfile(data);
+        const projects = await findProjectsByUserId(data.userId);
+        setProjects(projects);
+        console.log('projects', projects); // TODO: Check data model for authentication params
       } catch (error) {
-        setUserProfile({});
+        setUserProfile({}); // TODO: Do we need this fallback?
+        setProjects([]);
       }
       setLoading(false);
     };
