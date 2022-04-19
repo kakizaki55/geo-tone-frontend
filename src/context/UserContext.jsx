@@ -13,9 +13,9 @@ const UserProvider = ({ children }) => {
       data.username ? setCurrentUser(data) : setCurrentUser({});
     };
     fetchCurrentUser();
-  }, [currentUser]);
+  }, []);
 
-  const value = useMemo(() => ({ currentUser, setCurrentUser }), [currentUser]);
+  const value = { currentUser, setCurrentUser };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
