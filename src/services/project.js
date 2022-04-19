@@ -5,6 +5,8 @@ const deleteProjectById = async (projectId) => {
       {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
       }
     );
     const parsedData = await resp.json();
@@ -19,7 +21,12 @@ const findProjectById = async (projectId) => {
   try {
     const resp = await fetch(
       `${process.env.API_URL}/api/v1/projects/${projectId}`,
-      { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+      }
     );
     const data = await resp.json();
     const channels = data.channels.map((channel) => JSON.parse(channel));
@@ -37,6 +44,8 @@ const findProjectsByUserId = async (userId) => {
       {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
       }
     );
     const parsedData = await resp.json();
@@ -54,6 +63,8 @@ const handleSaveProject = async ({ projectId, project }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(project),
+        credentials: 'include',
+        mode: 'cors',
       });
       const parsedData = await resp.json();
 
@@ -69,6 +80,8 @@ const handleSaveProject = async ({ projectId, project }) => {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(project),
+          credentials: 'include',
+          mode: 'cors',
         }
       );
       const parsedData = await resp.json();
@@ -79,10 +92,26 @@ const handleSaveProject = async ({ projectId, project }) => {
     }
   }
 };
+const createNewProjectByUserId = async () => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/projects`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const parsedData = await resp.json();
+
+    return parsedData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export {
   deleteProjectById,
   findProjectById,
   findProjectsByUserId,
   handleSaveProject,
+  createNewProjectByUserId,
 };
