@@ -26,6 +26,9 @@ export default function Profile() {
   const handleCreateProfile = () => {
     navigate('/user/new', { push: true });
   };
+  const handleEditProfile = () => {
+    navigate(`/user/${username}/edit`, { push: true });
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -54,7 +57,10 @@ export default function Profile() {
           <button onClick={handleCreateProfile}>Create Profile</button>
         </>
       ) : (
-        <User userProfile={userProfile} />
+        <>
+          <User userProfile={userProfile} />
+          <button onClick={handleEditProfile}>Edit Profile</button>
+        </>
       )}
     </>
   );

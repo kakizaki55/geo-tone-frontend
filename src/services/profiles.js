@@ -33,5 +33,23 @@ const findProfileByUsername = async (username) => {
     throw new Error(error);
   }
 };
+const updateProfile = async (username, formData) => {
+  try {
+    const resp = await fetch(
+      `${process.env.API_URL}/api/v1/profiles/${username}`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(formData),
+        mode: 'cors',
+      }
+    );
+    const parsedData = await resp.json();
+    return parsedData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
-export { createProfile, findProfileByUsername };
+export { createProfile, findProfileByUsername, updateProfile };

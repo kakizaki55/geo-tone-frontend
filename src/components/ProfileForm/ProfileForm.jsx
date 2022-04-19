@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
-import { createProfile } from '../../services/profiles';
+import { createProfile, updateProfile } from '../../services/profiles';
 import styles from './ProfileForm.css';
+import { useUser } from '../../context/UserContext';
 
 export default function ProfileForm({ isEditing = false }) {
   // TODO: REFACTOR THIS STATE INTO THE VIEW COMPONENT?
@@ -9,19 +10,34 @@ export default function ProfileForm({ isEditing = false }) {
   const { formState, formMessage, handleFormChange, setFormMessage } =
     useForm();
   const navigate = useNavigate();
+  const { currentUser } = useUser();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const profile = await createProfile(formState);
-      if (profile.username) {
-        navigate(`/user/${profile.username}`, { push: true });
-      } else {
-        setFormMessage('User profile already exists');
+    if (isEditing) {
+      try {
+        const profile = await updateProfile(currentUser.username, formState);
+        if (profile.username) {
+          navigate(`/user/${profile.username}`, { push: true });
+        } else {
+          setFormMessage('Could not update your profile');
+        }
+      } catch (error) {
+        setFormMessage('something went wrong');
+        throw new Error(error);
       }
-    } catch (error) {
-      setFormMessage('something went wrong'); // TODO: write clearer error message
-      throw new Error(error);
+    } else {
+      try {
+        const profile = await createProfile(formState);
+        if (profile.username) {
+          navigate(`/user/${profile.username}`, { push: true });
+        } else {
+          setFormMessage('User profile already exists');
+        }
+      } catch (error) {
+        setFormMessage('something went wrong'); // TODO: write clearer error message
+        throw new Error(error);
+      }
     }
   };
 
