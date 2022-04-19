@@ -6,7 +6,6 @@ const getUser = async () => {
       },
       credentials: 'include',
     });
-    console.log('resp', resp);
     return await resp.json();
   } catch (error) {
     throw new Error(error);
