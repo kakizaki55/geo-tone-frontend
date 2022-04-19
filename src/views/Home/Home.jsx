@@ -8,14 +8,11 @@ export default function Home() {
     <>
       <div className={styles.homeContainer}>
         <div className={styles.homeBanner}>
-          <img src={shapes} />
+          <img src={shapes} alt="Colorful squares" />
           <h1>Welcome to GEO TONE.</h1>
-          <img src={shapes} />
+          <img src={shapes} alt="Colorful squares" />
         </div>
-        <p>
-          An app that inspires creativity through an easy-to-use audio
-          sequencer.
-        </p>
+        <p>A browser-based audio sequencer, built with creativity in mind.</p>
         <p>
           Love music? Us, too! <NavLink to="/register">Sign up </NavLink>to
           play.

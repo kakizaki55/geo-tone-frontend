@@ -11,17 +11,32 @@
   justify-content: center;
 }
 
-.homeBanner img {
+.homeBanner img:first-child {
   width: 150px;
-  animation-name: spin;
+  animation-name: right-spin;
   animation-duration: 1.5s;
 }
 
-@keyframes spin {
+.homeBanner img:last-child {
+  width: 150px;
+  animation-name: left-spin;
+  animation-duration: 1.5s;
+}
+
+@keyframes right-spin {
   from {
     tranform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes left-spin {
+  from {
+    tranform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
