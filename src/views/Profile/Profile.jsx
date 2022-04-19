@@ -17,6 +17,7 @@ export default function Profile() {
   const { username } = useParams();
 
   const [userProfile, setUserProfile] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -24,10 +25,31 @@ export default function Profile() {
     navigate('/user/new', { push: true });
   };
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const data = await findProfileByUsername(username);
+        setUserProfile(data);
+      } catch (error) {
+        setUserProfile({});
+      }
+      setLoading(false);
+    };
+    fetchProfile();
+  }, [username]);
+
+  if (loading) return <div>loading...</div>;
+
   return (
     <>
-      <User userProfile={userProfile} />
-      <button onClick={handleCreateProfile}>Create Profile</button>
+      {!userProfile.username ? (
+        <>
+          Hey bud, gotta make a profile // TODO: Michelle doesn't want this
+          <button onClick={handleCreateProfile}>Create Profile</button>
+        </>
+      ) : (
+        <User userProfile={userProfile} />
+      )}
     </>
   );
 }

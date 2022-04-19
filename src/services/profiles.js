@@ -26,10 +26,8 @@ const findProfileByUsername = async (username) => {
         mode: 'cors',
       }
     );
-    console.log('resp', resp); // Returning status 200
 
     const parsedData = await resp.json();
-    console.log('parsedData', parsedData);
     return parsedData;
   } catch (error) {
     throw new Error(error);
