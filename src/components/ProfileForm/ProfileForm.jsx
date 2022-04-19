@@ -10,10 +10,26 @@ export default function ProfileForm({ isEditing = false }) {
   // isEditing booleon is working as intended
   console.log('isEditing', isEditing);
 
-  const handleFormSubmit = () => {
-    // BACKEND CONNECTION?
-    // this is where we send the Profile to the back end
-    // if isEditing is true its a patch route instead of a post route
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const createProfile = async () => {
+      try {
+        const resp = await fetch(`${process.env.API_URL}/api/v1/profiles`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formState),
+          credentials: 'include',
+          mode: 'cors',
+        });
+
+        const parsedData = await resp.json();
+        return parsedData;
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    createProfile();
   };
 
   return (
