@@ -1,14 +1,12 @@
 const getUser = async () => {
   try {
-    const resp = await fetch(
-      `${process.env.API_URL}/api/v1/profiles/me/current`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      }
-    );
+    const resp = await fetch(`${process.env.API_URL}/api/v1/profiles/user/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+    console.log('resp', resp);
     return await resp.json();
   } catch (error) {
     throw new Error(error);

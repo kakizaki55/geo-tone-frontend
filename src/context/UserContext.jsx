@@ -8,9 +8,9 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
+      console.log('inside useEffect');
       const data = await getUser();
-      console.log('data', data);
-      data
+      data.username
         ? setCurrentUser(data)
         : setCurrentUser({ id: 'fake id', username: 'fake username' });
     };
