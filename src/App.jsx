@@ -11,6 +11,7 @@ import SignIn from './views/SignIn/SignIn';
 import Profile from './views/Profile/Profile';
 import { UserProvider } from './context/UserContext';
 import { ProjectProvider } from './context/ProjectContext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -23,7 +24,17 @@ export default function App() {
             <Route exact path="/signin" element={<SignIn />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/user/new" element={<CreateProfile />} />
-            <Route exact path="/user/:username" element={<Profile />} />
+
+            <Route
+              exact
+              path="/user/:username"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+
             <Route
               exact
               path="/user/:username/edit"
