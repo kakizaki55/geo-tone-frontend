@@ -1,6 +1,6 @@
 const getUser = async () => {
   try {
-    const resp = await fetch(`${process.env.API_URL}/api/v1/profiles/user/me`, {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/users/me`, {
       headers: {
         'Content-Type': 'application/json',
       },
