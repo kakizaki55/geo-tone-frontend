@@ -4,6 +4,7 @@ import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/user';
 import { findProfileByUsername } from '../../services/profiles';
 import { findProjectsByUserId } from '../../services/project';
+import { useUser } from '../../context/UserContext';
 
 // BACKEND CONNECTION
 
@@ -29,6 +30,24 @@ export default function Profile() {
   const handleEditProfile = () => {
     navigate(`/user/${username}/edit`, { push: true });
   };
+  const handleCreateNewProject = async () => {
+    const createNewProjectByUserId = async () => {
+      try {
+        const resp = await fetch(`${process.env.API_URL}/api/v1/projects`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          mode: 'cors',
+        });
+        const parsedData = await resp.json();
+
+        return parsedData;
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+    await createNewProjectByUserId();
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -48,6 +67,8 @@ export default function Profile() {
   }, [username]);
 
   if (loading) return <div>loading...</div>;
+  //add a button to create a new project
+  // function to insert project using th back end route
 
   return (
     <>
@@ -60,6 +81,7 @@ export default function Profile() {
         <>
           <User userProfile={userProfile} />
           <button onClick={handleEditProfile}>Edit Profile</button>
+          <button onClick={handleCreateNewProject}> Create New Project</button>
         </>
       )}
     </>
