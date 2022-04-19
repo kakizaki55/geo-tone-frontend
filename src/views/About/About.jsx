@@ -10,15 +10,15 @@ export default function About() {
     <div className={styles.aboutContainer}>
       {aboutUs.map((each) => (
         <div key={each.name} className={styles.aboutCard}>
-          <img src={each.photo} />
+          <img src={each.photo} alt="Small shape icons" />
           <h2>{each.name}</h2>
           <span>{each.bio}</span>
           <div>
-            <a href={each.gitHub}>
-              <img src={githubLogo} />
+            <a href={each.gitHub} target="_blank">
+              <img src={githubLogo} alt="Small icon for GitHub" />
             </a>
-            <a href={each.linkedIn}>
-              <img src={linkedInLogo} />
+            <a href={each.linkedIn} target="_blank">
+              <img src={linkedInLogo} alt="Small icon for LinkedIn" />
             </a>
           </div>
         </div>

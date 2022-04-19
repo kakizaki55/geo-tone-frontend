@@ -1,1 +1,27 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
 
+.homeBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeBanner img {
+  width: 150px;
+  animation-name: spin;
+  animation-duration: 1.5s;
+}
+
+@keyframes spin {
+  from {
+    tranform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
