@@ -48,4 +48,20 @@ const signInUser = async (username, password) => {
   }
 };
 
-export { getUser, registerUser, signInUser };
+const logOutUser = async () => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    return await resp.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export { getUser, registerUser, signInUser, logOutUser };

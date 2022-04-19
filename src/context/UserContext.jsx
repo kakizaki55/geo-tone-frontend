@@ -10,12 +10,10 @@ const UserProvider = ({ children }) => {
     const fetchCurrentUser = async () => {
       console.log('inside useEffect');
       const data = await getUser();
-      data.username
-        ? setCurrentUser(data)
-        : setCurrentUser({ id: 'fake id', username: 'fake username' });
+      data.username ? setCurrentUser(data) : setCurrentUser({});
     };
     fetchCurrentUser();
-  }, []);
+  }, [currentUser]);
 
   const value = useMemo(() => ({ currentUser, setCurrentUser }), [currentUser]);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
