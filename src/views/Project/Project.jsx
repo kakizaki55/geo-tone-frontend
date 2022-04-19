@@ -1,12 +1,46 @@
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Song as Sequencer } from 'reactronica';
+import { useProject } from '../../context/ProjectContext';
+import { handleSaveProject } from '../../services/project';
+import GlobalControls from '../../components/Controls/GlobalControls';
+import Channel from '../../components/Channel/Channel';
+import Dropdown from '../../components/Channel/Dropdown';
 
 export default function Project({ isLoggedIn = false }) {
-  const { project_id } = useParams;
-
   // BACKEND CONNECTION
   // if isLoggedIn
   // GET PROJECT BY PROJECT ID
   // user_id from project and GET user by user_id
 
-  return <div>Project</div>;
+  const [start, setStart] = useState(false);
+  const {
+    projectId,
+    project: { isLoading, addingChannel, setAddingChannel, project },
+    handleAddChannel,
+  } = useProject();
+
+  if (isLoading) return <div> loading ... </div>;
+  return (
+    <>
+      <div>
+        <h1>{project.title}</h1>
+        <button onClick={() => handleSaveProject({ projectId, project })}>
+          Save Project
+        </button>
+
+        <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
+          <GlobalControls start={start} setStart={setStart} />
+          {project.channels.map((channel) => (
+            <Channel key={`channel-${channel.id}`} channel={channel} />
+          ))}
+        </Sequencer>
+
+        {addingChannel ? (
+          <Dropdown {...{ handleAddChannel }} />
+        ) : (
+          <button onClick={() => setAddingChannel(true)}>+</button>
+        )}
+      </div>
+    </>
+  );
 }
