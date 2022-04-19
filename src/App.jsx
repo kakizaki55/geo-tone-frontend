@@ -10,6 +10,7 @@ import Register from './views/Register/Register';
 import SignIn from './views/SignIn/SignIn';
 import Profile from './views/Profile/Profile';
 import { UserProvider } from './context/UserContext';
+import { ProjectProvider } from './context/ProjectContext';
 
 export default function App() {
   return (
@@ -28,7 +29,15 @@ export default function App() {
               path="/user/:username/edit"
               element={<EditProfile />}
             />
-            <Route exact path="/project/:project_id" element={<Project />} />
+            <Route
+              exact
+              path="/project/:id"
+              element={
+                <ProjectProvider>
+                  <Project />
+                </ProjectProvider>
+              }
+            />
             <Route exact path="/explore" element={<Explore />} />
           </Routes>
         </Layout>

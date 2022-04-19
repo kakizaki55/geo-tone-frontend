@@ -19,6 +19,7 @@ export default function Header() {
       //profile. */}
       <NavLink to="/user/space-lady">Profile</NavLink>
       <button onClick={getUser}>getUser</button>
+      <NavLink to="/project/1">Project</NavLink>
     </header>
   );
 }
