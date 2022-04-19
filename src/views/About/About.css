@@ -1,5 +1,23 @@
-.about {
-  background-color: #2b6e52;
-  width: 100vw;
-  height: 50px;
+.aboutCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.aboutContainer {
+  display: flex;
+  gap: 45px;
+}
+
+.aboutCard a img {
+  width: 50px;
+  margin: 20px;
+}
+
+.aboutCard a img:hover {
+  cursor: pointer;
+  width: 55px;
 }
