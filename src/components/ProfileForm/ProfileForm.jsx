@@ -1,35 +1,28 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import { createProfile } from '../../services/profiles';
 import styles from './ProfileForm.css';
 
 export default function ProfileForm({ isEditing = false }) {
-  // REFACTOR THIS STATE INTO THE VIEW COMPONENT?
+  // TODO: REFACTOR THIS STATE INTO THE VIEW COMPONENT?
   // pass down to form as props?
-  const { formState, formError, handleFormChange, setFormError } = useForm();
-  console.log('formState', formState);
-  // isEditing booleon is working as intended
-  console.log('isEditing', isEditing);
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
+  const navigate = useNavigate();
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const createProfile = async () => {
-      try {
-        const resp = await fetch(`${process.env.API_URL}/api/v1/profiles`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formState),
-          credentials: 'include',
-          mode: 'cors',
-        });
-
-        const parsedData = await resp.json();
-        return parsedData;
-      } catch (error) {
-        throw new Error(error);
+    try {
+      const profile = await createProfile(formState);
+      if (profile.username) {
+        navigate(`/user/${profile.username}`, { push: true });
+      } else {
+        setFormMessage('User profile already exists');
       }
-    };
-
-    createProfile();
+    } catch (error) {
+      setFormMessage('something went wrong'); // TODO: write clearer error message
+      throw new Error(error);
+    }
   };
 
   return (
@@ -55,6 +48,7 @@ export default function ProfileForm({ isEditing = false }) {
           />
         </label>
         <button>{isEditing ? 'edit' : 'create'}</button>
+        {formMessage}
       </form>
     </>
   );
