@@ -1,23 +1,33 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import styles from './Auth.css';
+import { getUser, registerUser, signInUser } from '../../services/users';
+import { useUser } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Auth({ isRegistering = false }) {
-  // BACKEND CONNECTION
-  // if isRegistering
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
+  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useUser();
 
-  // else
-  // POST/PATCH??
-  const { formState, formError, handleFormChange, setFormError } = useForm();
-
-  console.log('isRegistering', isRegistering);
-
-  const handleAuthSubmit = () => {
+  const handleAuthSubmit = async (e) => {
+    e.preventDefault();
     if (isRegistering) {
-      // Create account (user and profile)
-      // POST to users and profiles
+      const user = await registerUser(formState.username, formState.password);
+      if (user?.username) {
+        setFormMessage('you are registered');
+        navigate(`/signin`, { push: true });
+      }
     } else {
-      // Log In
+      const { message } = await signInUser(
+        formState.username,
+        formState.password
+      );
+      const user = await getUser();
+      setCurrentUser({ username: user.username, userId: user.userId });
+      setFormMessage(message);
+      navigate(`/user/${formState.username}`, { push: true });
     }
   };
 
@@ -44,6 +54,7 @@ export default function Auth({ isRegistering = false }) {
         />
       </label>
       <button>{isRegistering ? 'Register' : 'Log In'}</button>
+      <div>{formMessage}</div>
     </form>
   );
 }
