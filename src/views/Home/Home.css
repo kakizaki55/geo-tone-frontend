@@ -2,14 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
-  color: white;
 }
 
 .homeBanner {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Major Mono Display', monospace;
+}
+
+p {
+  font-size: 25px;
 }
 
 .homeBanner img:first-child {

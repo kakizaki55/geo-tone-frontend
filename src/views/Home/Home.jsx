@@ -9,7 +9,7 @@ export default function Home() {
       <div className={styles.homeContainer}>
         <div className={styles.homeBanner}>
           <img src={shapes} alt="Colorful squares" />
-          <h1>Welcome to GEO TONE.</h1>
+          <h1>Welcome to GEo TONe.</h1>
           <img src={shapes} alt="Colorful squares" />
         </div>
         <p>A browser-based audio sequencer, built with creativity in mind.</p>

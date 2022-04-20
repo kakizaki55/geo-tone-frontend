@@ -51,7 +51,7 @@ export default function Auth({ isRegistering = false }) {
 
   return (
     <form className={styles.authForm} onSubmit={handleAuthSubmit}>
-      <h2>{isRegistering ? 'Register' : 'Log In'}</h2>
+      <h2>{isRegistering ? 'rEGIsTer' : 'Log In'}</h2>
       <label>
         Username:
         <input
@@ -72,7 +72,7 @@ export default function Auth({ isRegistering = false }) {
         />
       </label>
       <button>{isRegistering ? 'Register' : 'Log In'}</button>
-      <div>{formMessage}</div>
+      <div className={styles.alertMessage}>{formMessage}</div>
     </form>
   );
 }
