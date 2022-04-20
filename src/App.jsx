@@ -23,8 +23,15 @@ export default function App() {
             <Route exact path="/about" element={<About />} />
             <Route exact path="/signin" element={<SignIn />} />
             <Route exact path="/register" element={<Register />} />
-            <Route exact path="/user/new" element={<CreateProfile />} />
-
+            <Route
+              exact
+              path="/user/new"
+              element={
+                <PrivateRoute>
+                  <CreateProfile />
+                </PrivateRoute>
+              }
+            />
             <Route
               exact
               path="/user/:username"
@@ -34,18 +41,23 @@ export default function App() {
                 </PrivateRoute>
               }
             />
-
             <Route
               exact
               path="/user/:username/edit"
-              element={<EditProfile />}
+              element={
+                <PrivateRoute>
+                  <EditProfile />
+                </PrivateRoute>
+              }
             />
             <Route
               exact
               path="/project/:id"
               element={
                 <ProjectProvider>
-                  <Project />
+                  <PrivateRoute>
+                    <Project />
+                  </PrivateRoute>
                 </ProjectProvider>
               }
             />
