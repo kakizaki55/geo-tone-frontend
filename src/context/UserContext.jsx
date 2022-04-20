@@ -8,7 +8,6 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      console.log('inside useEffect');
       const data = await getUser();
       data.username ? setCurrentUser(data) : setCurrentUser({});
     };
