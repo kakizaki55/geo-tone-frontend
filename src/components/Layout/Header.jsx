@@ -19,8 +19,7 @@ export default function Header() {
       {!currentUser.username && <NavLink to="/signin">Sign In</NavLink>}
       {/* // pass user into path as template literals to access the logged in users
       //profile. */}
-      <NavLink to="/user/:username">Profile</NavLink>
-      <NavLink to="/project/1">Project</NavLink>
+      <NavLink to={`/user/${currentUser.username}`}>Profile</NavLink>
       {currentUser.username && <button onClick={handleLogout}>Log Out</button>}
     </header>
   );

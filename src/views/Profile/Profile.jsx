@@ -3,11 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/user';
 import { findProfileByUsername } from '../../services/profiles';
-import {
-  findProjectsByUserId,
-  createNewProjectByUserId,
-} from '../../services/project';
+import { createNewProjectByUserId } from '../../services/project';
 import { useUser } from '../../context/UserContext';
+import styles from './Profile.css';
 
 // BACKEND CONNECTION
 
@@ -20,9 +18,9 @@ import { useUser } from '../../context/UserContext';
 
 export default function Profile() {
   const { username } = useParams();
+  const { currentUser } = useUser();
 
   const [userProfile, setUserProfile] = useState({});
-  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -35,7 +33,6 @@ export default function Profile() {
   };
   const handleCreateNewProject = async () => {
     const project = await createNewProjectByUserId();
-    console.log('project', project);
     if (project.projectId) {
       navigate(`/project/${project.projectId}`, { push: true });
     }
@@ -45,13 +42,11 @@ export default function Profile() {
     const fetchProfile = async () => {
       try {
         const data = await findProfileByUsername(username);
+        console.log('data', data);
         setUserProfile(data);
-        const projects = await findProjectsByUserId(data.userId);
-        setProjects(projects);
-        console.log('projects', projects); // TODO: Check data model for authentication params
       } catch (error) {
         setUserProfile({}); // TODO: Do we need this fallback?
-        setProjects([]);
+        throw new Error(error);
       }
       setLoading(false);
     };
@@ -59,8 +54,6 @@ export default function Profile() {
   }, [username]);
 
   if (loading) return <div>loading...</div>;
-  //add a button to create a new project
-  // function to insert project using th back end route
 
   return (
     <>
@@ -70,11 +63,15 @@ export default function Profile() {
           <button onClick={handleCreateProfile}>Create Profile</button>
         </>
       ) : (
-        <>
-          <User userProfile={userProfile} />
+        <div className={styles.cont}>
+          <User styles={styles} userProfile={userProfile} />
           <button onClick={handleEditProfile}>Edit Profile</button>
           <button onClick={handleCreateNewProject}> Create New Project</button>
-        </>
+          <Projects
+            isCurrentUser={username === currentUser.username}
+            userProfile={userProfile}
+          />
+        </div>
       )}
     </>
   );
