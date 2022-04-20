@@ -6,6 +6,7 @@ import { findProfileByUsername } from '../../services/profiles';
 import { createNewProjectByUserId } from '../../services/project';
 import { useUser } from '../../context/UserContext';
 import styles from './Profile.css';
+import { deleteUser } from '../../services/users';
 
 // BACKEND CONNECTION
 
@@ -18,7 +19,7 @@ import styles from './Profile.css';
 
 export default function Profile() {
   const { username } = useParams();
-  const { currentUser } = useUser();
+  const { currentUser, setCurrentUser } = useUser();
 
   const [userProfile, setUserProfile] = useState({});
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,16 @@ export default function Profile() {
     const project = await createNewProjectByUserId();
     if (project.projectId) {
       navigate(`/project/${project.projectId}`, { push: true });
+    }
+  };
+  const handleDeleteUser = async () => {
+    if (confirm('Are you suuuuuuuuure?')) {
+      const resp = await deleteUser(currentUser.userId);
+      if (resp.message) {
+        setCurrentUser({});
+        navigate('/', { push: true });
+      }
+      console.log('resp', resp);
     }
   };
 
@@ -58,7 +69,8 @@ export default function Profile() {
     <>
       {!userProfile.username ? (
         <>
-          Hey bud, gotta make a profile // TODO: Michelle doesn't want this
+          Hey bud, gotta make a profile // TODO: Michelle doesn't want this AT
+          ALL
           <button onClick={handleCreateProfile}>Create Profile</button>
         </>
       ) : (
@@ -70,6 +82,7 @@ export default function Profile() {
             isCurrentUser={username === currentUser.username}
             userProfile={userProfile}
           />
+          <button onClick={handleDeleteUser}>Delete Account</button>
         </div>
       )}
     </>
