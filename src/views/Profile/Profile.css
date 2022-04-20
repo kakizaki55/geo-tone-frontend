@@ -1,0 +1,20 @@
+.cont {
+  border: solid red 1px;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #49205c;
+}
+
+.cont img {
+  width: 200px;
+}
+
+.cont button {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cont button:hover {
+  color: aqua;
+}

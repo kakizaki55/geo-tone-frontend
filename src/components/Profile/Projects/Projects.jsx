@@ -6,7 +6,7 @@ import {
 } from '../../../services/project';
 import { useState, useEffect } from 'react';
 
-export default function Projects({ userProfile }) {
+export default function Projects({ userProfile, isCurrentUser }) {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [projectLoading, setProjectLoading] = useState(true);
@@ -44,6 +44,7 @@ export default function Projects({ userProfile }) {
           <Project
             key={project.projectId}
             project={project}
+            isCurrentUser={isCurrentUser}
             handleDeleteProject={handleDeleteProject}
             handleEditProjectRedirect={handleEditProjectRedirect}
           />

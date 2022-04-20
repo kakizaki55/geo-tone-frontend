@@ -28,9 +28,9 @@ const findProjectById = async (projectId) => {
         mode: 'cors',
       }
     );
+    // if(resp)
     const data = await resp.json();
-    const channels = data.channels.map((channel) => JSON.parse(channel));
-
+    const channels = await data.channels.map((channel) => JSON.parse(channel));
     return { data, channels };
   } catch (error) {
     throw new Error(error);

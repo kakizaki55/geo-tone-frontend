@@ -4,6 +4,8 @@ import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/user';
 import { findProfileByUsername } from '../../services/profiles';
 import { createNewProjectByUserId } from '../../services/project';
+import { useUser } from '../../context/UserContext';
+import styles from './Profile.css';
 
 // BACKEND CONNECTION
 
@@ -16,6 +18,7 @@ import { createNewProjectByUserId } from '../../services/project';
 
 export default function Profile() {
   const { username } = useParams();
+  const { currentUser } = useUser();
 
   const [userProfile, setUserProfile] = useState({});
   const [loading, setLoading] = useState(true);
@@ -60,12 +63,15 @@ export default function Profile() {
           <button onClick={handleCreateProfile}>Create Profile</button>
         </>
       ) : (
-        <>
-          <User userProfile={userProfile} />
+        <div className={styles.cont}>
+          <User styles={styles} userProfile={userProfile} />
           <button onClick={handleEditProfile}>Edit Profile</button>
           <button onClick={handleCreateNewProject}> Create New Project</button>
-          <Projects userProfile={userProfile}></Projects>
-        </>
+          <Projects
+            isCurrentUser={username === currentUser.username}
+            userProfile={userProfile}
+          />
+        </div>
       )}
     </>
   );
