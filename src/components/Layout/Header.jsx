@@ -1,15 +1,17 @@
 import React from 'react';
 import { useUser } from '../../context/UserContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logOutUser } from '../../services/users';
 
 export default function Header() {
   // get username from context (or whereever user is stored)
   const { currentUser, setCurrentUser } = useUser();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logOutUser();
     setCurrentUser({});
+    navigate(`/`, { push: true });
   };
 
   return (
