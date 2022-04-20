@@ -2,6 +2,7 @@ import React from 'react';
 import { useUser } from '../../context/UserContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOutUser } from '../../services/users';
+import styles from './Layout.css';
 
 export default function Header() {
   // get username from context (or whereever user is stored)
@@ -21,7 +22,14 @@ export default function Header() {
       {!currentUser.username && <NavLink to="/signin">Sign In</NavLink>}
       {/* // pass user into path as template literals to access the logged in users
       //profile. */}
-      <NavLink to={`/user/${currentUser.username}`}>Profile</NavLink>
+      {currentUser.username && (
+        <div className={styles.loggedIn}>
+          <p>Signed In As:</p>
+          <NavLink to={`/user/${currentUser.username}`}>
+            {currentUser.username}
+          </NavLink>
+        </div>
+      )}
       {currentUser.username && <button onClick={handleLogout}>Log Out</button>}
     </header>
   );
