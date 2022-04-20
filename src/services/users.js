@@ -64,4 +64,20 @@ const logOutUser = async () => {
   }
 };
 
-export { getUser, registerUser, signInUser, logOutUser };
+const deleteUser = async (userId) => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/users/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    return await resp.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export { getUser, registerUser, signInUser, logOutUser, deleteUser };

@@ -5,7 +5,6 @@ import githubLogo from '../../assets/github.png';
 import linkedInLogo from '../../assets/linkedin.png';
 
 export default function About() {
-  console.log('aboutUs', aboutUs);
   return (
     <div className={styles.aboutContainer}>
       {aboutUs.map((each) => (

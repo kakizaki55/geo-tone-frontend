@@ -16,12 +16,13 @@ export default function Project({ isLoggedIn = false }) {
 
   const { currentUser } = useUser();
   const navigate = useNavigate();
-
+  const [isEditing, setIsEditing] = useState(false);
   const [start, setStart] = useState(false);
   const {
     projectId,
     project: { isLoading, addingChannel, setAddingChannel, project },
     handleAddChannel,
+    handleTitleChange,
   } = useProject();
 
   const handleSaveProjectAndRedirect = () => {
@@ -30,12 +31,26 @@ export default function Project({ isLoggedIn = false }) {
   };
 
   if (isLoading) return <div> loading ... </div>;
+  console.log('project', project);
   return (
     <>
       <div>
-        <h1>{project.title}</h1>
+        {isEditing ? (
+          <>
+            <input
+              type="text"
+              value={project.title}
+              onChange={handleTitleChange}
+            />
+            <button onClick={() => setIsEditing(false)}>Save Title</button>
+          </>
+        ) : (
+          <>
+            <h1>{project.title}</h1>
+            <button onClick={() => setIsEditing(true)}>Edit Title</button>
+          </>
+        )}
         <button onClick={handleSaveProjectAndRedirect}>Save Project</button>
-
         <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
           <GlobalControls start={start} setStart={setStart} />
           {project.channels.map((channel) => (

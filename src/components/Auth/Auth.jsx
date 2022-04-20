@@ -16,8 +16,13 @@ export default function Auth({ isRegistering = false }) {
     if (isRegistering) {
       const user = await registerUser(formState.username, formState.password);
       if (user?.username) {
-        setFormMessage('you are registered');
-        navigate(`/signin`, { push: true });
+        setFormMessage('You have successfully registered! Logging you in...');
+        await signInUser(formState.username, formState.password);
+        setCurrentUser({ username: user.username, userId: user.userId });
+        // setFormMessage(message);
+        setTimeout(() => {
+          navigate(`/user/${formState.username}`, { push: true });
+        }, 2000);
       }
     } else {
       const { message } = await signInUser(
@@ -27,7 +32,9 @@ export default function Auth({ isRegistering = false }) {
       const user = await getUser();
       setCurrentUser({ username: user.username, userId: user.userId });
       setFormMessage(message);
-      navigate(`/user/${formState.username}`, { push: true });
+      setTimeout(() => {
+        navigate(`/user/${formState.username}`, { push: true });
+      }, 2000);
     }
   };
 
