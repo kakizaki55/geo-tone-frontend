@@ -5,6 +5,7 @@ const getUser = async () => {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
+      mode: 'cors',
     });
     return await resp.json();
   } catch (error) {
