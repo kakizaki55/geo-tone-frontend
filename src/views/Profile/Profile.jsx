@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Projects from '../../components/Profile/Projects/Projects';
-import User from '../../components/Profile/User/user';
+import User from '../../components/Profile/User/User';
 import { findProfileByUsername } from '../../services/profiles';
 import { createNewProjectByUserId } from '../../services/project';
 import { useUser } from '../../context/UserContext';
