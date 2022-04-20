@@ -41,13 +41,9 @@ export default function Profile() {
         const data = await findProfileByUsername(username);
         console.log('data', data);
         setUserProfile(data);
-        // const projects = await findProjectsByUserId(data.userId);
-        // setProjects(projects);
-        // console.log('projects', projects); // TODO: Check data model for authentication params
       } catch (error) {
         setUserProfile({}); // TODO: Do we need this fallback?
         throw new Error(error);
-        // setProjects([]);
       }
       setLoading(false);
     };
@@ -55,8 +51,6 @@ export default function Profile() {
   }, [username]);
 
   if (loading) return <div>loading...</div>;
-  //add a button to create a new project
-  // function to insert project using th back end route
 
   return (
     <>

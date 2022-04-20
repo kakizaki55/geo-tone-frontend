@@ -14,8 +14,9 @@ export default function Projects({ userProfile }) {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        // profile hast been set yet and and there for projects are coming back undefined
         const currentProjects = await findProjectsByUserId(userProfile.userId);
+        // this currentProject.message is checking to see if there is a message being sent back when there is no project
+        if (currentProjects.message) setProjects([]);
         setProjects(currentProjects);
       } catch (error) {
         setProjects([]);
@@ -25,7 +26,6 @@ export default function Projects({ userProfile }) {
     };
     fetchProjects();
   }, [projectLoading]);
-  console.log('projects', projects);
 
   const handleEditProjectRedirect = (id) => {
     navigate(`/project/${id}`, { push: true });
@@ -39,14 +39,15 @@ export default function Projects({ userProfile }) {
 
   return (
     <div>
-      {projects.map((project) => (
-        <Project
-          key={project.projectId}
-          project={project}
-          handleDeleteProject={handleDeleteProject}
-          handleEditProjectRedirect={handleEditProjectRedirect}
-        />
-      ))}
+      {projects[0] &&
+        projects.map((project) => (
+          <Project
+            key={project.projectId}
+            project={project}
+            handleDeleteProject={handleDeleteProject}
+            handleEditProjectRedirect={handleEditProjectRedirect}
+          />
+        ))}
     </div>
   );
 }
