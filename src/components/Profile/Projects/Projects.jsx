@@ -4,7 +4,7 @@ export default function Projects({ projects }) {
   return (
     <div>
       {projects.map((project) => (
-        <Project key={project.title} project={project} />
+        <Project key={project.projectId} project={project} />
       ))}
     </div>
   );
