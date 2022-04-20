@@ -7,10 +7,8 @@ import { useUser } from '../../context/UserContext';
 export default function ProfileForm({ isEditing = false }) {
   // TODO: REFACTOR THIS STATE INTO THE VIEW COMPONENT?
   // pass down to form as props?
-  const { formState, formMessage, handleFormChange, setFormMessage } = useForm({
-    bio: '',
-    avatar: '',
-  });
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
   const navigate = useNavigate();
   const { currentUser } = useUser();
 

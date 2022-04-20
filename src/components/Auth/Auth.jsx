@@ -6,30 +6,18 @@ import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Auth({ isRegistering = false }) {
-  const { formState, formMessage, handleFormChange, setFormMessage } = useForm({
-    username: '',
-    password: '',
-  });
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useUser();
-
-  const onlyLettersAndNumbers = (str) => {
-    return /[A-Za-z0-9]g/.test(str);
-  };
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
     if (isRegistering) {
-      if (!onlyLettersAndNumbers(formState.username)) {
-        setFormMessage('usernames can only contain lettes and numbers');
-      } else if (user?.username) {
-        const user = await registerUser(formState.username, formState.password);
+      const user = await registerUser(formState.username, formState.password);
+      if (user?.username) {
         setFormMessage('you are registered');
         navigate(`/signin`, { push: true });
-      } else if (user.message === 'username already exists') {
-        setFormMessage(
-          'that username is already taken. please choose a different username.'
-        );
       }
     } else {
       const { message } = await signInUser(
@@ -59,7 +47,7 @@ export default function Auth({ isRegistering = false }) {
       <label>
         Password:
         <input
-          type="password"
+          type="text"
           name="password"
           value={formState.password}
           onChange={(e) => handleFormChange(e)}
