@@ -17,7 +17,6 @@ export default function Projects({ userProfile }) {
         // profile hast been set yet and and there for projects are coming back undefined
         const currentProjects = await findProjectsByUserId(userProfile.userId);
         setProjects(currentProjects);
-        console.log('projects', projects);
       } catch (error) {
         setProjects([]);
         throw new Error(error);
@@ -26,16 +25,17 @@ export default function Projects({ userProfile }) {
     };
     fetchProjects();
   }, [projectLoading]);
+  console.log('projects', projects);
 
   const handleEditProjectRedirect = (id) => {
     navigate(`/project/${id}`, { push: true });
   };
-  const handleDeleteProject = (id) => {
-    deleteProjectById(id);
+  const handleDeleteProject = async (id) => {
+    await deleteProjectById(id);
     setProjectLoading(true);
   };
 
-  if (projectLoading) return <div>loading...</div>;
+  projectLoading ? <div>loading...</div> : <></>;
 
   return (
     <div>
