@@ -65,7 +65,7 @@ export default function Auth({ isRegistering = false }) {
       <label>
         Password:
         <input
-          type="text"
+          type="password"
           name="password"
           value={formState.password}
           onChange={(e) => handleFormChange(e)}
