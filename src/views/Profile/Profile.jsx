@@ -46,12 +46,12 @@ export default function Profile() {
       try {
         const data = await findProfileByUsername(username);
         setUserProfile(data);
-        const projects = await findProjectsByUserId(data.userId);
-        setProjects(projects);
-        console.log('projects', projects); // TODO: Check data model for authentication params
+        // const projects = await findProjectsByUserId(data.userId);
+        // setProjects(projects);
+        // console.log('projects', projects); // TODO: Check data model for authentication params
       } catch (error) {
         setUserProfile({}); // TODO: Do we need this fallback?
-        setProjects([]);
+        // setProjects([]);
       }
       setLoading(false);
     };
