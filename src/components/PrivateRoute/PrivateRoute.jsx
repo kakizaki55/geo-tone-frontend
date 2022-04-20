@@ -4,7 +4,6 @@ import { useUser } from '../../context/UserContext';
 
 export default function PrivateRoute({ children, routeProps }) {
   const { currentUser } = useUser();
-  console.log('currentUser', currentUser);
   return currentUser.username ? (
     children
   ) : (

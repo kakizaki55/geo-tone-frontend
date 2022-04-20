@@ -42,7 +42,6 @@ export default function Profile() {
     const fetchProfile = async () => {
       try {
         const data = await findProfileByUsername(username);
-        console.log('data', data);
         setUserProfile(data);
       } catch (error) {
         setUserProfile({}); // TODO: Do we need this fallback?
