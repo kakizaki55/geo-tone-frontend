@@ -6,8 +6,10 @@ import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Auth({ isRegistering = false }) {
-  const { formState, formMessage, handleFormChange, setFormMessage } =
-    useForm();
+  const { formState, formMessage, handleFormChange, setFormMessage } = useForm({
+    username: '',
+    password: '',
+  });
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useUser();
 
