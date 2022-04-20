@@ -1,1 +1,43 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
 
+.homeBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeBanner img:first-child {
+  width: 150px;
+  animation-name: right-spin;
+  animation-duration: 1.5s;
+}
+
+.homeBanner img:last-child {
+  width: 150px;
+  animation-name: left-spin;
+  animation-duration: 1.5s;
+}
+
+@keyframes right-spin {
+  from {
+    tranform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes left-spin {
+  from {
+    tranform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
