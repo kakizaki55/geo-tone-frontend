@@ -3,11 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/user';
 import { findProfileByUsername } from '../../services/profiles';
-import {
-  findProjectsByUserId,
-  createNewProjectByUserId,
-} from '../../services/project';
-import { useUser } from '../../context/UserContext';
+import { createNewProjectByUserId } from '../../services/project';
 
 // BACKEND CONNECTION
 
@@ -22,7 +18,6 @@ export default function Profile() {
   const { username } = useParams();
 
   const [userProfile, setUserProfile] = useState({});
-  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -35,7 +30,6 @@ export default function Profile() {
   };
   const handleCreateNewProject = async () => {
     const project = await createNewProjectByUserId();
-    console.log('project', project);
     if (project.projectId) {
       navigate(`/project/${project.projectId}`, { push: true });
     }
@@ -45,13 +39,15 @@ export default function Profile() {
     const fetchProfile = async () => {
       try {
         const data = await findProfileByUsername(username);
+        console.log('data', data);
         setUserProfile(data);
-        const projects = await findProjectsByUserId(data.userId);
-        setProjects(projects);
-        console.log('projects', projects); // TODO: Check data model for authentication params
+        // const projects = await findProjectsByUserId(data.userId);
+        // setProjects(projects);
+        // console.log('projects', projects); // TODO: Check data model for authentication params
       } catch (error) {
         setUserProfile({}); // TODO: Do we need this fallback?
-        setProjects([]);
+        throw new Error(error);
+        // setProjects([]);
       }
       setLoading(false);
     };
@@ -74,7 +70,7 @@ export default function Profile() {
           <User userProfile={userProfile} />
           <button onClick={handleEditProfile}>Edit Profile</button>
           <button onClick={handleCreateNewProject}> Create New Project</button>
-          <Projects projects={projects}></Projects>
+          <Projects userProfile={userProfile}></Projects>
         </>
       )}
     </>
