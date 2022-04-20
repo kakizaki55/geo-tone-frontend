@@ -1,19 +1,44 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import { createProfile, updateProfile } from '../../services/profiles';
 import styles from './ProfileForm.css';
+import { useUser } from '../../context/UserContext';
 
 export default function ProfileForm({ isEditing = false }) {
-  // REFACTOR THIS STATE INTO THE VIEW COMPONENT?
+  // TODO: REFACTOR THIS STATE INTO THE VIEW COMPONENT?
   // pass down to form as props?
-  const { formState, formError, handleFormChange, setFormError } = useForm();
-  console.log('formState', formState);
-  // isEditing booleon is working as intended
-  console.log('isEditing', isEditing);
+  const { formState, formMessage, handleFormChange, setFormMessage } =
+    useForm();
+  const navigate = useNavigate();
+  const { currentUser } = useUser();
 
-  const handleFormSubmit = () => {
-    // BACKEND CONNECTION?
-    // this is where we send the Profile to the back end
-    // if isEditing is true its a patch route instead of a post route
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (isEditing) {
+      try {
+        const profile = await updateProfile(currentUser.username, formState);
+        if (profile.username) {
+          navigate(`/user/${profile.username}`, { push: true });
+        } else {
+          setFormMessage('Could not update your profile');
+        }
+      } catch (error) {
+        setFormMessage('something went wrong');
+        throw new Error(error);
+      }
+    } else {
+      try {
+        const profile = await createProfile(formState);
+        if (profile.username) {
+          navigate(`/user/${profile.username}`, { push: true });
+        } else {
+          setFormMessage('User profile already exists');
+        }
+      } catch (error) {
+        setFormMessage('something went wrong'); // TODO: write clearer error message
+        throw new Error(error);
+      }
+    }
   };
 
   return (
@@ -39,6 +64,7 @@ export default function ProfileForm({ isEditing = false }) {
           />
         </label>
         <button>{isEditing ? 'edit' : 'create'}</button>
+        {formMessage}
       </form>
     </>
   );

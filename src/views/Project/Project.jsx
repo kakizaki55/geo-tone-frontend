@@ -5,12 +5,17 @@ import { handleSaveProject } from '../../services/project';
 import GlobalControls from '../../components/Controls/GlobalControls';
 import Channel from '../../components/Channel/Channel';
 import Dropdown from '../../components/Channel/Dropdown';
+import { useUser } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Project({ isLoggedIn = false }) {
   // BACKEND CONNECTION
   // if isLoggedIn
   // GET PROJECT BY PROJECT ID
   // user_id from project and GET user by user_id
+
+  const { currentUser } = useUser();
+  const navigate = useNavigate();
 
   const [start, setStart] = useState(false);
   const {
@@ -19,14 +24,17 @@ export default function Project({ isLoggedIn = false }) {
     handleAddChannel,
   } = useProject();
 
+  const handleSaveProjectAndRedirect = () => {
+    handleSaveProject({ projectId, project });
+    navigate(`/user/${currentUser.username}`, { push: true });
+  };
+
   if (isLoading) return <div> loading ... </div>;
   return (
     <>
       <div>
         <h1>{project.title}</h1>
-        <button onClick={() => handleSaveProject({ projectId, project })}>
-          Save Project
-        </button>
+        <button onClick={handleSaveProjectAndRedirect}>Save Project</button>
 
         <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
           <GlobalControls start={start} setStart={setStart} />

@@ -1,19 +1,78 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Projects from '../../components/Profile/Projects/Projects';
+import User from '../../components/Profile/User/user';
+import { findProfileByUsername } from '../../services/profiles';
+import { createNewProjectByUserId } from '../../services/project';
+import { useUser } from '../../context/UserContext';
+import styles from './Profile.css';
+
+// BACKEND CONNECTION
+
+// button that says create project
+//  POST to projects
+//  res from POST = { projectId }
+//  redirect to="/project/${projectId}"
+//
+// DELETE user
 
 export default function Profile() {
-  // const { username } = useParams();
+  const { username } = useParams();
+  const { currentUser } = useUser();
 
-  // BACKEND CONNECTION
+  const [userProfile, setUserProfile] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  // button that says create project
-  // POST to projects
-  // res from POST = { projectId }
-  // redirect to="/project/${projectId}"
+  const navigate = useNavigate();
 
-  // GET PROJECTS BY USER_ID
-  // use username to get user_id
-  // or put user_id in params
+  const handleCreateProfile = () => {
+    navigate('/user/new', { push: true });
+  };
+  const handleEditProfile = () => {
+    navigate(`/user/${username}/edit`, { push: true });
+  };
+  const handleCreateNewProject = async () => {
+    const project = await createNewProjectByUserId();
+    if (project.projectId) {
+      navigate(`/project/${project.projectId}`, { push: true });
+    }
+  };
 
-  return <div>Profile</div>;
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const data = await findProfileByUsername(username);
+        console.log('data', data);
+        setUserProfile(data);
+      } catch (error) {
+        setUserProfile({}); // TODO: Do we need this fallback?
+        throw new Error(error);
+      }
+      setLoading(false);
+    };
+    fetchProfile();
+  }, [username]);
+
+  if (loading) return <div>loading...</div>;
+
+  return (
+    <>
+      {!userProfile.username ? (
+        <>
+          Hey bud, gotta make a profile // TODO: Michelle doesn't want this
+          <button onClick={handleCreateProfile}>Create Profile</button>
+        </>
+      ) : (
+        <div className={styles.cont}>
+          <User styles={styles} userProfile={userProfile} />
+          <button onClick={handleEditProfile}>Edit Profile</button>
+          <button onClick={handleCreateNewProject}> Create New Project</button>
+          <Projects
+            isCurrentUser={username === currentUser.username}
+            userProfile={userProfile}
+          />
+        </div>
+      )}
+    </>
+  );
 }
