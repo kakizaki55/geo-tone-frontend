@@ -35,6 +35,8 @@ function projectReducer(project, action) {
       return { ...project, channels: [...project.channels, action.value] };
     case 'update channels':
       return { ...project, channels: action.value };
+    case 'update project title':
+      return { ...project, title: action.value };
     case 'load project':
       return {
         ...project,
@@ -80,6 +82,10 @@ const ProjectProvider = ({ children }) => {
     dispatch({ type: 'update song BPM', value: e.target.value });
   };
 
+  const handleTitleChange = (e) => {
+    dispatch({ type: 'update project title', value: e.target.value });
+  };
+
   // adds a new channel
   const handleAddChannel = (e) => {
     const newChannel = {
@@ -122,6 +128,7 @@ const ProjectProvider = ({ children }) => {
     handleSongBPM,
     handleUpdateChannel,
     handleAddChannel,
+    handleTitleChange,
   };
 
   return (

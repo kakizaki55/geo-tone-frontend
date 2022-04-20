@@ -1,4 +1,6 @@
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import { ProjectProvider } from './context/ProjectContext';
 import Layout from './components/Layout/Layout';
 import About from './views/About/About';
 import CreateProfile from './views/CreateProfile/CreateProfile';
@@ -9,8 +11,6 @@ import Project from './views/Project/Project';
 import Register from './views/Register/Register';
 import SignIn from './views/SignIn/SignIn';
 import Profile from './views/Profile/Profile';
-import { UserProvider } from './context/UserContext';
-import { ProjectProvider } from './context/ProjectContext';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
