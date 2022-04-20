@@ -67,3 +67,18 @@ header button:hover,
 footer a:hover {
   color: aqua;
 }
+
+.loggedIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loggedIn p {
+  color: #5448a7;
+  font-weight: 500;
+}
+
+.loggedIn:hover p {
+  color: black;
+}
