@@ -45,7 +45,6 @@ export default function Profile() {
         setCurrentUser({});
         navigate('/', { push: true });
       }
-      console.log('resp', resp);
     }
   };
 
