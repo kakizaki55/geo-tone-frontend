@@ -7,6 +7,11 @@ import {
 } from 'react';
 import { useParams } from 'react-router-dom';
 import { findProjectById } from '../services/project';
+import {
+  keyCMajorPentatonic2,
+  keyCMajorPentatonic3,
+  keyCMajorPentatonic4,
+} from '../utils/toneUtils';
 
 const initialState = {
   userId: 1, // TODO: replace with userId from UserContext
@@ -33,6 +38,8 @@ function projectReducer(project, action) {
       return { ...project, bpm: Number(action.value) };
     case 'add new channel':
       return { ...project, channels: [...project.channels, action.value] };
+    case 'delete channel':
+      return { ...project, channels: action.value };
     case 'update channels':
       return { ...project, channels: action.value };
     case 'update project title':
@@ -104,6 +111,16 @@ const ProjectProvider = ({ children }) => {
     setAddingChannel(false);
   };
 
+  const handleDeleteChannel = (channelId) => {
+    const newChannelArray = channelArray.filter((item) => {
+      if (item.id !== channelId) {
+        return item;
+      }
+    });
+    setChannelArray(newChannelArray);
+    dispatch({ type: 'delete channel', value: newChannelArray });
+  };
+
   // updates channel array
   const handleUpdateChannel = (channel) => {
     const newChannelArray = channelArray.map((item) => {
@@ -126,8 +143,9 @@ const ProjectProvider = ({ children }) => {
     project: { isLoading, addingChannel, setAddingChannel, project },
     handleProjectVolume,
     handleSongBPM,
-    handleUpdateChannel,
     handleAddChannel,
+    handleDeleteChannel,
+    handleUpdateChannel,
     handleTitleChange,
   };
 

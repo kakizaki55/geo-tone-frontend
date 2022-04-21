@@ -17,7 +17,7 @@ export default function GlobalControls({ start, setStart }) {
         Project Volume
         <input
           type="range"
-          min="-40"
+          min="-48"
           max="0"
           value={project.volume}
           onChange={(e) => handleProjectVolume(e)}

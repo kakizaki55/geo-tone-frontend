@@ -1,25 +1,46 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { useProject } from '../../context/ProjectContext';
-import { keyCMajorPentatonic, setPitchColor } from '../../utils/toneUtils';
+import {
+  keyCMajorPentatonic2,
+  keyCMajorPentatonic3,
+  keyCMajorPentatonic4,
+  setPitchColor,
+} from '../../utils/toneUtils';
 
 import classNames from 'classnames';
 import styles from './Channel.css';
 import Row from './Row';
-import Dropdown from './Dropdown';
 import Controls from './Controls';
 
 export default function Channel({ channel }) {
   const [instrument, setInstrument] = useState(channel.type);
-  const [oscillator, setOscillator] = useState(channel.osc);
+  const [oscillator, setOscillator] = useState(channel.osc); // TODO: add buttons for monoSynth?
   const [volume, setVolume] = useState(channel.volume);
-  const [keyArray, setKeyArray] = useState(keyCMajorPentatonic);
   const [notes, setNotes] = useState(channel.steps);
   const [fx, setFx] = useState({
     reverb: channel.reverb,
+    bitcrusher: 0,
+    delay: 0,
   });
 
-  const { handleUpdateChannel } = useProject();
+  const [bitcrusher, setBitcrusher] = useState(0);
+  const [delay, setDelay] = useState(0);
+
+  const [keyArray, setKeyArray] = useState(() => {
+    switch (instrument) {
+      case 'duoSynth':
+        return keyCMajorPentatonic4;
+      case 'monoSynth':
+        return keyCMajorPentatonic3;
+      case 'membraneSynth':
+        return keyCMajorPentatonic2;
+      default:
+        return keyCMajorPentatonic4;
+    }
+  });
+
+  const { handleDeleteChannel, handleUpdateChannel } = useProject();
 
   const channelId = channel.id;
 
@@ -34,6 +55,10 @@ export default function Channel({ channel }) {
     };
     handleUpdateChannel(channelObj);
   }, [instrument, oscillator, volume, notes, fx]);
+
+  const deleteChannel = () => {
+    handleDeleteChannel(channelId);
+  };
 
   const highlightCurrentStep = (stepIndex) => {
     const sequence = document
@@ -83,16 +108,29 @@ export default function Channel({ channel }) {
       >
         <Instrument
           type={instrument}
-          envelope={{ attack: 0.2, release: 0.5 }}
-          oscillator={{ type: oscillator }}
+          oscillator={{ type: 'triangle' }}
+          envelope={{ attack: 0.1, release: 0.1 }}
         />
+        <Effect type="bitCrusher" wet={bitcrusher} />
+        <Effect type="feedbackDelay" wet={delay} />
         <Effect type="freeverb" wet={fx.reverb} />
       </Track>
-
       {/* Display components below*/}
       <Row {...{ notes, handleNoteChange }} />
-      <Dropdown {...{ instrument, setInstrument, oscillator, setOscillator }} />
-      <Controls {...{ channelId, volume, setVolume, fx, setFx }} />
+      <Controls
+        {...{
+          channelId,
+          volume,
+          setVolume,
+          fx,
+          setFx,
+          bitcrusher,
+          setBitcrusher,
+          delay,
+          setDelay,
+        }}
+      />
+      <button onClick={deleteChannel}>Delete Channel</button>
     </div>
   );
 }
