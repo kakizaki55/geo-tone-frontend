@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.css';
 import shapes from '../../assets/shapes.png';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -14,8 +14,11 @@ export default function Home() {
         </div>
         <p>A browser-based audio sequencer, built with creativity in mind.</p>
         <p>
-          Love music? Us, too! <NavLink to="/register">Sign up </NavLink>to
-          play.
+          Love music? Us, too!{' '}
+          <Link to="/register" className={styles.registerLink}>
+            Sign up
+          </Link>{' '}
+          to play.
         </p>
       </div>
     </>

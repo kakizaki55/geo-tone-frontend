@@ -3,6 +3,7 @@ import { useUser } from '../../context/UserContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOutUser } from '../../services/users';
 import styles from './Layout.css';
+import home from '../../assets/home.png';
 
 export default function Header() {
   const { currentUser, setCurrentUser } = useUser();
@@ -16,7 +17,9 @@ export default function Header() {
 
   return (
     <header>
-      <NavLink to="/">GeoTone</NavLink>
+      <NavLink to="/">
+        <img src={home} />
+      </NavLink>
       <NavLink to="/explore">Explore</NavLink>
       {!currentUser.username && <NavLink to="/register">Register</NavLink>}
       {!currentUser.username && <NavLink to="/signin">Sign In</NavLink>}
