@@ -33,15 +33,16 @@
 /* === */
 
 .cont {
-  border: solid red 1px;
-  padding: 5px;
-  font-size: 1rem;
-  background-color: transparent;
-  color: #49205c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cont img {
   width: 200px;
+  border-radius: 50%;
+  border: var(--pennyroyal) solid 4px;
 }
 
 .cont button {
