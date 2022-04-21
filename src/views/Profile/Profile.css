@@ -86,6 +86,9 @@
 
 .cont button:hover {
   filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  animation-name: color-rotate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 .createProject {
@@ -110,5 +113,26 @@
   }
   to {
     width: 400px;
+  }
+}
+
+@keyframes color-rotate {
+  0% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  }
+  20% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
+  }
+  40% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--purple));
+  }
+  60% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  }
+  80% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--lavender));
+  }
+  100% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
   }
 }
