@@ -29,6 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.3.1",
+    "framer-motion": "^6.3.0",
     "react": "^18.0.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.0.0",

@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Project.css';
 import editTitle from '../../assets/editTitle.png';
 import saveTitle from '../../assets/save.png';
+import { motion } from 'framer-motion';
 
 export default function Project({ isLoggedIn = false }) {
   // BACKEND CONNECTION
@@ -86,6 +87,24 @@ export default function Project({ isLoggedIn = false }) {
           )}
         </div>
       </div>
+      {/* <motion.div
+        className={styles.square}
+        whileHover={{ scale: 1.1 }}
+        drag="y"
+        dragConstraints={{ left: -100, right: 100 }}
+      />
+      <motion.div
+        className={styles.circle}
+        whileHover={{ scale: 1.1 }}
+        drag="y"
+        dragConstraints={{ left: -100, right: 100 }}
+      />
+      <motion.div
+        className={styles.triangle}
+        whileHover={{ scale: 1.1 }}
+        drag="y"
+        dragConstraints={{ left: -100, right: 100 }}
+      /> */}
     </div>
   );
 }
