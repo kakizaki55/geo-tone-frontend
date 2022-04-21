@@ -7,14 +7,34 @@
   justify-content: flex-start;
   height: 100%;
   width: 100vw;
-  overflow: auto;
+  /* overflow: auto; */
   margin-bottom: 40px;
+  overflow-y: hidden;
+}
+
+.fixedProject {
+  border: blue solid 20px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 75vw;
+  /* contain: layout; */
+  overflow: scroll;
+  overflow-x: hidden;
+  /* margin-bottom: 40px; */
   gap: 20px;
   padding: 40px;
 }
 
+.sequencerContainer {
+  border: orange solid 3px;
+}
+
 .projectTitle {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   align-items: center;
   gap: 40px;
@@ -26,9 +46,9 @@
   font-size: 2.5em;
   letter-spacing: 3px;
   font-weight: 400;
-  width: 80%;
+  width: 90%;
   text-align: center;
-  line-height: 30px;
+  line-height: 40px;
 }
 
 .projectTitle button {
@@ -47,6 +67,18 @@
   cursor: pointer;
   border-radius: 5px;
   filter: invert(100%);
+}
+
+.projectTitle input {
+  background-color: lightgray;
+  font-family: 'Major Mono Display', monospace;
+  align-self: center;
+  font-size: 2.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 80%;
+  text-align: center;
+  padding: 20px;
 }
 
 .saveProject {
