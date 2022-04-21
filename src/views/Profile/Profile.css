@@ -49,6 +49,11 @@
   gap: 10px;
 }
 
+.topSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 .profileCont {
   align-self: flex-start;
   display: flex;
@@ -75,7 +80,7 @@
   font-size: 1em;
   cursor: pointer;
   padding: 5px;
-  margin: 3px;
+  /* margin: 3px; */
   background-color: var(--white-ish);
 }
 
@@ -90,6 +95,7 @@
   animation-name: enter-page;
   animation-duration: 1s;
   border-radius: 20px;
+  margin: 3px 100px 3px 3px;
 }
 
 .deleteAccount {
