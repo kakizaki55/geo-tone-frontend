@@ -50,7 +50,9 @@ export default function Project({ isLoggedIn = false }) {
             <button onClick={() => setIsEditing(true)}>Edit Title</button>
           </>
         )}
-        <button onClick={handleSaveProjectAndRedirect}>Save Project</button>
+        {currentUser.userId === project.userId && (
+          <button onClick={handleSaveProjectAndRedirect}>Save Project</button>
+        )}
         <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
           <GlobalControls start={start} setStart={setStart} />
           {project.channels.map((channel) => (
