@@ -1,3 +1,37 @@
+.createProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.createProfile h1 {
+  font-family: 'Major Mono Display', monospace;
+}
+
+.createProfile button {
+  background-color: var(--white-ish);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1em;
+  padding: 5px;
+  margin: 3px;
+  cursor: pointer;
+  /* margin: 0px;
+  padding: 10px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #555; */
+}
+
+.createProfile button:hover {
+  filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
+}
+
+/* === */
+
 .cont {
   border: solid red 1px;
   padding: 5px;

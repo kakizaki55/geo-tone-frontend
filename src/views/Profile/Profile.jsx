@@ -67,11 +67,11 @@ export default function Profile() {
   return (
     <>
       {!userProfile.username ? (
-        <>
-          Hey bud, gotta make a profile // TODO: Michelle doesn't want this AT
-          ALL
-          <button onClick={handleCreateProfile}>Create Profile</button>
-        </>
+        <div className={styles.createProfile}>
+          <h1>Create A Profile</h1>
+          <p>Before you begin your audio adventure, please create a profile!</p>
+          <button onClick={handleCreateProfile}>Click Here</button>
+        </div>
       ) : (
         <div className={styles.cont}>
           <User styles={styles} userProfile={userProfile} />

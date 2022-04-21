@@ -9,12 +9,14 @@
   --aqua: #33bfcaff;
   --lav: #c47fdbff;
   --pennyroyal: #8080ffff;
+  --white-ish: rgb(240, 240, 240);
+  --black-ish: rgb(10, 10, 10);
 }
 
 body {
   margin: 0px;
-  background-color: rgb(4, 4, 4);
-  color: white;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
   font-family: 'Barlow', sans-serif;
 }
 
