@@ -7,7 +7,9 @@ export default function Project({
 }) {
   return (
     <div className={styles.projectCard}>
-      <p>{project.title}</p>
+      <p onClick={() => handleEditProjectRedirect(project.projectId)}>
+        {project.title}
+      </p>
       <div className={styles.projectButtons}>
         <button onClick={() => handleEditProjectRedirect(project.projectId)}>
           {isCurrentUser ? 'Edit' : 'View'}

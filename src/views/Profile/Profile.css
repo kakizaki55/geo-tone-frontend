@@ -51,10 +51,12 @@
 
 .topSection {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 20px;
   align-items: flex-start;
 }
 .profileCont {
+  /* border: red 1px solid; */
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -91,6 +93,13 @@
 
 .cont h3 {
   align-self: center;
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 80%;
+  border-bottom: dotted var(--white-ish) 1px;
+  text-align: center;
+  line-height: 30px;
 }
 
 .createProject {
@@ -104,6 +113,7 @@
   background: var(--pennyroyal);
   cursor: pointer;
   border-radius: 10px;
+  margin-right: 50px;
 }
 
 .createProject:hover {
@@ -138,6 +148,16 @@
   overflow: auto;
 }
 
+.projectCard p {
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.projectCard p:hover {
+  text-decoration: underline;
+}
+
 .projectButtons {
   display: flex;
   flex-direction: column;
@@ -149,7 +169,7 @@
   padding: 4px;
   font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  border: solid 2px var(--pink);
+  border: solid 2px var(--purple);
 }
 
 .deleteAccount {
