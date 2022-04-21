@@ -47,7 +47,9 @@ export default function Project({ isLoggedIn = false }) {
         ) : (
           <>
             <h1>{project.title}</h1>
-            <button onClick={() => setIsEditing(true)}>Edit Title</button>
+            {currentUser.userId === project.userId && (
+              <button onClick={() => setIsEditing(true)}>Edit Title</button>
+            )}
           </>
         )}
         {currentUser.userId === project.userId && (
