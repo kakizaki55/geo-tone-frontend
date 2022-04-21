@@ -86,7 +86,9 @@ export default function Profile() {
               Create New Project
             </button>
           </div>
+          <h3>Your Projects</h3>
           <Projects
+            styles={styles}
             isCurrentUser={username === currentUser.username}
             userProfile={userProfile}
           />
