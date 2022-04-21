@@ -59,6 +59,7 @@ export default function Auth({ isRegistering = false }) {
           name="username"
           value={formState.username}
           onChange={(e) => handleFormChange(e)}
+          required
         />
       </label>
       {/* maybe refactor to a file upload system? */}
@@ -69,6 +70,7 @@ export default function Auth({ isRegistering = false }) {
           name="password"
           value={formState.password}
           onChange={(e) => handleFormChange(e)}
+          required
         />
       </label>
       <button>{isRegistering ? 'Register' : 'Log In'}</button>

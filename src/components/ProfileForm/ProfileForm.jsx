@@ -53,6 +53,7 @@ export default function ProfileForm({ isEditing = false }) {
             name="bio"
             value={formState.bio}
             onChange={(e) => handleFormChange(e)}
+            required
           />
         </label>
         {/* maybe refactor to a file upload system? */}
@@ -63,6 +64,7 @@ export default function ProfileForm({ isEditing = false }) {
             name="avatar"
             value={formState.avatar}
             onChange={(e) => handleFormChange(e)}
+            required
           />
         </label>
         <button>{isEditing ? 'edit' : 'create'}</button>
