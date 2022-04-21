@@ -74,14 +74,23 @@ export default function Profile() {
         </div>
       ) : (
         <div className={styles.cont}>
-          <User styles={styles} userProfile={userProfile} />
-          <button onClick={handleEditProfile}>Edit Profile</button>
-          <button onClick={handleCreateNewProject}> Create New Project</button>
+          <div className={styles.profileCont}>
+            <User styles={styles} userProfile={userProfile} />
+            <button onClick={handleEditProfile}>Edit Profile</button>
+          </div>
+          <button
+            className={styles.createProject}
+            onClick={handleCreateNewProject}
+          >
+            Create New Project
+          </button>
           <Projects
             isCurrentUser={username === currentUser.username}
             userProfile={userProfile}
           />
-          <button onClick={handleDeleteUser}>Delete Account</button>
+          <button className={styles.deleteAccount} onClick={handleDeleteUser}>
+            Delete Account
+          </button>
         </div>
       )}
     </>

@@ -33,23 +33,76 @@
 /* === */
 
 .cont {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.userProfile {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.profileCont {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 300px;
+  margin: 40px;
+}
+
+.userProfile h2 {
+  font-family: 'Major Mono Display', monospace;
 }
 
 .cont img {
-  width: 200px;
+  width: 100px;
   border-radius: 50%;
   border: var(--pennyroyal) solid 4px;
 }
 
 .cont button {
-  font-weight: 500;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1em;
   cursor: pointer;
+  padding: 5px;
+  margin: 3px;
+  background-color: var(--white-ish);
 }
 
 .cont button:hover {
-  color: aqua;
+  filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+}
+
+.createProject {
+  align-self: center;
+  width: 400px;
+  height: 100px;
+  animation-name: enter-page;
+  animation-duration: 1s;
+  border-radius: 20px;
+}
+
+.deleteAccount {
+  align-self: flex-end;
+  width: 100px;
+  margin: 10px;
+}
+
+@keyframes enter-page {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 400px;
+  }
 }

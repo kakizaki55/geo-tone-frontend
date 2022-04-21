@@ -17,7 +17,8 @@
   align-items: center;
 }
 
-.profileForm input {
+.profileForm input,
+.profileForm textarea {
   font-family: 'Barlow', sans-serif;
   background-color: var(--pink);
   border-radius: 4px;

@@ -48,8 +48,7 @@ export default function ProfileForm({ isEditing = false }) {
       <form onSubmit={handleFormSubmit} className={styles.profileForm}>
         <label>
           Bio:
-          <input
-            type="text"
+          <textarea
             name="bio"
             value={formState.bio}
             onChange={(e) => handleFormChange(e)}
