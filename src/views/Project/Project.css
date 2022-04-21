@@ -83,11 +83,13 @@
 
 .saveProject {
   align-self: center;
-  font-size: 2em;
+  font-size: 1.75em;
   width: 330px;
   height: 80px;
   border: none;
-  color: var(--black-ish);
+  color: var(--white-ish);
+  font-weight: 400;
+  font-family: 'Barlow', sans-serif;
   background: var(--pennyroyal);
   cursor: pointer;
   border-radius: 10px;
