@@ -17,13 +17,6 @@
   padding: 5px;
   margin: 3px;
   cursor: pointer;
-  /* margin: 0px;
-  padding: 10px;
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #555; */
 }
 
 .createProfile button:hover {
@@ -39,13 +32,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  margin-bottom: 40px;
 }
 
 .userProfile {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 }
 
@@ -55,15 +49,18 @@
   margin: 20px;
   align-items: flex-start;
 }
+
 .profileCont {
-  /* border: red 1px solid; */
+  border: var(--white-ish) 1px solid;
+  border-radius: 5px;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   width: 300px;
+  padding: 5px;
   margin: 40px;
 }
 
@@ -71,10 +68,28 @@
   font-family: 'Major Mono Display', monospace;
 }
 
-.cont img {
+.userProfile img {
   width: 100px;
   border-radius: 100px;
-  border: var(--pennyroyal) solid 4px;
+  border: var(--purple) solid 4px;
+}
+
+.editProfButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+.editProfButton img {
+  width: 30px;
+  filter: invert(80%);
+  border: none;
+}
+
+.editProfButton button:hover {
+  cursor: pointer;
+  /* border-radius: 5px; */
+  filter: invert(100%);
 }
 
 .cont button {
@@ -93,13 +108,15 @@
 
 .cont h3 {
   align-self: center;
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 3px;
   font-weight: 400;
   width: 80%;
   border-bottom: dotted var(--white-ish) 1px;
   text-align: center;
   line-height: 30px;
+  position: absolute;
+  top: 350px;
 }
 
 .createProject {
@@ -110,7 +127,7 @@
   height: 80px;
   border: none;
   color: var(--black-ish);
-  background: var(--pennyroyal);
+  background: var(--purple);
   cursor: pointer;
   border-radius: 10px;
   margin-right: 50px;

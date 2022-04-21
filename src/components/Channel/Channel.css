@@ -21,6 +21,8 @@
   align-items: center;
   border: double white 3px;
   padding: 19px;
+  background-color: var(--aqua);
+  border-radius: 10px;
 }
 
 .row {

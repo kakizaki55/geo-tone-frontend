@@ -1,0 +1,149 @@
+.currentProject {
+  /* border: 2px solid red; */
+  display: flex;
+  box-sizing: border-box;
+  /* flex-direction: column; */
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  /* overflow: auto; */
+  margin-bottom: 40px;
+  overflow-y: hidden;
+}
+
+.fixedProject {
+  /* border: blue solid 20px; */
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80%;
+  width: 75vw;
+  overflow: scroll;
+  overflow-x: hidden;
+  gap: 20px;
+  padding: 40px;
+  position: absolute;
+  top: 80px;
+}
+
+.fixedProject::-webkit-scrollbar {
+  width: 1em;
+}
+
+.fixedProject::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px var(--black-ish);
+}
+
+.fixedProject::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    45deg,
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple),
+    var(--aqua)
+  );
+  border-radius: 50px;
+}
+
+.sequencerContainer {
+  /* border: orange solid 3px; */
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: var(--pink);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.projectTitle {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.projectTitle h1 {
+  font-family: 'Major Mono Display', monospace;
+  align-self: center;
+  font-size: 2.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 90%;
+  text-align: center;
+  line-height: 40px;
+}
+
+.projectTitle button {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
+
+.projectTitle img {
+  width: 30px;
+  filter: invert(80%);
+}
+
+.projectTitle button:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  filter: invert(100%);
+}
+
+.projectTitle input {
+  background-color: lightgray;
+  font-family: 'Major Mono Display', monospace;
+  align-self: center;
+  font-size: 2.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 80%;
+  text-align: center;
+  padding: 20px;
+}
+
+.saveProject {
+  align-self: center;
+  font-size: 1.75em;
+  width: 330px;
+  height: 80px;
+  border: none;
+  color: var(--white-ish);
+  font-weight: 400;
+  font-family: 'Barlow', sans-serif;
+  background: var(--pennyroyal);
+  cursor: pointer;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.saveProject:hover {
+  background: linear-gradient(
+    45deg,
+    var(--aqua),
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple)
+  );
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: var(--aqua);
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: var(--pink);
+}
+.triangle {
+  width: 100px;
+  height: 100px;
+  background-color: var(--purple);
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+}
