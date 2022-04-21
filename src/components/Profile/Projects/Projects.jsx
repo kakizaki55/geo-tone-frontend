@@ -6,7 +6,7 @@ import {
 } from '../../../services/project';
 import { useState, useEffect } from 'react';
 
-export default function Projects({ userProfile, isCurrentUser }) {
+export default function Projects({ userProfile, isCurrentUser, styles }) {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [projectLoading, setProjectLoading] = useState(true);
@@ -38,10 +38,11 @@ export default function Projects({ userProfile, isCurrentUser }) {
   projectLoading ? <div>loading...</div> : <></>;
 
   return (
-    <div>
+    <div className={styles.projects}>
       {projects[0] &&
         projects.map((project) => (
           <Project
+            styles={styles}
             key={project.projectId}
             project={project}
             isCurrentUser={isCurrentUser}

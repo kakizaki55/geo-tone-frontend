@@ -67,21 +67,34 @@ export default function Profile() {
   return (
     <>
       {!userProfile.username ? (
-        <>
-          Hey bud, gotta make a profile // TODO: Michelle doesn't want this AT
-          ALL
-          <button onClick={handleCreateProfile}>Create Profile</button>
-        </>
+        <div className={styles.createProfile}>
+          <h1>Create A Profile</h1>
+          <p>Before you begin your audio adventure, please create a profile!</p>
+          <button onClick={handleCreateProfile}>Click Here</button>
+        </div>
       ) : (
         <div className={styles.cont}>
-          <User styles={styles} userProfile={userProfile} />
-          <button onClick={handleEditProfile}>Edit Profile</button>
-          <button onClick={handleCreateNewProject}> Create New Project</button>
+          <div className={styles.topSection}>
+            <div className={styles.profileCont}>
+              <User styles={styles} userProfile={userProfile} />
+              <button onClick={handleEditProfile}>Edit Profile</button>
+            </div>
+            <button
+              className={styles.createProject}
+              onClick={handleCreateNewProject}
+            >
+              Create New Project
+            </button>
+          </div>
+          <h3>Your Projects</h3>
           <Projects
+            styles={styles}
             isCurrentUser={username === currentUser.username}
             userProfile={userProfile}
           />
-          <button onClick={handleDeleteUser}>Delete Account</button>
+          <button className={styles.deleteAccount} onClick={handleDeleteUser}>
+            Delete Account
+          </button>
         </div>
       )}
     </>

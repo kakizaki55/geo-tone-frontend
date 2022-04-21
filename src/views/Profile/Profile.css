@@ -1,20 +1,209 @@
-.cont {
-  border: solid red 1px;
+.createProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.createProfile h1 {
+  font-family: 'Major Mono Display', monospace;
+}
+
+.createProfile button {
+  background-color: var(--white-ish);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1em;
   padding: 5px;
-  font-size: 1rem;
-  background-color: transparent;
-  color: #49205c;
+  margin: 3px;
+  cursor: pointer;
+  /* margin: 0px;
+  padding: 10px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #555; */
+}
+
+.createProfile button:hover {
+  filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
+}
+
+/* === */
+
+.cont {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  align-items: flex-start;
+}
+.profileCont {
+  /* border: red 1px solid; */
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 300px;
+  margin: 40px;
+}
+
+.userProfile h2 {
+  font-family: 'Major Mono Display', monospace;
 }
 
 .cont img {
-  width: 200px;
+  width: 100px;
+  border-radius: 100px;
+  border: var(--pennyroyal) solid 4px;
 }
 
 .cont button {
-  font-weight: 500;
   cursor: pointer;
+  padding: 5px;
+  /* margin: 3px; */
+  /* background-color: var(--white-ish); */
 }
 
 .cont button:hover {
-  color: aqua;
+  filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  animation-name: color-rotate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.cont h3 {
+  align-self: center;
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 80%;
+  border-bottom: dotted var(--white-ish) 1px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.createProject {
+  align-self: center;
+  font-family: 'Major Mono Display', monospace;
+  font-size: 2em;
+  width: 330px;
+  height: 80px;
+  border: none;
+  color: var(--black-ish);
+  background: var(--pennyroyal);
+  cursor: pointer;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.createProject:hover {
+  background: linear-gradient(
+    45deg,
+    var(--aqua),
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple)
+  );
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+}
+
+.projectCard {
+  width: 300px;
+  height: 120px;
+  border: grey solid 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  /* background-color: var(--purple); */
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.projectCard p {
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.projectCard p:hover {
+  text-decoration: underline;
+}
+
+.projectButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.projectCard button {
+  border-radius: 4px;
+  padding: 4px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  border: solid 2px var(--purple);
+}
+
+.deleteAccount {
+  align-self: flex-end;
+  width: 100px;
+  margin: 10px;
+}
+
+@keyframes enter-page {
+  from {
+    width: 40px;
+  }
+  to {
+    width: 400px;
+  }
+}
+
+@keyframes color-rotate {
+  0% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  }
+  20% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
+  }
+  40% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--purple));
+  }
+  60% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  }
+  80% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--lavender));
+  }
+  100% {
+    filter: drop-shadow(0 0.2rem 0.25rem var(--aqua));
+  }
 }

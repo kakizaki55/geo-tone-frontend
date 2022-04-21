@@ -48,11 +48,11 @@ export default function ProfileForm({ isEditing = false }) {
       <form onSubmit={handleFormSubmit} className={styles.profileForm}>
         <label>
           Bio:
-          <input
-            type="text"
+          <textarea
             name="bio"
             value={formState.bio}
             onChange={(e) => handleFormChange(e)}
+            required
           />
         </label>
         {/* maybe refactor to a file upload system? */}
@@ -62,11 +62,15 @@ export default function ProfileForm({ isEditing = false }) {
             type="text"
             name="avatar"
             value={formState.avatar}
+            placeholder="enter a URL"
             onChange={(e) => handleFormChange(e)}
+            required
           />
         </label>
-        <button>{isEditing ? 'edit' : 'create'}</button>
-        {formMessage}
+        <div>
+          <button>{isEditing ? 'edit' : 'create'}</button>
+          {formMessage}
+        </div>
       </form>
     </>
   );
