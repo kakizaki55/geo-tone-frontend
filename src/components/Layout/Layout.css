@@ -35,6 +35,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 footer img {
@@ -68,6 +69,8 @@ footer {
   justify-content: flex-end;
   background-color: #5448a7;
   width: 100vw;
+  position: fixed;
+  bottom: 0%;
 }
 
 footer a {
