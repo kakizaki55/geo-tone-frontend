@@ -108,10 +108,27 @@ const createNewProjectByUserId = async () => {
   }
 };
 
+const findAllProjects = async () => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/projects/`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const parsedData = await resp.json();
+
+    return parsedData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export {
   deleteProjectById,
   findProjectById,
   findProjectsByUserId,
   handleSaveProject,
   createNewProjectByUserId,
+  findAllProjects,
 };
