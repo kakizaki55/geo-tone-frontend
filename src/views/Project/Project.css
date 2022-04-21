@@ -29,6 +29,25 @@
   padding: 40px;
 }
 
+.fixedProject::-webkit-scrollbar {
+  width: 1em;
+}
+
+.fixedProject::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px var(--black-ish);
+}
+
+.fixedProject::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    45deg,
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple),
+    var(--aqua)
+  );
+  border-radius: 50px;
+}
+
 .sequencerContainer {
   border: orange solid 3px;
 }

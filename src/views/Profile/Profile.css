@@ -39,13 +39,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  margin-bottom: 40px;
 }
 
 .userProfile {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 }
 
@@ -57,14 +58,16 @@
 }
 
 .profileCont {
-  /* border: red 1px solid; */
+  border: var(--white-ish) 1px solid;
+  border-radius: 5px;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   width: 300px;
+  padding: 5px;
   margin: 40px;
 }
 
