@@ -31,6 +31,14 @@
   animation-duration: 1.5s;
 }
 
+.registerLink {
+  color: var(--white-ish);
+}
+
+.registerLink:hover {
+  color: var(--aqua);
+}
+
 @keyframes right-spin {
   from {
     tranform: rotate(0deg);
