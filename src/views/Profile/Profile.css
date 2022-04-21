@@ -17,13 +17,6 @@
   padding: 5px;
   margin: 3px;
   cursor: pointer;
-  /* margin: 0px;
-  padding: 10px;
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #555; */
 }
 
 .createProfile button:hover {
@@ -75,10 +68,28 @@
   font-family: 'Major Mono Display', monospace;
 }
 
-.cont img {
+.userProfile img {
   width: 100px;
   border-radius: 100px;
-  border: var(--pennyroyal) solid 4px;
+  border: var(--purple) solid 4px;
+}
+
+.editProfButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+.editProfButton img {
+  width: 30px;
+  filter: invert(80%);
+  border: none;
+}
+
+.editProfButton button:hover {
+  cursor: pointer;
+  /* border-radius: 5px; */
+  filter: invert(100%);
 }
 
 .cont button {
@@ -116,7 +127,7 @@
   height: 80px;
   border: none;
   color: var(--black-ish);
-  background: var(--pennyroyal);
+  background: var(--purple);
   cursor: pointer;
   border-radius: 10px;
   margin-right: 50px;

@@ -7,6 +7,7 @@ import { createNewProjectByUserId } from '../../services/project';
 import { useUser } from '../../context/UserContext';
 import styles from './Profile.css';
 import { deleteUser } from '../../services/users';
+import editImg from '../../assets/editTitle.png';
 
 // BACKEND CONNECTION
 
@@ -77,7 +78,12 @@ export default function Profile() {
           <div className={styles.topSection}>
             <div className={styles.profileCont}>
               <User styles={styles} userProfile={userProfile} />
-              <button onClick={handleEditProfile}>Edit Profile</button>
+              <button
+                className={styles.editProfButton}
+                onClick={handleEditProfile}
+              >
+                <img src={editImg} alt="Edit Image" />
+              </button>
             </div>
             <button
               className={styles.createProject}
