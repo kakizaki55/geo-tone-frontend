@@ -7,6 +7,8 @@ import Channel from '../../components/Channel/Channel';
 import Dropdown from '../../components/Channel/Dropdown';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import styles from './Project.css';
+import editTitle from '../../assets/editTitle.png';
 
 export default function Project({ isLoggedIn = false }) {
   // BACKEND CONNECTION
@@ -33,41 +35,46 @@ export default function Project({ isLoggedIn = false }) {
   if (isLoading) return <div> loading ... </div>;
   console.log('project', project);
   return (
-    <>
-      <div>
-        {isEditing ? (
-          <>
-            <input
-              type="text"
-              value={project.title}
-              onChange={handleTitleChange}
-            />
-            <button onClick={() => setIsEditing(false)}>Save Title</button>
-          </>
-        ) : (
-          <>
-            <h1>{project.title}</h1>
-            {currentUser.userId === project.userId && (
-              <button onClick={() => setIsEditing(true)}>Edit Title</button>
-            )}
-          </>
-        )}
-        {currentUser.userId === project.userId && (
-          <button onClick={handleSaveProjectAndRedirect}>Save Project</button>
-        )}
-        <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
-          <GlobalControls start={start} setStart={setStart} />
-          {project.channels.map((channel) => (
-            <Channel key={`channel-${channel.id}`} channel={channel} />
-          ))}
-        </Sequencer>
+    <div className={styles.currentProject}>
+      {isEditing ? (
+        <div className={styles.projectTitle}>
+          <input
+            type="text"
+            value={project.title}
+            onChange={handleTitleChange}
+          />
+          <button onClick={() => setIsEditing(false)}>Save Title</button>
+        </div>
+      ) : (
+        <div className={styles.projectTitle}>
+          <h1>{project.title}</h1>
+          {currentUser.userId === project.userId && (
+            <button onClick={() => setIsEditing(true)}>
+              <img src={editTitle} alt="Edit Title" />
+            </button>
+          )}
+        </div>
+      )}
+      {currentUser.userId === project.userId && (
+        <button
+          className={styles.saveProject}
+          onClick={handleSaveProjectAndRedirect}
+        >
+          Save Project
+        </button>
+      )}
+      <Sequencer isPlaying={start} bpm={project.bpm} volume={project.volume}>
+        <GlobalControls start={start} setStart={setStart} />
+        {project.channels.map((channel) => (
+          <Channel key={`channel-${channel.id}`} channel={channel} />
+        ))}
+      </Sequencer>
 
-        {addingChannel ? (
-          <Dropdown {...{ handleAddChannel }} />
-        ) : (
-          <button onClick={() => setAddingChannel(true)}>+</button>
-        )}
-      </div>
-    </>
+      {addingChannel ? (
+        <Dropdown {...{ handleAddChannel }} />
+      ) : (
+        <button onClick={() => setAddingChannel(true)}>+</button>
+      )}
+    </div>
   );
 }

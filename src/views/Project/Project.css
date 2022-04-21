@@ -1,0 +1,73 @@
+.currentProject {
+  border: 2px solid red;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100vw;
+  overflow: auto;
+  margin-bottom: 40px;
+  gap: 20px;
+  padding: 40px;
+}
+
+.projectTitle {
+  border: 2px solid green;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.projectTitle h1 {
+  font-family: 'Major Mono Display', monospace;
+  align-self: center;
+  font-size: 2.5em;
+  letter-spacing: 3px;
+  font-weight: 400;
+  width: 80%;
+  text-align: center;
+  line-height: 30px;
+}
+
+.projectTitle button {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
+
+.projectTitle img {
+  width: 30px;
+  filter: invert(80%);
+}
+
+.projectTitle button:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  filter: invert(100%);
+}
+
+.saveProject {
+  align-self: center;
+  font-size: 2em;
+  width: 330px;
+  height: 80px;
+  border: none;
+  color: var(--black-ish);
+  background: var(--pennyroyal);
+  cursor: pointer;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.saveProject:hover {
+  background: linear-gradient(
+    45deg,
+    var(--aqua),
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple)
+  );
+}
