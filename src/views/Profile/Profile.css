@@ -55,6 +55,7 @@
   margin: 20px;
   align-items: flex-start;
 }
+
 .profileCont {
   /* border: red 1px solid; */
   align-self: flex-start;
@@ -93,13 +94,15 @@
 
 .cont h3 {
   align-self: center;
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 3px;
   font-weight: 400;
   width: 80%;
   border-bottom: dotted var(--white-ish) 1px;
   text-align: center;
   line-height: 30px;
+  position: absolute;
+  top: 350px;
 }
 
 .createProject {
