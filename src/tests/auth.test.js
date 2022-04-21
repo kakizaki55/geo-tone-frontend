@@ -12,7 +12,7 @@ test('renders Auth form component in a registering state', () => {
     </MemoryRouter>
   );
   const formHeader = screen.getByRole('heading');
-  expect(formHeader.innerHTML).toEqual('Register');
+  expect(formHeader.innerHTML).toEqual('rEGIsTer');
 });
 
 test('renders Auth component in a Logging In state', () => {
