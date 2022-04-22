@@ -1,4 +1,5 @@
-import { Routes, BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import { UserProvider } from './context/UserContext';
 import { ProjectProvider } from './context/ProjectContext';
 import Layout from './components/Layout/Layout';
@@ -15,56 +16,58 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <UserProvider>
-        <Layout>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/signin" element={<SignIn />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route
-              exact
-              path="/user/new"
-              element={
-                <PrivateRoute>
-                  <CreateProfile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/user/:username"
-              element={
-                <PrivateRoute>
-                  <Profile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/user/:username/edit"
-              element={
-                <PrivateRoute>
-                  <EditProfile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/project/:id"
-              element={
-                <ProjectProvider>
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <UserProvider>
+          <Layout>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/explore" element={<Explore />} />
+              <Route exact path="/signin" element={<SignIn />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route
+                exact
+                path="/user/new"
+                element={
                   <PrivateRoute>
-                    <Project />
+                    <CreateProfile />
                   </PrivateRoute>
-                </ProjectProvider>
-              }
-            />
-            <Route exact path="/explore" element={<Explore />} />
-          </Routes>
-        </Layout>
-      </UserProvider>
-    </BrowserRouter>
+                }
+              />
+              <Route
+                exact
+                path="/user/:username"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="/user/:username/edit"
+                element={
+                  <PrivateRoute>
+                    <EditProfile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="/project/:id"
+                element={
+                  <ProjectProvider>
+                    <PrivateRoute>
+                      <Project />
+                    </PrivateRoute>
+                  </ProjectProvider>
+                }
+              />
+            </Routes>
+          </Layout>
+        </UserProvider>
+      </Router>
+    </MotionConfig>
   );
 }

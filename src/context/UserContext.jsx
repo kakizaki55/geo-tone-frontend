@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo, createContext, useEffect } from 'react';
+import { useContext, useState, createContext, useEffect } from 'react';
 import { getUser } from '../services/users';
 
 const UserContext = createContext();
@@ -29,4 +29,4 @@ const useUser = () => {
   return context;
 };
 
-export { UserContext, UserProvider, useUser };
+export { UserProvider, useUser };

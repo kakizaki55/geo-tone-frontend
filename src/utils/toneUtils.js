@@ -2,7 +2,6 @@
 import styles from '../components/Channel/Channel.css';
 
 const keyCMajorPentatonic4 = ['C4', 'D4', 'E4', 'G4', 'A4', 'C5'];
-
 const keyCMajorPentatonic3 = ['C3', 'D3', 'E3', 'G3', 'A3', 'C4'];
 const keyCMajorPentatonic2 = ['C2', 'D2', 'E2', 'G2', 'A2', 'C3'];
 

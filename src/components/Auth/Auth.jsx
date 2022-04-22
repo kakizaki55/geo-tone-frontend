@@ -1,17 +1,17 @@
-import React from 'react';
-import { useForm } from '../../hooks/useForm';
-import styles from './Auth.css';
-import { getUser, registerUser, signInUser } from '../../services/users';
-import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import { useUser } from '../../context/UserContext';
+import { getUser, registerUser, signInUser } from '../../services/users';
+import styles from './Auth.css';
 
 export default function Auth({ isRegistering = false }) {
   const { formState, formMessage, handleFormChange, setFormMessage } = useForm({
     username: '',
     password: '',
   });
+
+  const { setCurrentUser } = useUser();
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useUser();
 
   const containsIllegalCharacters = (str) => {
     return /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(str);
@@ -19,30 +19,40 @@ export default function Auth({ isRegistering = false }) {
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
+
+    // If a new user is registering:
     if (isRegistering) {
       if (containsIllegalCharacters(formState.username)) {
         setFormMessage('username must contain only letters and numbers');
       } else {
         const user = await registerUser(formState.username, formState.password);
+
         if (user.message === 'username already exists') {
           setFormMessage(user.message);
         } else if (user?.username) {
           setFormMessage('You have successfully registered! Logging you in...');
+
           await signInUser(formState.username, formState.password);
           setCurrentUser({ username: user.username, userId: user.userId });
+
           setTimeout(() => {
             navigate(`/user/${formState.username}`, { push: true });
           }, 2000);
         }
       }
+
+      // If an existing user is attempting signing in:
     } else {
       const { message } = await signInUser(
         formState.username,
         formState.password
       );
+
       const user = await getUser();
+
       setCurrentUser({ username: user.username, userId: user.userId });
       setFormMessage(message);
+
       setTimeout(() => {
         navigate(`/user/${formState.username}`, { push: true });
       }, 2000);
@@ -51,7 +61,7 @@ export default function Auth({ isRegistering = false }) {
 
   return (
     <form className={styles.authForm} onSubmit={handleAuthSubmit}>
-      <h2>{isRegistering ? 'rEGIsTer' : 'Log In'}</h2>
+      <h1>{isRegistering ? 'rEGIsTer' : 'Log In'}</h1>
       <label>
         Username:
         <input
@@ -62,7 +72,6 @@ export default function Auth({ isRegistering = false }) {
           required
         />
       </label>
-      {/* maybe refactor to a file upload system? */}
       <label>
         Password:
         <input
@@ -74,7 +83,7 @@ export default function Auth({ isRegistering = false }) {
         />
       </label>
       <button>{isRegistering ? 'Register' : 'Log In'}</button>
-      <div className={styles.alertMessage}>{formMessage}</div>
+      <p className={styles.alertMessage}>{formMessage}</p>
     </form>
   );
 }

@@ -7,28 +7,6 @@ import {
 } from 'react';
 import { useParams } from 'react-router-dom';
 import { findProjectById } from '../services/project';
-import {
-  keyCMajorPentatonic2,
-  keyCMajorPentatonic3,
-  keyCMajorPentatonic4,
-} from '../utils/toneUtils';
-
-const initialState = {
-  userId: 1, // TODO: replace with userId from UserContext
-  title: 'untitled',
-  bpm: 120,
-  volume: -12,
-  channels: [
-    {
-      id: 0,
-      type: 'synth',
-      osc: 'sine',
-      steps: [null, null, null, null, null, null, null, null],
-      volume: -5,
-      reverb: 0.5,
-    },
-  ],
-};
 
 function projectReducer(project, action) {
   switch (action.type) {
@@ -59,14 +37,13 @@ const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
   const { id } = useParams();
-
   const projectId = id;
+
   const [isLoading, setIsLoading] = useState(true);
-  const [title, setTitle] = useState('untitled'); //TODO: add editing functionality
   const [addingChannel, setAddingChannel] = useState(false);
   const [channelArray, setChannelArray] = useState([]);
 
-  const [project, dispatch] = useReducer(projectReducer, initialState);
+  const [project, dispatch] = useReducer(projectReducer, {});
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -81,6 +58,10 @@ const ProjectProvider = ({ children }) => {
     fetchProject();
   }, [projectId]);
 
+  const handleTitleChange = (e) => {
+    dispatch({ type: 'update project title', value: e.target.value });
+  };
+
   const handleProjectVolume = (e) => {
     dispatch({ type: 'update project volume', value: e.target.value });
   };
@@ -89,19 +70,14 @@ const ProjectProvider = ({ children }) => {
     dispatch({ type: 'update song BPM', value: e.target.value });
   };
 
-  const handleTitleChange = (e) => {
-    dispatch({ type: 'update project title', value: e.target.value });
-  };
-
-  // adds a new channel
   const handleAddChannel = (e) => {
     const newChannel = {
-      id: project.channels.length, //TODO: handle id production differently
+      id: project.channels.length,
       type: e.target.value,
       osc: 'sine',
       steps: [null, null, null, null, null, null, null, null],
-      volume: -5,
-      reverb: 0.5,
+      volume: -12,
+      reverb: 0.1,
     };
     dispatch({
       type: 'add new channel',
@@ -121,7 +97,6 @@ const ProjectProvider = ({ children }) => {
     dispatch({ type: 'delete channel', value: newChannelArray });
   };
 
-  // updates channel array
   const handleUpdateChannel = (channel) => {
     const newChannelArray = channelArray.map((item) => {
       if (item.id === channel.id) {
@@ -139,14 +114,14 @@ const ProjectProvider = ({ children }) => {
   };
 
   const contextValue = {
-    projectId,
     project: { isLoading, addingChannel, setAddingChannel, project },
+    projectId,
+    handleTitleChange,
     handleProjectVolume,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
     handleUpdateChannel,
-    handleTitleChange,
   };
 
   return (

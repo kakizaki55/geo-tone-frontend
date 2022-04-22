@@ -1,5 +1,7 @@
-import React from 'react';
+import { motion, useCycle } from 'framer-motion';
 import { useProject } from '../../context/ProjectContext';
+import { playVariants as play } from '../../utils/framerUtils';
+import styles from './GlobalControls.css';
 
 export default function GlobalControls({ start, setStart }) {
   const {
@@ -8,17 +10,29 @@ export default function GlobalControls({ start, setStart }) {
     handleSongBPM,
   } = useProject();
 
+  const [active, cycleActive] = useCycle('play', 'stop');
+
   return (
     <div id="global-controls">
-      <button onClick={() => setStart(!start)}>
+      <motion.button
+        className={styles.playButton}
+        whileHover={{ scale: 1.1 }}
+        onClick={() => {
+          cycleActive();
+          setStart(!start);
+        }}
+        animate={active}
+        variants={play}
+      >
         {start ? 'stop' : 'play'}
-      </button>
+      </motion.button>
       <label>
         Project Volume
         <input
           type="range"
           min="-48"
           max="0"
+          step="1"
           value={project.volume}
           onChange={(e) => handleProjectVolume(e)}
         />

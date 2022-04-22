@@ -1,10 +1,10 @@
-import Project from '../Project/Project';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   deleteProjectById,
   findProjectsByUserId,
 } from '../../../services/project';
-import { useState, useEffect } from 'react';
+import Project from '../Project/Project';
 
 export default function Projects({ userProfile, isCurrentUser, styles }) {
   const navigate = useNavigate();
@@ -15,7 +15,6 @@ export default function Projects({ userProfile, isCurrentUser, styles }) {
     const fetchProjects = async () => {
       try {
         const currentProjects = await findProjectsByUserId(userProfile.userId);
-        // this currentProject.message is checking to see if there is a message being sent back when there is no project
         if (currentProjects.message) setProjects([]);
         setProjects(currentProjects);
       } catch (error) {
@@ -30,6 +29,7 @@ export default function Projects({ userProfile, isCurrentUser, styles }) {
   const handleEditProjectRedirect = (id) => {
     navigate(`/project/${id}`, { push: true });
   };
+
   const handleDeleteProject = async (id) => {
     await deleteProjectById(id);
     setProjectLoading(true);

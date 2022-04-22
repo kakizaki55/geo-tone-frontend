@@ -43,7 +43,7 @@
   filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
 }
 
-.authForm h2 {
+.authForm h1 {
   font-family: 'Major Mono Display', monospace;
   font-size: 2em;
 }

@@ -1,6 +1,5 @@
-import React from 'react';
-import { useUser } from '../../context/UserContext';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
 import { logOutUser } from '../../services/users';
 import styles from './Layout.css';
 import home from '../../assets/home.png';
@@ -18,22 +17,28 @@ export default function Header() {
   return (
     <header>
       <NavLink to="/">
-        <img src={home} />
+        <img src={home} alt="Geo Tone homepage" />
       </NavLink>
       <NavLink to="/explore">Explore</NavLink>
-      {!currentUser.username && <NavLink to="/register">Register</NavLink>}
-      {!currentUser.username && <NavLink to="/signin">Sign In</NavLink>}
-      {/* // pass user into path as template literals to access the logged in users
-      //profile. */}
-      {currentUser.username && (
-        <div className={styles.loggedIn}>
-          <p>Currently Logged in as: </p>
-          <NavLink to={`/user/${currentUser.username}`}>
-            {currentUser.username}
-          </NavLink>
-        </div>
+
+      {!currentUser.username && (
+        <>
+          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/signin">Sign In</NavLink>
+        </>
       )}
-      {currentUser.username && <button onClick={handleLogout}>Log Out</button>}
+
+      {currentUser.username && (
+        <>
+          <div className={styles.loggedIn}>
+            <p>Currently Logged in as: </p>
+            <NavLink to={`/user/${currentUser.username}`}>
+              {currentUser.username}
+            </NavLink>
+          </div>
+          <button onClick={handleLogout}>Log Out</button>
+        </>
+      )}
     </header>
   );
 }

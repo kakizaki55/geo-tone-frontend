@@ -1,22 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Projects from '../../components/Profile/Projects/Projects';
 import User from '../../components/Profile/User/User';
+import Projects from '../../components/Profile/Projects/Projects';
+import { useUser } from '../../context/UserContext';
+import { deleteUser } from '../../services/users';
 import { findProfileByUsername } from '../../services/profiles';
 import { createNewProjectByUserId } from '../../services/project';
-import { useUser } from '../../context/UserContext';
 import styles from './Profile.css';
-import { deleteUser } from '../../services/users';
 import editImg from '../../assets/editTitle.png';
-
-// BACKEND CONNECTION
-
-// button that says create project
-//  POST to projects
-//  res from POST = { projectId }
-//  redirect to="/project/${projectId}"
-//
-// DELETE user
 
 export default function Profile() {
   const { username } = useParams();
@@ -33,14 +24,20 @@ export default function Profile() {
   const handleEditProfile = () => {
     navigate(`/user/${username}/edit`, { push: true });
   };
+
   const handleCreateNewProject = async () => {
     const project = await createNewProjectByUserId();
     if (project.projectId) {
       navigate(`/project/${project.projectId}`, { push: true });
     }
   };
+
   const handleDeleteUser = async () => {
-    if (confirm('Are you suuuuuuuuure?')) {
+    if (
+      confirm(
+        'Are you sure you want to delete your account? Any projects will be lost.'
+      )
+    ) {
       const resp = await deleteUser(currentUser.userId);
       if (resp.message) {
         setCurrentUser({});
@@ -54,9 +51,8 @@ export default function Profile() {
       try {
         const data = await findProfileByUsername(username);
         setUserProfile(data);
-      } catch (error) {
-        setUserProfile({}); // TODO: Do we need this fallback?
-        throw new Error(error);
+      } catch {
+        setUserProfile({});
       }
       setLoading(false);
     };
@@ -76,15 +72,15 @@ export default function Profile() {
       ) : (
         <div className={styles.cont}>
           <div className={styles.topSection}>
-            <div className={styles.profileCont}>
+            <section className={styles.profileCont}>
               <User styles={styles} userProfile={userProfile} />
               <button
                 className={styles.editProfButton}
                 onClick={handleEditProfile}
               >
-                <img src={editImg} alt="Edit Image" />
+                <img src={editImg} alt="Edit your profile" />
               </button>
-            </div>
+            </section>
             <button
               className={styles.createProject}
               onClick={handleCreateNewProject}
@@ -92,7 +88,7 @@ export default function Profile() {
               Create New Project
             </button>
           </div>
-          <h3>Your Projects</h3>
+          <h2>Your Projects</h2>
           <Projects
             styles={styles}
             isCurrentUser={username === currentUser.username}

@@ -87,7 +87,7 @@
   border-radius: 50px;
 }
 
-.userProfile h2 {
+.userProfile h1 {
   font-family: 'Major Mono Display', monospace;
 }
 
@@ -126,7 +126,7 @@
   animation-iteration-count: infinite;
 }
 
-.cont h3 {
+.cont h2 {
   align-self: center;
   font-size: 2em;
   letter-spacing: 3px;

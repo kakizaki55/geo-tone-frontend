@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './About.css';
 import { aboutUs } from '../../assets/aboutUs.js';
 import githubLogo from '../../assets/github.png';
@@ -10,9 +9,9 @@ import triangle from '../../assets/mobiusTriangle.png';
 
 export default function About() {
   return (
-    <div className={styles.aboutContainer}>
+    <section className={styles.aboutContainer}>
       {aboutUs.map((each) => (
-        <div key={each.name} className={styles.aboutCard}>
+        <article key={each.name} className={styles.aboutCard}>
           {(() => {
             switch (each.photo) {
               case 'tetrahedron':
@@ -28,17 +27,17 @@ export default function About() {
             }
           })()}
           <h2>{each.name}</h2>
-          <span>{each.bio}</span>
+          <p>{each.bio}</p>
           <div>
             <a href={each.gitHub} target="_blank">
-              <img src={githubLogo} alt="Small icon for GitHub" />
+              <img src={githubLogo} alt={`${each.name} at GitHub.com`} />
             </a>
             <a href={each.linkedIn} target="_blank">
-              <img src={linkedInLogo} alt="Small icon for LinkedIn" />
+              <img src={linkedInLogo} alt={`${each.name} at LinkedIn.com`} />
             </a>
           </div>
-        </div>
+        </article>
       ))}
-    </div>
+    </section>
   );
 }
