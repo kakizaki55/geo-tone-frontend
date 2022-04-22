@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Home.css';
 import shapes from '../../assets/shapes.png';
 import { Link } from 'react-router-dom';
+import { getTotalUsers, getTotalProjects } from '../../services/aggregate';
 
 export default function Home() {
+  const [totalProjects, setTotalProjects] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const projectAggregate = await getTotalProjects();
+      setTotalProjects(projectAggregate);
+      const userAggregate = await getTotalUsers();
+      setTotalUsers(userAggregate);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className={styles.homeContainer}>
@@ -19,6 +33,10 @@ export default function Home() {
             Sign up
           </Link>{' '}
           to play.
+        </p>
+        <p>
+          Join the {totalUsers} other synth wizards who have created{' '}
+          {totalProjects} projects!
         </p>
       </div>
     </>
