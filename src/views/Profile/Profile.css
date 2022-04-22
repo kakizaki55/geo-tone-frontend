@@ -1,3 +1,5 @@
+/* ======== CREATE A PROFILE ============ */
+
 .createProfile {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
   filter: drop-shadow(0 0.2rem 0.25rem var(--pink));
 }
 
-/* === */
+/* ======== PROFILE CREATED ============ */
 
 .cont {
   height: 100%;
@@ -35,6 +37,13 @@
   margin-bottom: 40px;
 }
 
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  align-items: flex-start;
+}
+
 .userProfile {
   display: flex;
   flex-direction: column;
@@ -43,25 +52,39 @@
   gap: 10px;
 }
 
-.topSection {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-  align-items: flex-start;
-}
-
 .profileCont {
   border: var(--white-ish) 1px solid;
+  height: 25vh;
+  overflow-y: scroll;
   border-radius: 5px;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   width: 300px;
   padding: 5px;
   margin: 40px;
+}
+
+.profileCont::-webkit-scrollbar {
+  width: 1em;
+}
+
+.profileCont::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px var(--black-ish);
+}
+
+.profileCont::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    45deg,
+    var(--pink),
+    var(--pennyroyal),
+    var(--purple),
+    var(--aqua)
+  );
+  border-radius: 50px;
 }
 
 .userProfile h2 {
@@ -88,15 +111,12 @@
 
 .editProfButton button:hover {
   cursor: pointer;
-  /* border-radius: 5px; */
   filter: invert(100%);
 }
 
 .cont button {
   cursor: pointer;
   padding: 5px;
-  /* margin: 3px; */
-  /* background-color: var(--white-ish); */
 }
 
 .cont button:hover {
@@ -160,7 +180,6 @@
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  /* background-color: var(--purple); */
   border-radius: 10px;
   overflow: auto;
 }

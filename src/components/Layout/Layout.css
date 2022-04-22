@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&family=Major+Mono+Display&display=swap');
 
-/* font-family: 'Barlow', sans-serif; */
-/* font-family: 'Major Mono Display', monospace; */
-
 :root {
   --pink: #fe5ca7ff;
   --purple: #6e60b6ff;
@@ -59,7 +56,6 @@ header {
   justify-content: space-evenly;
   background-color: var(--purple);
   width: 100vw;
-  /* font-size: 25px; */
 }
 
 header a,

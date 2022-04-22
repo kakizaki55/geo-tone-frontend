@@ -1,19 +1,15 @@
 .currentProject {
-  /* border: 2px solid red; */
   display: flex;
   box-sizing: border-box;
-  /* flex-direction: column; */
   align-items: flex-end;
   justify-content: center;
   height: 100%;
   width: 100vw;
-  /* overflow: auto; */
   margin-bottom: 40px;
   overflow-y: hidden;
 }
 
 .fixedProject {
-  /* border: blue solid 20px; */
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -49,7 +45,6 @@
 }
 
 .sequencerContainer {
-  /* border: orange solid 3px; */
   padding: 15px;
   margin-top: 20px;
   border-radius: 10px;

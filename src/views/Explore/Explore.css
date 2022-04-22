@@ -36,7 +36,6 @@
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  /* background-color: var(--purple); */
   border-radius: 10px;
   overflow: auto;
   font-size: 1.5em;
