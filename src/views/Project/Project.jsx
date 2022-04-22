@@ -22,6 +22,7 @@ export default function Project() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [start, setStart] = useState(false);
+  const [volume, setVolume] = useState(-48);
 
   const handleSaveProjectAndRedirect = () => {
     handleSaveProject({ projectId, project });
@@ -43,12 +44,13 @@ export default function Project() {
         />
 
         <div className={styles.sequencerContainer}>
-          <Sequencer
-            isPlaying={start}
-            bpm={project.bpm}
-            volume={project.volume}
-          >
-            <GlobalControls start={start} setStart={setStart} />
+          <Sequencer isPlaying={start} bpm={project.bpm} volume={volume}>
+            <GlobalControls
+              start={start}
+              setStart={setStart}
+              volume={volume}
+              setVolume={setVolume}
+            />
             {project.channels.map((channel) => (
               <Channel key={`channel-${channel.id}`} channel={channel} />
             ))}
@@ -57,7 +59,12 @@ export default function Project() {
           {addingChannel ? (
             <Dropdown handleAddChannel={handleAddChannel} />
           ) : (
-            <button onClick={() => setAddingChannel(true)}>+</button>
+            <button
+              onClick={() => setAddingChannel(true)}
+              className={styles.addChannel}
+            >
+              +
+            </button>
           )}
         </div>
       </div>

@@ -162,7 +162,9 @@ export default function Channel({ channel }) {
         fx={fx}
         setFx={setFx}
       />
-      <button onClick={deleteChannel}>Delete Channel</button>
+      <motion.button onClick={deleteChannel} className={styles.deleteChannel}>
+        Delete Channel
+      </motion.button>
     </div>
   );
 }

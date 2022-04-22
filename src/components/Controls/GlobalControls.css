@@ -6,3 +6,18 @@
   height: 90px;
   font-size: 120%;
 }
+
+.label {
+  font-size: 120%;
+}
+
+.bpmCounter {
+  border-radius: 10px;
+  font-family: 'Barlow';
+  align-self: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
+  font-size: 120%;
+}

@@ -10,8 +10,6 @@ import { findProjectById } from '../services/project';
 
 function projectReducer(project, action) {
   switch (action.type) {
-    case 'update project volume':
-      return { ...project, volume: Number(action.value) };
     case 'update song BPM':
       return { ...project, bpm: Number(action.value) };
     case 'add new channel':
@@ -60,10 +58,6 @@ const ProjectProvider = ({ children }) => {
 
   const handleTitleChange = (e) => {
     dispatch({ type: 'update project title', value: e.target.value });
-  };
-
-  const handleProjectVolume = (e) => {
-    dispatch({ type: 'update project volume', value: e.target.value });
   };
 
   const handleSongBPM = (e) => {
@@ -117,7 +111,6 @@ const ProjectProvider = ({ children }) => {
     project: { isLoading, addingChannel, setAddingChannel, project },
     projectId,
     handleTitleChange,
-    handleProjectVolume,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
