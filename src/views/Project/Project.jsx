@@ -28,9 +28,7 @@ export default function Project() {
     handleSaveProject({ projectId, project });
     navigate(`/user/${currentUser.username}`, { push: true });
   };
-
   if (isLoading) return <div> loading ... </div>;
-
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>

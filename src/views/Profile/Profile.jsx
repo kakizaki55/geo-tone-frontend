@@ -75,6 +75,7 @@ export default function Profile() {
             <section className={styles.profileCont}>
               <User styles={styles} userProfile={userProfile} />
               <button
+                aria-label="edit profile"
                 className={styles.editProfButton}
                 onClick={handleEditProfile}
               >

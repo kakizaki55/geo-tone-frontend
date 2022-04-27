@@ -33,7 +33,7 @@ export default function Explore() {
             key={`project.title${index}`}
             onClick={() => handleExploreProject(project.projectId)}
           >
-            <p>{project.title}</p>
+            <p aria-label="project title">{project.title}</p>
           </div>
         ))}
       </div>

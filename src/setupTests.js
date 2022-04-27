@@ -1,2 +1,3 @@
-global.fetch = (...args) =>
-  import('cross-fetch').then(({ default: fetch }) => fetch(...args));
+import fetch from 'cross-fetch';
+
+global.fetch = fetch;
