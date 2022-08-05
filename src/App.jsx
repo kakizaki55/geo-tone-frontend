@@ -58,9 +58,7 @@ export default function App() {
                 path="/project/:id"
                 element={
                   <ProjectProvider>
-                    <PrivateRoute>
-                      <Project />
-                    </PrivateRoute>
+                    <Project />
                   </ProjectProvider>
                 }
               />
