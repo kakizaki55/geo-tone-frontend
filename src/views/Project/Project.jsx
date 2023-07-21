@@ -9,10 +9,13 @@ import GlobalControls from '../../components/Controls/GlobalControls';
 import Channel from '../../components/Channel/Channel';
 import Dropdown from '../../components/Channel/Dropdown';
 import styles from './Project.css';
+import { mockUser, mockProfile } from "../../mocks/resolvers";
+import mockProject from "./mocks/project";
+
 
 export default function Project() {
   const navigate = useNavigate();
-  const { currentUser } = useUser();
+  // const { currentUser } = useUser();
   const {
     project: { isLoading, addingChannel, setAddingChannel, project },
     projectId,
@@ -26,31 +29,33 @@ export default function Project() {
 
   const handleSaveProjectAndRedirect = () => {
     handleSaveProject({ projectId, project });
-    navigate(`/user/${currentUser.username}`, { push: true });
+    navigate(`/user/${mockUser.username}`, { push: true });
   };
-  if (isLoading) return <div> loading ... </div>;
+  // if (isLoading) return <div> loading ... </div>;
+  console.log('mockProject', mockProject)
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>
         <ProjectInfo
           isEditing={isEditing}
           setIsEditing={setIsEditing}
-          currentUser={currentUser}
-          project={project}
+          currentUser={mockUser}
+          project={mockProject}
           handleTitleChange={handleTitleChange}
           handleSaveProjectAndRedirect={handleSaveProjectAndRedirect}
         />
-
         <div className={styles.sequencerContainer}>
-          <Sequencer isPlaying={start} bpm={project.bpm} volume={volume}>
+          <Sequencer isPlaying={start} bpm={mockProject.bpm} volume={volume}>
             <GlobalControls
               start={start}
               setStart={setStart}
               volume={volume}
               setVolume={setVolume}
             />
-            {project.channels.map((channel) => (
+            {mockProject.channels.map((channel) => (<>
               <Channel key={`channel-${channel.id}`} channel={channel} />
+              {/* <p>{channel}</p> */}
+            </>
             ))}
           </Sequencer>
 
