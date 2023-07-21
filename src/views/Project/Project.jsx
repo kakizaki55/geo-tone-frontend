@@ -54,7 +54,6 @@ export default function Project() {
             />
             {mockProject.channels.map((channel) => (<>
               <Channel key={`channel-${channel.id}`} channel={channel} />
-              {/* <p>{channel}</p> */}
             </>
             ))}
           </Sequencer>

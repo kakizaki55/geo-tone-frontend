@@ -155,7 +155,6 @@ export default function Channel({ channel }) {
           />
         </div>
       </div>
-
       <Row notes={notes} handleNoteChange={handleNoteChange} />
       <Controls
         channelId={channelId}
