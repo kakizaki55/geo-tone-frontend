@@ -33,7 +33,7 @@ export default function Project() {
     handleSaveProject({ projectId, project });
     navigate(`/user/${mockUser.username}`, { push: true });
   };
-  // if (isLoading) return <div> loading ... </div>;
+  if (isLoading) return <div> loading ... </div>;
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>
@@ -41,12 +41,12 @@ export default function Project() {
           isEditing={isEditing}
           setIsEditing={setIsEditing}
           currentUser={mockUser}
-          project={mockProject}
+          project={project}
           handleTitleChange={handleTitleChange}
           handleSaveProjectAndRedirect={handleSaveProjectAndRedirect}
         />
         <div className={styles.sequencerContainer}>
-          <Sequencer isPlaying={start} bpm={mockProject.bpm} volume={volume}>
+          <Sequencer isPlaying={start} bpm={project.bpm} volume={volume}>
             <GlobalControls
               start={start}
               setStart={setStart}

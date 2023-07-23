@@ -39,7 +39,7 @@ export default function Projects({ userProfile, isCurrentUser, styles }) {
 
   return (
     <div className={styles.projects}>
-      {projects[0] &&
+      {/* {projects[0] &&
         projects.map((project) => (
           <Project
             styles={styles}
@@ -49,7 +49,7 @@ export default function Projects({ userProfile, isCurrentUser, styles }) {
             handleDeleteProject={handleDeleteProject}
             handleEditProjectRedirect={handleEditProjectRedirect}
           />
-        ))}
+        ))} */}
     </div>
   );
 }
