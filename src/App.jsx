@@ -6,7 +6,7 @@ import Layout from './components/Layout/Layout';
 import About from './views/About/About';
 import CreateProfile from './views/CreateProfile/CreateProfile';
 import EditProfile from './views/EditProfile/EditProfile';
-import Explore from './views/Explore/Explore';
+import Create from './views/Create/Create'
 import Home from './views/Home/Home';
 import Project from './views/Project/Project';
 import Register from './views/Register/Register';
@@ -23,7 +23,7 @@ export default function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/about" element={<About />} />
-              <Route exact path="/explore" element={<Explore />} />
+              <Route exact path="/create" element={<Create />} />
               <Route exact path="/signin" element={<SignIn />} />
               <Route exact path="/register" element={<Register />} />
               <Route

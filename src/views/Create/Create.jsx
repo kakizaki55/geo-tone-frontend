@@ -1,13 +1,13 @@
-import styles from './Explore.css';
+import styles from './Create.css';
 import { ProjectProvider } from "../../context/ProjectContext";
 import Project from "../Project/Project";
 
-export default function Explore() {
+export default function Create() {
 
 
   return (
     <div className={styles.explore}>
-      <h3>Explore</h3>
+      <h3>Create</h3>
       <ProjectProvider>
         <Project/>
       </ProjectProvider>

@@ -19,7 +19,7 @@ export default function Header() {
       <NavLink to="/">
         <img src={home} alt="Geo Tone homepage" />
       </NavLink>
-      <NavLink to="/explore">Explore</NavLink>
+      <NavLink to="/create">Create</NavLink>
 
       {!currentUser.username && (
         <>
