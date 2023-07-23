@@ -5,8 +5,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useParams } from 'react-router-dom';
-import { findProjectById } from '../services/project';
+import mockProject from "../views/Project/mocks/project";
+
 
 function projectReducer(project, action) {
   switch (action.type) {
@@ -34,27 +34,16 @@ function projectReducer(project, action) {
 const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
-  const { id } = useParams();
-  const projectId = id;
-
   const [isLoading, setIsLoading] = useState(true);
   const [addingChannel, setAddingChannel] = useState(false);
   const [channelArray, setChannelArray] = useState([]);
 
-  const [project, dispatch] = useReducer(projectReducer, {});
+  const [project, dispatch] = useReducer(projectReducer, mockProject);
 
   useEffect(() => {
-    const fetchProject = async () => {
-      const { data, channels } = await findProjectById(projectId);
-      dispatch({
-        type: 'load project',
-        value: { data, channels },
-      });
-      setChannelArray(channels);
+      setChannelArray(project.channels);
       setIsLoading(false);
-    };
-    fetchProject();
-  }, [projectId]);
+  }, []);
 
   const handleTitleChange = (e) => {
     dispatch({ type: 'update project title', value: e.target.value });
@@ -109,13 +98,15 @@ const ProjectProvider = ({ children }) => {
 
   const contextValue = {
     project: { isLoading, addingChannel, setAddingChannel, project },
-    projectId,
+    projectId: 10,
     handleTitleChange,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
     handleUpdateChannel,
   };
+
+  console.log('contextValue', contextValue)
 
   return (
     <ProjectContext.Provider value={contextValue}>

@@ -18,8 +18,6 @@ export default function Channel({ channel }) {
 
   const { handleDeleteChannel, handleUpdateChannel } = useProject();
 
-  console.log('channel', channel?.steps)
-
   const [instrument, setInstrument] = useState(channel.type);
   const [oscillator, setOscillator] = useState(channel.osc);
   const [volume, setVolume] = useState(channel.volume);

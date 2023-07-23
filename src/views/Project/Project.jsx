@@ -23,6 +23,8 @@ export default function Project() {
     handleTitleChange,
   } = useProject();
 
+  console.log('project', project)
+
   const [isEditing, setIsEditing] = useState(false);
   const [start, setStart] = useState(false);
   const [volume, setVolume] = useState(-48);
@@ -32,7 +34,6 @@ export default function Project() {
     navigate(`/user/${mockUser.username}`, { push: true });
   };
   // if (isLoading) return <div> loading ... </div>;
-  console.log('mockProject', mockProject)
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>
@@ -52,7 +53,7 @@ export default function Project() {
               volume={volume}
               setVolume={setVolume}
             />
-            {mockProject.channels.map((channel) => (<>
+            {project.channels.map((channel) => (<>
               <Channel key={`channel-${channel.id}`} channel={channel} />
             </>
             ))}
