@@ -4,10 +4,10 @@ import { Song as Sequencer } from 'reactronica';
 import { useUser } from '../../context/UserContext';
 import { useProject } from '../../context/ProjectContext';
 import { handleSaveProject } from '../../services/project';
-import ProjectInfo from '../../components/ProjectInfo/ProjectInfo';
-import GlobalControls from '../../components/Controls/GlobalControls';
-import Channel from '../../components/Channel/Channel';
-import Dropdown from '../../components/Channel/Dropdown';
+import ProjectInfo from '../ProjectInfo/ProjectInfo';
+import GlobalControls from '../Controls/GlobalControls';
+import Channel from '../Channel/Channel';
+import Dropdown from '../Channel/Dropdown';
 import styles from './Project.css';
 import { mockUser, mockProfile } from "../../mocks/resolvers";
 import mockProject from "./mocks/project";
@@ -22,8 +22,6 @@ export default function Project() {
     handleAddChannel,
     handleTitleChange,
   } = useProject();
-
-  console.log('project', project)
 
   const [isEditing, setIsEditing] = useState(false);
   const [start, setStart] = useState(false);

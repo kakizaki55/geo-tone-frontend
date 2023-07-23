@@ -20,25 +20,6 @@ export default function Header() {
         <img src={home} alt="Geo Tone homepage" />
       </NavLink>
       <NavLink to="/create">Create</NavLink>
-
-      {!currentUser.username && (
-        <>
-          <NavLink to="/register">Register</NavLink>
-          <NavLink to="/signin">Sign In</NavLink>
-        </>
-      )}
-
-      {currentUser.username && (
-        <>
-          <div className={styles.loggedIn}>
-            <p>Currently Logged in as: </p>
-            <NavLink to={`/user/${currentUser.username}`}>
-              {currentUser.username}
-            </NavLink>
-          </div>
-          <button onClick={handleLogout}>Log Out</button>
-        </>
-      )}
     </header>
   );
 }

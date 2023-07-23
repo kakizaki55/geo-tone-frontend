@@ -1,4 +1,4 @@
-import styles from '../../views/Project/Project.css';
+import styles from '../Project/Project.css';
 import editTitle from '../../assets/editTitle.png';
 import saveTitle from '../../assets/save.png';
 

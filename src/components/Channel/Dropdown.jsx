@@ -1,5 +1,5 @@
 import { instruments } from '../../utils/toneUtils';
-import styles from '../../views/Project/Project.css';
+import styles from '../Project/Project.css';
 
 const listDisplay = ['pick your tone', 'Duo', 'Mono', 'Membrane'];
 
