@@ -7,6 +7,7 @@ import mockUser from "../mocks/users";
 import Sequencer from "../Sequencer/Sequencer";
 import { Song } from "reactronica";
 import GlobalControls from "../Controls/GlobalControls";
+import Piano from "../Piano/Paino"
 // import { handleSaveProject } from '../../services/project'
 // import GlobalControls from '../Controls/GlobalControls';
 // import Channel from '../Channel/Channel';
@@ -57,6 +58,7 @@ export default function Project() {
             setAddingChannel={setAddingChannel}
             addingChannel={addingChannel}
           />
+          <Piano></Piano>
         </Song>
       </div>
     </div>
