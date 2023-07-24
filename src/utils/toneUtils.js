@@ -7,12 +7,23 @@ const keyCMajorPentatonic2 = ['C2', 'D2', 'E2', 'G2', 'A2', 'C3'];
 
 const oscillators = ['triangle', 'sine', 'square'];
 
-const instruments = [
+const sequencerInstrumentsTypes = [
   'choose your sound',
   'duoSynth',
   'monoSynth',
   'membraneSynth',
 ];
+
+const pianoInstrumentType = [
+  'amSynth',
+  'duoSynth',
+  'fmSynth',
+  'membraneSynth',
+  'monoSynth',
+  'pluckSynth',
+]
+
+const pianoChromaticScale = ['C3','C#3', 'D3','D#3', 'E3','F3','F#3', 'G3','G#3', 'A3','A#3','C4']
 
 const setPitchColor = (string) => {
   return {
@@ -29,6 +40,8 @@ export {
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   oscillators,
-  instruments,
+  sequencerInstrumentsTypes,
+  pianoInstrumentType,
+  pianoChromaticScale,
   setPitchColor,
 };

@@ -2,7 +2,7 @@ const mockProject = {
   userId: '0',
   title: 'untitled',
   bpm: 120,
-  volume: -12,
+  volume: 0,
   channels: [
     { id: 1, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-5', reverb: '0.5' },
   ],
