@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { Song as Sequencer } from 'reactronica';
-import { useUser } from '../../context/UserContext';
 import { useProject } from '../../context/ProjectContext';
-import { handleSaveProject } from '../../services/project';
 import ProjectInfo from '../ProjectInfo/ProjectInfo';
-import GlobalControls from '../Controls/GlobalControls';
-import Channel from '../Channel/Channel';
-import Dropdown from '../Channel/Dropdown';
 import styles from './Project.css';
-import { mockUser, mockProfile } from "../../mocks/resolvers";
+import mockUser from "../mocks/users";
 import Sequencer from "../Sequencer/Sequencer";
+import { Song } from "reactronica";
+import GlobalControls from "../Controls/GlobalControls";
+// import { handleSaveProject } from '../../services/project'
+// import GlobalControls from '../Controls/GlobalControls';
+// import Channel from '../Channel/Channel';
+// import Dropdown from '../Channel/Dropdown';
 
 
 export default function Project() {
@@ -44,16 +44,20 @@ export default function Project() {
           handleTitleChange={handleTitleChange}
           handleSaveProjectAndRedirect={handleSaveProjectAndRedirect}
         />
-        <Sequencer
+        <GlobalControls
           start={start}
           setStart={setStart}
           volume={volume}
           setVolume={setVolume}
-          project={project}
-          handleAddChannel={handleAddChannel}
-          setAddingChannel={setAddingChannel}
-          addingChannel={addingChannel}
         />
+        <Song isPlaying={start} bpm={project.bpm} volume={volume}>
+          <Sequencer
+            project={project}
+            handleAddChannel={handleAddChannel}
+            setAddingChannel={setAddingChannel}
+            addingChannel={addingChannel}
+          />
+        </Song>
       </div>
     </div>
   );

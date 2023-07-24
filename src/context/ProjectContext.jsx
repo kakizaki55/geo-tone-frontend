@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import mockProject from "../components/Project/mocks/project";
+import mockProject from "../components/mocks/project";
 
 
 function projectReducer(project, action) {

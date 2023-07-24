@@ -27,6 +27,7 @@ export default function Channel({ channel }) {
   });
   const [bitcrusher, setBitcrusher] = useState(0);
   const [delay, setDelay] = useState(0);
+
   const [keyArray, setKeyArray] = useState(() => {
     switch (instrument) {
       case 'duoSynth':
