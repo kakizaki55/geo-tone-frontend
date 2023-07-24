@@ -1,0 +1,43 @@
+
+.sequencerContainer {
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addChannel {
+  align-self: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--aqua);
+  color: var(--aqua);
+  border: none;
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 60%,
+    65% 60%,
+    65% 100%,
+    35% 100%,
+    35% 60%,
+    0% 60%,
+    0% 35%,
+    35% 35%
+  );
+}
+
+.addChannelSelect {
+  border-radius: 10px;
+  border: var(--white-ish) double 5px;
+  font-family: 'Barlow';
+  align-self: center;
+  width: 180px;
+  height: 60px;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
+}

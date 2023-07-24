@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getTotalUsers, getTotalProjects } from '../../services/aggregate';
-import shapes from '../../assets/shapes.png';
+// import { getTotalUsers, getTotalProjects } from '../../services/aggregate';
+import shapes from '../../../public/assets/shapes.png';
 import styles from './Home.css';
 
 export default function Home() {
@@ -9,13 +9,6 @@ export default function Home() {
   const [totalProjects, setTotalProjects] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const userAggregate = await getTotalUsers();
-      setTotalUsers(userAggregate);
-      const projectAggregate = await getTotalProjects();
-      setTotalProjects(projectAggregate);
-    };
-    fetchData();
   }, []);
 
   return (

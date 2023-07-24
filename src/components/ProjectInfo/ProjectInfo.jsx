@@ -1,6 +1,6 @@
 import styles from '../Project/Project.css';
-import editTitle from '../../assets/editTitle.png';
-import saveTitle from '../../assets/save.png';
+import editTitle from '../../../public/assets/editTitle.png';
+import saveTitle from '../../../public/assets/save.png';
 
 export default function ProjectInfo({
   isEditing,
