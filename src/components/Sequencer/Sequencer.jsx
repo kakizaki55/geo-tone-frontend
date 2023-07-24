@@ -1,30 +1,24 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Song as Sequencer } from 'reactronica';
-import { useProject } from '../../context/ProjectContext';
-import { handleSaveProject } from '../../services/project';
-import ProjectInfo from '../ProjectInfo/ProjectInfo';
+import { Song } from 'reactronica';
 import GlobalControls from '../Controls/GlobalControls';
 import Channel from '../Channel/Channel';
 import Dropdown from '../Channel/Dropdown';
-// import styles from './Project.css';
+import styles from './Sequencer.css';
 
 
-const Sequencer = () => {
-
+const Sequencer = (props) => {
   const {
-    project: { isLoading, addingChannel, setAddingChannel, project },
-    projectId,
+    start,
+    volume,
+    setStart,
+    setVolume,
+    project,
     handleAddChannel,
-    handleTitleChange,
-  } = useProject();
-
-  const [start, setStart] = useState(false);
-  const [volume, setVolume] = useState(-48);
+    setAddingChannel,
+    addingChannel } = props
 
   return (
     <div className={styles.sequencerContainer}>
-          <Sequencer isPlaying={start} bpm={project.bpm} volume={volume}>
+          <Song isPlaying={start} bpm={project.bpm} volume={volume}>
             <GlobalControls
               start={start}
               setStart={setStart}
@@ -37,7 +31,7 @@ const Sequencer = () => {
                 <Channel key={`channel-${channel.id}`} channel={channel} />
               </>
             ))}
-          </Sequencer>
+          </Song>
 
           {addingChannel ? (
             <Dropdown handleAddChannel={handleAddChannel} />
