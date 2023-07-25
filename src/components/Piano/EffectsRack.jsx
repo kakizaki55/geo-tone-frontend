@@ -9,7 +9,6 @@ const EffectsRack = (props) => {
 
   return (
     <>
-    this is the effects rack
     <label>
         volume
           <input

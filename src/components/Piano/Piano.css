@@ -16,7 +16,7 @@
   width: 70px;
   background-color: rgb(41, 41, 41);
   color: white;
-  position: fixed;
+  position: absolute;
   margin-left: -40px;
   border-radius: 5px;
 }
