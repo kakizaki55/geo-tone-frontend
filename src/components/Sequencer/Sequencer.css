@@ -1,0 +1,33 @@
+
+.sequencerContainer {
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: rgb(232, 229, 229) 2px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addChannel {
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--aqua);
+  color: var(--aqua);
+  border: none;
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 60%,
+    65% 60%,
+    65% 100%,
+    35% 100%,
+    35% 60%,
+    0% 60%,
+    0% 35%,
+    35% 35%
+  );
+}

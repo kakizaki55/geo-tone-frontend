@@ -8,12 +8,12 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCurrentUser = async () => {
-      const data = await getUser();
-      data.username ? setCurrentUser(data) : setCurrentUser({});
-      setLoading(false);
-    };
-    fetchCurrentUser();
+    // const fetchCurrentUser = async () => {
+    //   const data = await getUser();
+    //   data.username ? setCurrentUser(data) : setCurrentUser({});
+    //   setLoading(false);
+    // };
+    // fetchCurrentUser();
   }, []);
 
   const value = { currentUser, setCurrentUser, loading };

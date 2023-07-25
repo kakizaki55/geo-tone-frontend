@@ -1,14 +1,12 @@
-import { instruments } from '../../utils/toneUtils';
-import styles from '../../views/Project/Project.css';
-
-const listDisplay = ['pick your tone', 'Duo', 'Mono', 'Membrane'];
+import { sequencerInstrumentsTypes } from '../../utils/toneUtils';
+import styles from '../Project/Project.css';
 
 export default function Dropdown({ handleAddChannel }) {
   return (
     <select onChange={handleAddChannel} className={styles.addChannelSelect}>
-      {instruments.map((synth, index) => (
+      {sequencerInstrumentsTypes.map((synth, index) => (
         <option key={synth} value={synth}>
-          {listDisplay[index]}
+          {sequencerInstrumentsTypes[index]}
         </option>
       ))}
     </select>
