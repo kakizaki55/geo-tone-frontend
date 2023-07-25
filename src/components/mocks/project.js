@@ -4,7 +4,7 @@ const mockProject = {
   bpm: 120,
   volume: -12,
   channels: [
-    { id: 1, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-5', reverb: '0.5' },
+    { id: '0', type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-5', reverb: '0.5' },
   ],
   projectId: '0',
 };

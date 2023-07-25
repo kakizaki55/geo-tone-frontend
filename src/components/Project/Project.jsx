@@ -53,6 +53,7 @@ export default function Project() {
         />
         <Song isPlaying={start} bpm={project.bpm} volume={volume}>
           <Sequencer
+            key={'sequencer'}
             project={project}
             handleAddChannel={handleAddChannel}
             setAddingChannel={setAddingChannel}

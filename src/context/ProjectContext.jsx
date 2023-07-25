@@ -106,8 +106,6 @@ const ProjectProvider = ({ children }) => {
     handleUpdateChannel,
   };
 
-  console.log('contextValue', contextValue)
-
   return (
     <ProjectContext.Provider value={contextValue}>
       {children}

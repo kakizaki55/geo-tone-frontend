@@ -1,5 +1,5 @@
 import { pianoInstrumentType, } from '../../utils/toneUtils';
-import styles from './DropDown.css';
+import styles from './Piano.css';
 
 export default function Dropdown({ handleChangeType }) {
   return (
