@@ -32,3 +32,13 @@
   color: var(--white-ish);
   margin: 5px;
 }
+
+.effectsRack {
+  width: 100%;
+  height: 150%;
+  cursor: grab;
+  user-select: none;
+  border: red 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+}

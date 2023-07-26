@@ -1,11 +1,11 @@
+import styles from './Piano.css'
 import { useState } from "react";
 import { Instrument, Track, Effect} from "reactronica"
-import styles from './Piano.css'
 import { pianoChromaticScale } from "../../utils/toneUtils";
-import Dropdown from "./DropDown"
-
-import EffectsRack from "./EffectsRack"
 import { pianoEffectTypes } from "../../utils/toneUtils";
+import Dropdown from "./DropDown"
+import EffectsRack from "./EffectsRack"
+import Knob from './Knob'
 
 const Piano = () => {
   const [volume, setVolume] = useState(-3);
