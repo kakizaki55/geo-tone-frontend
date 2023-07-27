@@ -1,3 +1,7 @@
+
+import styles from './Piano.css'
+import Dial from './Dial'
+
 const EffectsRack = (props) => {
   const {
     volume,
@@ -9,36 +13,35 @@ const EffectsRack = (props) => {
 
   return (
     <>
-    <label>
-        volume
-          <input
-          id={`piano-$-volume `}
-          name={`piano-volume `}
-          type="range"
-          min="-40"
-          max="0"
-          value={volume}
-          onChange={(e) => setVolume(e.target.value)}
-          />
-      </label>
-      {pianoEffectTypes.map((type) => {
-        return (
-          <div
+      <label>
+          volume
+            <input
+            id={`piano-$-volume`}
+            name={`piano-volume`}
+            type="range"
+            min="-40"
+            max="0"
+            value={volume}
+            onChange={(e) => setVolume(e.target.value)}
+            />
+        </label>
+      <div
+      className={styles.effectsRack}>
+        { pianoEffectTypes.map((type) => {
+          return (
+            <div
             key={`piano-${type}`}>
-            <label>
-              {type}
-                <input
-                id={`piano-${type}`}
-                name={`${type}`}
-                type="range"
-                min="0"
-                max="100"
-                value={fx[type]}
-                onChange={(e) => handleEffectsRackChange(e)}
-                />
-            </label>
-          </div>)
-      })}
+                  <Dial
+                  className={styles.dialLabel}
+                  type={type}
+                  fx={fx}
+                  handleEffectsRackChange={handleEffectsRackChange}/>
+                  <p>
+                    {type}
+                  </p>
+            </div>)
+          }) }
+      </div>
     </>
   )
 }

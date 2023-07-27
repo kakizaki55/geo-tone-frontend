@@ -15,6 +15,7 @@ body {
   background-color: var(--black-ish);
   color: var(--white-ish);
   font-family: 'Barlow', sans-serif;
+  position: relative;
 }
 
 .layout {

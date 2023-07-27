@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import shapes from '../../../public/assets/shapes.png';
 import styles from './Home.css';
 
+
 export default function Home() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalProjects, setTotalProjects] = useState(0);
