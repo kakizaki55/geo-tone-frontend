@@ -26,7 +26,7 @@ export default function Project() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [start, setStart] = useState(false);
-  const [volume, setVolume] = useState(-12);
+  const [volume, setVolume] = useState(-48);
 
   const handleSaveProjectAndRedirect = () => {
     // handleSaveProject({ projectId, project });

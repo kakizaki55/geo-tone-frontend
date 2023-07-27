@@ -9,7 +9,7 @@ import EffectsRack from "./EffectsRack"
 
 
 const Piano = () => {
-  const [volume, setVolume] = useState(-3);
+  const [volume, setVolume] = useState(-48);
   const [fx, setFx] = useState({
     autoFilter:0,
     autoPanner:0,
