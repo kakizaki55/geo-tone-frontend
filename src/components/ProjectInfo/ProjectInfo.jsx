@@ -12,7 +12,7 @@ export default function ProjectInfo({
 }) {
   return (
     <>
-      {isEditing ? (
+      {/* {isEditing ? (
         <div className={styles.projectTitle}>
           <input
             type="text"
@@ -40,7 +40,7 @@ export default function ProjectInfo({
         >
           Save Project
         </button>
-      )}
+      )} */}
     </>
   );
 }

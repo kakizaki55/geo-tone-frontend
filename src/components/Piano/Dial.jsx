@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
-import sytles from './Piano.css'
 
 const StyledInputRange = styled.input`
   /* Hide the default range input appearance */
