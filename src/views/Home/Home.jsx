@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 // import { getTotalUsers, getTotalProjects } from '../../services/aggregate';
 import shapes from '../../../public/assets/shapes.png';
 import styles from './Home.css';
-import Knob from '../../components/Piano/Knob'
-import Dial from '../../components/Piano/Dial'
 
 
 export default function Home() {

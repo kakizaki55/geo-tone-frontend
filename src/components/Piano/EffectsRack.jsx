@@ -11,13 +11,6 @@ const EffectsRack = (props) => {
     handleEffectsRackChange
   } = props
 
-  const style = {
-    margin: "20%",
-    height: "100px",
-    fontFamily: "Arial",
-    color: "white" // Sets font color of value and knob name
-  };
-
   return (
     <>
       <label>
@@ -38,13 +31,14 @@ const EffectsRack = (props) => {
           return (
             <div
             key={`piano-${type}`}>
-              <label>
                   <Dial
+                  className={styles.dialLabel}
                   type={type}
                   fx={fx}
                   handleEffectsRackChange={handleEffectsRackChange}/>
-                  {type}
-              </label>
+                  <p>
+                    {type}
+                  </p>
             </div>)
           }) }
       </div>

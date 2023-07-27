@@ -5,7 +5,8 @@ import { pianoChromaticScale } from "../../utils/toneUtils";
 import { pianoEffectTypes } from "../../utils/toneUtils";
 import Dropdown from "./DropDown"
 import EffectsRack from "./EffectsRack"
-import Knob from './Knob'
+// import Oscilloscope from 'oscilloscope';
+
 
 const Piano = () => {
   const [volume, setVolume] = useState(-3);
@@ -29,6 +30,20 @@ const Piano = () => {
   const handleEffectsRackChange = (e) => {
     setFx({...fx, [e.target.name] : e.target.value} )
   }
+
+  // const useEffect= (() => {
+  //   inputGain.connect(panner);
+  //   panner.connect(outputGain);
+  //   outputGain.connect(audioCtx.destination);
+  //   scope = new Oscilloscope(outputGain);
+  //   const context = canvas.getContext('2d');
+  //   context.strokeStyle = '#00ff9f';
+  //   context.lineWidth = 3;
+  //   // console.log(context);
+  //   OScope = scope.animate(context);
+  // }, [third])
+
+
 
 return (
   <div className={styles.pianoContainer}>

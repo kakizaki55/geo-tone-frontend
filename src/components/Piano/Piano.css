@@ -38,7 +38,8 @@
   height: 150%;
   cursor: grab;
   user-select: none;
-  border: red 1px solid;
   display: flex;
   flex-wrap: wrap;
+  gap: .25rem;
 }
+
