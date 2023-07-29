@@ -4,7 +4,6 @@ import Project from "../../components/Project/Project";
 
 export default function Create() {
 
-
   return (
     <div className={styles.explore}>
       <h3>Create</h3>

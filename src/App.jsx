@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
-import { UserProvider } from './context/UserContext';
 import Layout from './components/Layout/Layout';
 import About from './views/About/About';
 import NoMatch from './views/NoMatch/NoMatch.jsx';
@@ -12,7 +11,6 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <Router>
-        <UserProvider>
           <Layout>
             <Routes>
               <Route exact path="/" element={<Home />} />
@@ -21,7 +19,6 @@ export default function App() {
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </Layout>
-        </UserProvider>
       </Router>
     </MotionConfig>
   );
