@@ -5,8 +5,15 @@ import {
   useEffect,
   useState,
 } from 'react';
-import mockProject from "../components/mocks/project";
+let uuid = self.crypto.randomUUID();
 
+const defaultProject = {
+  bpm: 120,
+  volume: -6,
+  channels: [
+    { id: uuid, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-6', reverb: '0.5' },
+  ],
+};
 
 function projectReducer(project, action) {
   switch (action.type) {
@@ -18,14 +25,6 @@ function projectReducer(project, action) {
       return { ...project, channels: action.value };
     case 'update channels':
       return { ...project, channels: action.value };
-    case 'update project title':
-      return { ...project, title: action.value };
-    case 'load project':
-      return {
-        ...project,
-        ...action.value.data,
-        channels: [...action.value.channels],
-      };
     default:
       throw new Error(`Unknown action ${action.type}`);
   }
@@ -38,16 +37,12 @@ const ProjectProvider = ({ children }) => {
   const [addingChannel, setAddingChannel] = useState(false);
   const [channelArray, setChannelArray] = useState([]);
 
-  const [project, dispatch] = useReducer(projectReducer, mockProject);
+  const [project, dispatch] = useReducer(projectReducer, defaultProject);
 
   useEffect(() => {
       setChannelArray(project.channels);
       setIsLoading(false);
   }, []);
-
-  const handleTitleChange = (e) => {
-    dispatch({ type: 'update project title', value: e.target.value });
-  };
 
   const handleSongBPM = (e) => {
     dispatch({ type: 'update song BPM', value: e.target.value });
@@ -55,12 +50,12 @@ const ProjectProvider = ({ children }) => {
 
   const handleAddChannel = (e) => {
     const newChannel = {
-      id: project.channels.length,
+      id: uuid,
       type: e.target.value,
       osc: 'sine',
       steps: [null, null, null, null, null, null, null, null],
-      volume: -12,
-      reverb: 0.1,
+      volume: -6,
+      reverb: 0.5,
     };
     dispatch({
       type: 'add new channel',
@@ -98,8 +93,6 @@ const ProjectProvider = ({ children }) => {
 
   const contextValue = {
     project: { isLoading, addingChannel, setAddingChannel, project },
-    projectId: 10,
-    handleTitleChange,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
