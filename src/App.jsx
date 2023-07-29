@@ -3,7 +3,7 @@ import { MotionConfig } from 'framer-motion';
 import { UserProvider } from './context/UserContext';
 import Layout from './components/Layout/Layout';
 import About from './views/About/About';
-
+import NoMatch from './views/NoMatch/NoMatch.jsx';
 import Create from './views/Create/Create'
 import Home from './views/Home/Home';
 
@@ -18,7 +18,7 @@ export default function App() {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/about" element={<About />} />
               <Route exact path="/create" element={<Create />} />
-              <Route exact path="/about" element={<About/>} />
+              <Route path="*" element={<NoMatch />} />
             </Routes>
           </Layout>
         </UserProvider>
