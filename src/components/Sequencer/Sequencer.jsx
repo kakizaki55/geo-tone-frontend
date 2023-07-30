@@ -12,23 +12,21 @@ const Sequencer = (props) => {
 
   return (
     <div className={styles.sequencerContainer}>
-            {
-              project.channels.map((channel) => (
-                <>
-                  <Channel key={`channel-${channel.id}`} channel={channel} />
-                </>
-            ))}
-          { addingChannel ? (
-            <Dropdown handleAddChannel={handleAddChannel} />
-          ) : (
-            <button
-              onClick={() => setAddingChannel(true)}
-              className={styles.addChannel}
-            >
-              +
-            </button>
-          )}
-      </div>
+      {
+        project.channels.map((channel) => (
+          <Channel key={`channel-${channel.id}`} channel={channel} />
+        ))}
+      { addingChannel ? (
+        <Dropdown handleAddChannel={handleAddChannel} />
+      ) : (
+        <button
+          onClick={() => setAddingChannel(true)}
+          className={styles.addChannel}
+        >
+          +
+        </button>
+      )}
+    </div>
   )
 }
 
