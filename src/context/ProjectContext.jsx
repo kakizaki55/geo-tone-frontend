@@ -59,7 +59,7 @@ const ProjectProvider = ({ children }) => {
       type: e.target.value,
       osc: 'sine',
       steps: [null, null, null, null, null, null, null, null],
-      volume: -12,
+      volume: -48,
       reverb: 0.1,
     };
     dispatch({
