@@ -1,29 +1,31 @@
-.homeContainer {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+}
+
+section p {
+  font-size: 1.75rem;
 }
 
 .homeBanner {
   display: flex;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-family: 'Major Mono Display', monospace;
 }
 
-.homeContainer p {
-  font-size: 25px;
-}
-
 .homeBanner img:first-child {
-  width: 150px;
+  width: 10rem;
   animation-name: right-spin;
   animation-duration: 1.5s;
 }
 
 .homeBanner img:last-child {
-  width: 150px;
+  width: 10rem;
   animation-name: left-spin;
   animation-duration: 1.5s;
 }
@@ -34,6 +36,18 @@
 
 .registerLink:hover {
   color: var(--aqua);
+}
+
+.navButton > * {
+  background-color: var(--purple);
+  border-radius: 2rem;
+  border: none;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: 'Major Mono Display', monospace;
+  cursor: pointer;
 }
 
 @keyframes right-spin {
