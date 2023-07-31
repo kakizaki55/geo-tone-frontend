@@ -38,16 +38,24 @@ section p {
   color: var(--aqua);
 }
 
-.navButton > * {
+.navButton > button {
   background-color: var(--purple);
   border-radius: 2rem;
   border: none;
   padding: 1rem;
-  color: white;
+  color: var(--white-ish);
   text-decoration: none;
   font-size: 1.5rem;
   font-family: 'Major Mono Display', monospace;
   cursor: pointer;
+}
+
+button:hover,
+button:focus,
+.navButton:hover > button,
+.navButton:focus > button {
+  color: var(--purple);
+  background-color: var(--white-ish);
 }
 
 @keyframes right-spin {
