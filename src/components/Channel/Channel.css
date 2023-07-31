@@ -22,9 +22,9 @@
 
 .step {
   border: none;
-  background-color: rgb(30, 30, 30);
-  height: 80px;
-  width: 80px;
+  background-color: rgb(60, 60, 60);
+  height: 6rem;
+  width: 6rem;
   padding: 2px;
   margin: 2px;
   cursor: pointer;
