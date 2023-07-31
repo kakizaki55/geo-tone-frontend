@@ -3,13 +3,12 @@
 .container {
   display: flex;
   font-family: 'Major Mono Display';
+  padding: 2rem 1rem;
   width: 100%;
   align-items: center;
   justify-content: space-around;
-  margin-top: 10rem;
   border-radius: 10px;
-  border: white 1px solid;
-  padding: 2rem .1rem;
+  border: var(--white-ish) 1px solid;
 }
 
 .playButton {

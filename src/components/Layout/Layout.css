@@ -1,29 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&family=Major+Mono+Display&display=swap');
 
 :root {
-  --pink: #fe5ca7ff;
-  --purple: #6e60b6ff;
-  --aqua: #33bfcaff;
-  --lav: #c47fdbff;
-  --pennyroyal: #8080ffff;
+  --pink: #fe5ca7;
+  --purple: #6e60b6;
+  --aqua: #33bfca;
+  --lav: #c47fdb;
+  --pennyroyal: #8080ff;
   --white-ish: rgb(240, 240, 240);
   --black-ish: rgb(10, 10, 10);
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   background-color: var(--black-ish);
   color: var(--white-ish);
   font-family: 'Barlow', sans-serif;
   position: relative;
-}
-
-.layout {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 }
 
 main {
@@ -36,71 +28,65 @@ main {
   overflow-x: hidden;
 }
 
-footer img {
-  width: 60px;
-  padding: 5px 20px;
-}
-
-header img {
-  width: 60px;
-}
-
-header img:hover {
-  cursor: pointer;
-  border-radius: 100%;
-  background-color: var(--aqua);
-}
-
 header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: var(--purple);
+  justify-content: space-between;
   width: 100vw;
-}
-
-header a,
-header button,
-footer a {
-  text-decoration: none;
-  padding: 5px;
-  font-weight: 400;
-  font-size: 1.25rem;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #49205c;
-  font-family: 'Barlow', sans-serif;
+  padding-top: 1rem;
+  margin: 0;
 }
 
 footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: var(--purple);
+  background-color: var(--pennyroyal);
   width: 100vw;
   position: fixed;
   bottom: 0%;
 }
 
+header a,
+footer a {
+  color: var(--pennyroyal);
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  border-bottom: solid transparent 1px;
+}
+
 header a:hover,
-header button:hover,
-footer a:hover {
+header a:focus,
+footer a:hover,
+footer a:focus {
   color: var(--aqua);
   border-bottom: solid var(--white-ish) 1px;
 }
 
-.loggedIn {
+footer img {
+  width: 4rem;
+}
+
+.layout {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.loggedIn p {
-  color: #5448a7;
-  font-weight: 400;
+.logo {
+  color: white;
+  font-size: 2rem;
+  font-family: 'Major Mono Display', monospace;
+  text-decoration: none;
 }
 
-.loggedIn:hover p {
-  color: var(--black-ish);
+.navLinks {
+  margin: 2rem;
 }
