@@ -22,6 +22,7 @@
 
 .step {
   border: none;
+  color: rgb(60, 60, 60);
   background-color: rgb(60, 60, 60);
   height: 6rem;
   width: 6rem;
@@ -32,8 +33,10 @@
 
 .step:hover,
 .step:focus {
-  background-color: rgb(120, 120, 120);
-  transition: all 0.1s ease-in;
+  animation-name: pulse;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 
 .active {
@@ -127,4 +130,11 @@
     80% 0%,
     50% 30%
   );
+}
+
+@keyframes pulse {
+  50% {
+    color: rgb(120, 120, 120);
+    background-color: rgb(120, 120, 120);
+  }
 }
