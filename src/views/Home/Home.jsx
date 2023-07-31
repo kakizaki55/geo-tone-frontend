@@ -4,7 +4,7 @@ import styles from './Home.css';
 
 export default function Home() {
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.homeBanner}>
         <img src={shapes} alt="" />
         <h1>Welcome to GEo TONe.</h1>
