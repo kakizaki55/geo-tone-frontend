@@ -2,18 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: max-content;
+  width: 100%;
   height: 100%;
   flex-direction: column;
 }
 
 .channel {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: double white 3px;
-  padding: 19px;
-  /* background-color: var(--aqua); */
+  border: double var(--white-ish) 3px;
+  padding: 2rem 1rem;
   border-radius: 10px;
 }
 
@@ -23,12 +22,18 @@
 
 .step {
   border: none;
-  background-color: rgb(30, 30, 30);
-  height: 80px;
-  width: 80px;
+  background-color: rgb(60, 60, 60);
+  height: 6rem;
+  width: 6rem;
   padding: 2px;
   margin: 2px;
   cursor: pointer;
+}
+
+.step:hover,
+.step:focus {
+  background-color: rgb(120, 120, 120);
+  transition: all 0.1s ease-in;
 }
 
 .active {
@@ -70,17 +75,20 @@
 .controls {
   font-size: 1rem;
   text-align: center;
-  width: 100%;
+  max-width: 8rem;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
 }
 
 .controls input[type='range'] {
   display: block;
   width: 100%;
   max-width: fit-content;
-}
-
-.controls label {
-  display: block;
 }
 
 .dragControls {

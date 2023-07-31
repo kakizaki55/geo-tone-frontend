@@ -50,7 +50,7 @@ const ProjectProvider = ({ children }) => {
 
   const handleAddChannel = (e) => {
     const newChannel = {
-      id: uuid,
+      id: self.crypto.randomUUID(),
       type: e.target.value,
       osc: 'sine',
       steps: [null, null, null, null, null, null, null, null],
