@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useProject } from '../../context/ProjectContext';
-import { Song } from "reactronica";
-import Sequencer from "../Sequencer/Sequencer";
-import GlobalControls from "../Controls/GlobalControls";
-import Piano from "../Piano/Paino"
+import { Song } from 'reactronica';
+import Sequencer from '../Sequencer/Sequencer';
+import GlobalControls from '../Controls/GlobalControls';
+import Piano from '../Piano/Paino';
 import styles from './Project.css';
 
 export default function Project() {
@@ -20,12 +20,14 @@ export default function Project() {
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>
+        <h2 className={styles.controlHeader}>Global controls</h2>
         <GlobalControls
           start={start}
           setStart={setStart}
           volume={volume}
           setVolume={setVolume}
         />
+        <h2 className={styles.instrumentHeader}>tRacKs</h2>
         <Song isPlaying={start} bpm={project.bpm} volume={volume}>
           <Sequencer
             project={project}
@@ -34,7 +36,7 @@ export default function Project() {
             addingChannel={addingChannel}
           />
         </Song>
-        <Piano/>
+        <Piano />
       </div>
     </div>
   );
