@@ -30,7 +30,8 @@
   cursor: pointer;
 }
 
-.step:hover {
+.step:hover,
+.step:focus {
   background-color: rgb(120, 120, 120);
   transition: all 0.1s ease-in;
 }
