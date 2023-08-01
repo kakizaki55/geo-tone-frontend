@@ -3,7 +3,7 @@ import { useProject } from '../../context/ProjectContext';
 import { Song } from 'reactronica';
 import Sequencer from '../Sequencer/Sequencer';
 import GlobalControls from '../Controls/GlobalControls';
-import Piano from '../Piano/Paino';
+import Piano from '../Piano/Piano';
 import styles from './Project.css';
 
 export default function Project() {

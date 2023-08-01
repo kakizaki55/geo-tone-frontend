@@ -5,8 +5,7 @@ import { pianoChromaticScale } from "../../utils/toneUtils";
 import { pianoEffectTypes } from "../../utils/toneUtils";
 import Dropdown from "./DropDown"
 import EffectsRack from "./EffectsRack"
-// import Oscilloscope from 'oscilloscope';
-
+import PianoDisplay from "./PianoDisplay";
 
 const Piano = () => {
   const [volume, setVolume] = useState(-48);
@@ -77,6 +76,7 @@ return (
           {note}
         </button>
       ))}
+      <PianoDisplay />
   </div>
   )
 }
