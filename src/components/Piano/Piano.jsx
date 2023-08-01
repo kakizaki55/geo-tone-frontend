@@ -1,11 +1,12 @@
 import styles from './Piano.css'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Instrument, Track, Effect} from "reactronica"
 import { pianoChromaticScale } from "../../utils/toneUtils";
 import { pianoEffectTypes } from "../../utils/toneUtils";
 import Dropdown from "./DropDown"
 import EffectsRack from "./EffectsRack"
 import PianoDisplay from "./PianoDisplay";
+// import { TrackContext } from "reactronica/src/components/Track"
 
 const Piano = () => {
   const [volume, setVolume] = useState(-48);
@@ -33,6 +34,9 @@ const Piano = () => {
   // const handleKeyDown = (e, note) =>  {
   //   console.log('event', e.key)
   // }
+
+  // const audioContext =useContext()
+  // console.log('AudioContext', audioContext)
 
 return (
   <div className={styles.pianoContainer}
