@@ -26,11 +26,12 @@ useEffect(() => {
   // const audioNodes = document.getElementsByTagName('audio')
   // console.log('audioNodes', audioNodes)
   
-  const audioContext = window.TONE_AUDIO_CONTEXT.getContext()
+  // const audioContext = window.TONE_AUDIO_CONTEXT.context
+  const audioContext = new window.AudioContext()
 
-  console.log('window', window.TONE_AUDIO_CONTEXT.destination.output)
-  debugger
-  console.log('typeof window.TONE_AUDIO_CONTEXT.destination', typeof window.TONE_AUDIO_CONTEXT.destination.output)
+  console.log('window', window.TONE_AUDIO_CONTEXT.context)
+  // debugger
+  // console.log('typeof window.TONE_AUDIO_CONTEXT.destination', typeof window.TONE_AUDIO_CONTEXT.destination.output)
    // setup canvas
    const canvas = document.createElement('canvas')
    canvas.width = window.innerWidth
@@ -38,17 +39,22 @@ useEffect(() => {
    document.body.appendChild(canvas)
 
   // setup audio element
-  // const audioElement = document.createElement('audio')
-  // audioElement.controls = true
-  // audioElement.autoplay = true
-  // audioElement.loop = true
-  // audioElement.src = 'assets/simple_drum.mp3'
-  //adding to DOM
-  // document.body.appendChild(audioElement)
+  const audioElement = document.createElement('audio')
+  audioElement.controls = true
+  audioElement.autoplay = true
+  audioElement.loop = true
+  audioElement.src = 'assets/simple_drum.mp3'
+  // adding to DOMc
+  document.body.appendChild(audioElement)
 
-  // create source from html5 audio element
+  // create source from html5 audio elementa
+  // const audioElement = window.document.getElementsByTagName('')
   const source = audioContext.createMediaElementSource(audioElement)
   // console.log('audioContext', audioContext)
+
+  // const source = window.TONE_AUDIO_CONTEXT.master
+
+  // console.log('type of source', typeof source)
 
   // attach oscilloscope
   const scope = new Oscilloscope(source)
@@ -64,6 +70,7 @@ useEffect(() => {
   // start default animation loop
   scope.animate(ctx)
 
+  // deletes audio node on rerender
   return () => {
     document.body.removeChild(audioElement)
   }
