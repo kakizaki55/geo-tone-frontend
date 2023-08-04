@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useProject } from '../../context/ProjectContext';
 import { Song } from 'reactronica';
 import Sequencer from '../Sequencer/Sequencer';
-import GlobalControls from '../Controls/GlobalControls';
+import GlobalControls from '../GlobalControls/GlobalControls';
 import Piano from '../Piano/Paino';
 import styles from './Project.css';
 
