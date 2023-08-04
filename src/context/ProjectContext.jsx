@@ -9,10 +9,20 @@ let uuid = self.crypto.randomUUID();
 
 const defaultProject = {
   bpm: 120,
-  volume: -6,
+  volume: -48,
   channels: [
     { id: uuid, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-6', reverb: '0.5' },
   ],
+  drums: {
+    hh: [
+      'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3',
+    ],
+    snare: [
+      null, null, 'C3', null, null, null, 'C3', null,
+    ],
+    kick: [
+      'C3', null, null, null, 'C3', null, null, null,
+    ]}
 };
 
 function projectReducer(project, action) {
@@ -25,6 +35,8 @@ function projectReducer(project, action) {
       return { ...project, channels: action.value };
     case 'update channels':
       return { ...project, channels: action.value };
+    case 'update drums':
+      return { ...project, drums: action.value }
     default:
       throw new Error(`Unknown action ${action.type}`);
   }
@@ -91,12 +103,21 @@ const ProjectProvider = ({ children }) => {
     });
   };
 
+  const handleUpdateDrums = (drums) => {
+
+    dispatch({
+      type: 'update drums',
+      value: drums,
+    });
+  }
+
   const contextValue = {
     project: { isLoading, addingChannel, setAddingChannel, project },
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
     handleUpdateChannel,
+    handleUpdateDrums,
   };
 
   return (

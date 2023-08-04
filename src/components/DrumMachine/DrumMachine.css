@@ -1,0 +1,21 @@
+.drumMachineContainer {
+  padding: 1rem;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: rgb(232, 229, 229) 2px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drumPadOn {
+  background-color: blue;
+  width: 100px;
+  height: 40px;
+}
+
+.drumPadOff {
+  background-color: aliceblue;
+  width: 100px;
+  height: 40px;
+}

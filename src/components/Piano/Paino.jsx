@@ -55,7 +55,7 @@ return (
         setVolume={setVolume}
         fx={fx}
         pianoEffectTypes={pianoEffectTypes}
-        handleEffectsRackChange={handleEffectsRackChange}/>
+        handleEffectsRackChange={handleEffectsRackChange} />
     </div>
     {/* this is the sound generating part of the piano*/}
     <Track
