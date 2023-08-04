@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Layout.css';
+import styles from './Header.css';
 
 export default function Header() {
   return (
     <header>
-      <NavLink className={styles.logo} to="/">
+      <NavLink className={styles.title} to="/">
         GEo TONe
       </NavLink>
       <div>

@@ -28,63 +28,12 @@ main {
   overflow-x: hidden;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100vw;
-  padding-top: 1rem;
-  margin: 0;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: var(--pennyroyal);
-  width: 100vw;
-  position: fixed;
-  bottom: 0%;
-}
-
-header a,
-footer a {
-  color: var(--pennyroyal);
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin: 1rem;
-  padding: 0;
-  text-decoration: none;
-  cursor: pointer;
-  font-family: 'Barlow', sans-serif;
-  border-bottom: solid transparent 1px;
-}
-
-header a:hover,
-header a:focus,
-footer a:hover,
-footer a:focus {
-  color: var(--aqua);
-  border-bottom: solid var(--white-ish) 1px;
-}
-
-footer img {
-  width: 4rem;
-}
-
 .layout {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  color: white;
-  font-size: 2rem;
-  font-family: 'Major Mono Display', monospace;
-  text-decoration: none;
 }
 
 .navLinks {
