@@ -1,7 +1,7 @@
 import styles from './Channel.css';
 import Step from './Step';
 
-export default function Row({ notes, handleNoteChange }) {
+export default function Row({ notes, handleNoteChange, setPitchColor }) {
   return (
     <div className={styles.row}>
       {notes.map((note, index) => (
@@ -10,6 +10,7 @@ export default function Row({ notes, handleNoteChange }) {
           note={note}
           index={index}
           handleNoteChange={handleNoteChange}
+          setPitchColor={setPitchColor}
         />
       ))}
     </div>

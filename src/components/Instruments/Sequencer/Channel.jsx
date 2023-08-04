@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import { useProject } from '../../context/ProjectContext';
+import { useProject } from '../../../context/ProjectContext';
 import {
   keyCMajorPentatonic2,
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   setPitchColor,
-} from '../../utils/toneUtils';
+} from '../../../utils/toneUtils';
 import Controls from './Controls';
 import Row from './Row';
 import styles from './Channel.css';
@@ -40,6 +40,16 @@ export default function Channel({ channel }) {
         return keyCMajorPentatonic4;
     }
   });
+
+  const setPitchColor = (string) => {
+    return {
+      [styles.C]: string?.includes('C'),
+      [styles.D]: string?.includes('D'),
+      [styles.E]: string?.includes('E'),
+      [styles.G]: string?.includes('G'),
+      [styles.A]: string?.includes('A'),
+    };
+  };
 
   useEffect(() => {
     const channelObj = {
@@ -154,7 +164,11 @@ export default function Channel({ channel }) {
           />
         </div>
       </div>
-      <Row notes={notes} handleNoteChange={handleNoteChange} />
+      <Row
+        notes={notes}
+        handleNoteChange={handleNoteChange}
+        setPitchColor={setPitchColor}
+      />
       <Controls
         channelId={channelId}
         volume={volume}

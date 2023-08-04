@@ -1,11 +1,9 @@
-import { setPitchColor } from '../../utils/toneUtils';
-import { useState } from 'react';
-import classNames from 'classnames';
 import { motion, useCycle } from 'framer-motion';
-import { shapeVariants as shapes } from '../../utils/framerUtils';
+import { shapeVariants as shapes } from '../../../utils/framerUtils';
 import styles from './Channel.css';
+import classNames from 'classnames';
 
-export default function Step({ note, index, handleNoteChange }) {
+export default function Step({ note, index, handleNoteChange, setPitchColor }) {
   const [currentShape, cycleCurrentShape] = useCycle(
     'circle',
     'square',

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useProject } from '../../context/ProjectContext';
 import { Song } from 'reactronica';
-import Sequencer from '../Sequencer/Sequencer';
+import Sequencer from '../Instruments/Sequencer/Sequencer';
 import GlobalControls from '../GlobalControls/GlobalControls';
-import Piano from '../Piano/Paino';
+import Piano from '../Instruments/Piano/Piano';
 import styles from './Project.css';
 
 export default function Project() {

@@ -1,5 +1,5 @@
-import Channel from '../Channel/Channel';
-import Dropdown from '../Channel/Dropdown';
+import Channel from './Channel';
+import Dropdown from './Dropdown';
 import styles from './Sequencer.css';
 
 const Sequencer = (props) => {

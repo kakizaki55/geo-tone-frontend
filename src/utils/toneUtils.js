@@ -1,5 +1,4 @@
 // global data for sequencer
-import styles from '../components/Channel/Channel.css';
 
 const keyCMajorPentatonic4 = ['C4', 'D4', 'E4', 'G4', 'A4', 'C5'];
 const keyCMajorPentatonic3 = ['C3', 'D3', 'E3', 'G3', 'A3', 'C4'];
@@ -21,31 +20,34 @@ const pianoInstrumentType = [
   'membraneSynth',
   'monoSynth',
   'pluckSynth',
-]
+];
 
 const pianoEffectTypes = [
-  'autoFilter' ,
-  'autoPanner' ,
-  'autoWah' ,
-  'bitCrusher' ,
-  'distortion' ,
-  'feedbackDelay' ,
-  'freeverb' ,
-  'panVol' ,
-  'tremolo'
-]
+  'autoFilter',
+  'autoPanner',
+  'autoWah',
+  'bitCrusher',
+  'distortion',
+  'feedbackDelay',
+  'freeverb',
+  'panVol',
+  'tremolo',
+];
 
-const pianoChromaticScale = ['C3','C#3', 'D3','D#3', 'E3','F3','F#3', 'G3','G#3', 'A3','A#3','C4']
-
-const setPitchColor = (string) => {
-  return {
-    [styles.C]: string?.includes('C'),
-    [styles.D]: string?.includes('D'),
-    [styles.E]: string?.includes('E'),
-    [styles.G]: string?.includes('G'),
-    [styles.A]: string?.includes('A'),
-  };
-};
+const pianoChromaticScale = [
+  'C3',
+  'C#3',
+  'D3',
+  'D#3',
+  'E3',
+  'F3',
+  'F#3',
+  'G3',
+  'G#3',
+  'A3',
+  'A#3',
+  'C4',
+];
 
 export {
   keyCMajorPentatonic2,
@@ -56,5 +58,4 @@ export {
   pianoInstrumentType,
   pianoChromaticScale,
   pianoEffectTypes,
-  setPitchColor,
 };
