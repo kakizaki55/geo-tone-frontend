@@ -10,26 +10,3 @@
   border-radius: 10px;
   border: var(--white-ish) 1px solid;
 }
-
-.playButton {
-  font-family: 'Major Mono Display';
-  width: 90px;
-  height: 90px;
-  font-size: 120%;
-}
-
-.label {
-  font-size: 150%;
-}
-
-.bpmCounter {
-  border-radius: 10px;
-
-  align-self: center;
-  font-family: 'Major Mono Display';
-  width: 120px;
-  height: 60px;
-  background-color: var(--black-ish);
-  color: var(--white-ish);
-  font-size: 120%;
-}
