@@ -5,7 +5,6 @@ import { useProject } from "../../context/ProjectContext"
 import classNames from 'classnames';
 import Pad from './Pad'
 
-
 const DrumMachine = (props) => {
   const { project } = props
 
@@ -39,9 +38,7 @@ const DrumMachine = (props) => {
 
     const highlightCurrentStep = (stepIndex) => {
       const drums = document.querySelectorAll(`.${styles.drumPadOn}`);
-
-
-      drums.forEach((stepDiv, stepDivIndex) => {
+      drums.forEach((stepDiv) => {
         const stepIndexId = Number(stepDiv.id.replace(/\D/g, ""))
         console.log('stepDiv', stepIndexId)
       if (stepIndex === stepIndexId) {
@@ -84,36 +81,36 @@ const DrumMachine = (props) => {
       <div>
         { highHat.map((midi, index) => {
             return <Pad
-                    key={`step-${index}`}
-                    note={midi}
-                    index={index}
-                    handleNoteChange={handleDrumChange}
-                    drums={highHat}
-                    setDrums={setHighHat}
+                      key={`step-${index}`}
+                      note={midi}
+                      index={index}
+                      handleNoteChange={handleDrumChange}
+                      drums={highHat}
+                      setDrums={setHighHat}
                     />
           })}
       </div>
       <div>
         { snare.map((midi, index) => {
             return <Pad
-                    key={`step-${index}`}
-                    note={midi}
-                    index={index}
-                    handleNoteChange={handleDrumChange}
-                    drums={snare}
-                    setDrums={setSnare}
+                      key={`step-${index}`}
+                      note={midi}
+                      index={index}
+                      handleNoteChange={handleDrumChange}
+                      drums={snare}
+                      setDrums={setSnare}
                     />
           })}
       </div>
       <div>
         { kick.map((midi, index) => {
             return <Pad
-                    key={`step-${index}`}
-                    note={midi}
-                    index={index}
-                    handleNoteChange={handleDrumChange}
-                    drums={kick}
-                    setDrums={setKick}
+                      key={`step-${index}`}
+                      note={midi}
+                      index={index}
+                      handleNoteChange={handleDrumChange}
+                      drums={kick}
+                      setDrums={setKick}
                     />
           })}
       </div>
