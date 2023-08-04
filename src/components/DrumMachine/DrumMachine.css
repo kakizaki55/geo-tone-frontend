@@ -9,13 +9,21 @@
 }
 
 .drumPadOn {
-  background-color: blue;
+  background-color: var(--purple);
+  color: var(--purple);
   width: 100px;
   height: 40px;
 }
 
 .drumPadOff {
-  background-color: aliceblue;
+  background-color: var(--pennyroyal);
+  color: var(--pennyroyal);
   width: 100px;
   height: 40px;
+}
+
+.active {
+  background-color: var(--lav);
+  color: var(--lav);
+  transition: .1s all;
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './DrumMachine.css'
+import { animate } from "framer-motion"
+
 
 const Pad = (props) => {
 
