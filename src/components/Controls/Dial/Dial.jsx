@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 
@@ -9,10 +9,9 @@ const StyledInputRange = styled.input`
   height: 50%;
   background: #f0f0f0;
   outline: none;
-  opacity: 0.10;
+  opacity: 0.1;
   transition: opacity 0.2s;
   border-radius: 100% 100% 0 0;
-
 
   /* Custom thumb style */
   &::-webkit-slider-thumb {
@@ -24,17 +23,17 @@ const StyledInputRange = styled.input`
   }
 
   &:hover {
-    opacity: .5;
+    opacity: 0.5;
   }
 `;
 
 const Dial = (props) => {
-  const {type, handleEffectsRackChange } = props
+  const { type, handleEffectsRackChange } = props;
   const [value, setValue] = useState(0);
 
   const handleOnChange = (event) => {
     setValue(event.target.value);
-    handleEffectsRackChange(event)
+    handleEffectsRackChange(event);
   };
 
   return (
@@ -59,7 +58,7 @@ const Dial = (props) => {
           originY: '100%',
           rotate: `${(value / 100) * 180 - 90}deg`,
         }}
-        />
+      />
       <StyledInputRange
         id={`piano-${type}`}
         name={`${type}`}
@@ -70,10 +69,9 @@ const Dial = (props) => {
         onChange={handleOnChange}
         whileHover={{ scale: 1.4 }}
         whileTap={{ scale: 1.0 }}
-        />
+      />
     </motion.div>
   );
 };
 
 export default Dial;
-
