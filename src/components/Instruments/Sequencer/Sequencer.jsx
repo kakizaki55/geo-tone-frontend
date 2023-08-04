@@ -1,5 +1,5 @@
 import Channel from './Channel';
-import Dropdown from './Dropdown';
+import Dropdown from '../../Dropdown/Dropdown';
 import styles from './Sequencer.css';
 
 const Sequencer = (props) => {
@@ -11,7 +11,7 @@ const Sequencer = (props) => {
         <Channel key={`channel-${channel.id}`} channel={channel} />
       ))}
       {addingChannel ? (
-        <Dropdown handleAddChannel={handleAddChannel} />
+        <Dropdown instrument="sequencer" handleAddChannel={handleAddChannel} />
       ) : (
         <button
           onClick={() => setAddingChannel(true)}

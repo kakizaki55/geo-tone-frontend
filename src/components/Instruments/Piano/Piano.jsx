@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Instrument, Track, Effect } from 'reactronica';
 import { pianoChromaticScale } from '../../../utils/toneUtils';
 import { pianoEffectTypes } from '../../../utils/toneUtils';
-import Dropdown from './DropDown';
+import Dropdown from '../../Dropdown/Dropdown';
 import EffectsRack from './EffectsRack';
 // import Oscilloscope from 'oscilloscope';
 
@@ -46,7 +46,10 @@ const Piano = () => {
   return (
     <div className={styles.pianoContainer}>
       <div>
-        <Dropdown handleChangeType={handleChangeInstrumentType} />
+        <Dropdown
+          instrument="piano"
+          handleChangeType={handleChangeInstrumentType}
+        />
         {/* <Faders envelope={envelope} setEnvelope={setEnvelope}/> */}
         <EffectsRack
           volume={volume}

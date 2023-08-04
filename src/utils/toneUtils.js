@@ -6,14 +6,14 @@ const keyCMajorPentatonic2 = ['C2', 'D2', 'E2', 'G2', 'A2', 'C3'];
 
 const oscillators = ['triangle', 'sine', 'square'];
 
-const sequencerInstrumentsTypes = [
+const sequencerInstrumentTypes = [
   'choose your sound',
   'duoSynth',
   'monoSynth',
   'membraneSynth',
 ];
 
-const pianoInstrumentType = [
+const pianoInstrumentTypes = [
   'amSynth',
   'duoSynth',
   'fmSynth',
@@ -54,8 +54,8 @@ export {
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   oscillators,
-  sequencerInstrumentsTypes,
-  pianoInstrumentType,
+  sequencerInstrumentTypes,
+  pianoInstrumentTypes,
   pianoChromaticScale,
   pianoEffectTypes,
 };
