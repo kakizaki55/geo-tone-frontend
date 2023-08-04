@@ -5,6 +5,7 @@ import Sequencer from '../Sequencer/Sequencer';
 import GlobalControls from '../Controls/GlobalControls';
 import Piano from '../Piano/Paino';
 import styles from './Project.css';
+import DrumMachine from "../DrumMachine/DrumMachine";
 
 export default function Project() {
   const {
@@ -13,7 +14,7 @@ export default function Project() {
   } = useProject();
 
   const [start, setStart] = useState(false);
-  const [volume, setVolume] = useState(-12);
+  const [volume, setVolume] = useState(-48);
 
   if (isLoading) return <div> loading ... </div>;
 
@@ -35,6 +36,7 @@ export default function Project() {
             setAddingChannel={setAddingChannel}
             addingChannel={addingChannel}
           />
+          <DrumMachine project={project}/>
         </Song>
         <Piano />
       </div>
