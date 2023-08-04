@@ -7,11 +7,11 @@ import {
   keyCMajorPentatonic2,
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
-  setPitchColor,
 } from '../../../utils/toneUtils';
 import Controls from './Controls';
 import Row from './Row';
 import styles from './Channel.css';
+import Joystick from '../../Controls/Joystick/Joystick.jsx';
 
 export default function Channel({ channel }) {
   const channelId = channel.id;
@@ -51,18 +51,6 @@ export default function Channel({ channel }) {
     };
   };
 
-  useEffect(() => {
-    const channelObj = {
-      id: channelId,
-      type: instrument,
-      osc: oscillator,
-      steps: notes,
-      volume: volume,
-      reverb: fx.reverb,
-    };
-    handleUpdateChannel(channelObj);
-  }, [instrument, oscillator, volume, notes, fx]);
-
   const highlightCurrentStep = (stepIndex) => {
     const sequence = document
       .getElementById(`channel-${channelId}`)
@@ -101,28 +89,21 @@ export default function Channel({ channel }) {
     setNotes(newNotes);
   };
 
-  const handleXYControls = (e, info) => {
-    let x = Number(info.offset.x) / 100;
-    let y = Number(info.offset.y) / 100;
-    if (x > 1) {
-      x = 1;
-    }
-    if (y > 1) {
-      y = 1;
-    }
-    if (x < 0) {
-      x = 0;
-    }
-    if (y < 0) {
-      y = 0;
-    }
-    setBitcrusher(x);
-    setDelay(y);
-  };
-
   const deleteChannel = () => {
     handleDeleteChannel(channelId);
   };
+
+  useEffect(() => {
+    const channelObj = {
+      id: channelId,
+      type: instrument,
+      osc: oscillator,
+      steps: notes,
+      volume: volume,
+      reverb: fx.reverb,
+    };
+    handleUpdateChannel(channelObj);
+  }, [instrument, oscillator, volume, notes, fx]);
 
   return (
     <div id={`channel-${channelId}`} className={styles.channel}>
@@ -143,27 +124,7 @@ export default function Channel({ channel }) {
 
       {/* Render all visual components below*/}
 
-      <div className={styles.dragContainer}>
-        <div className={styles.dragControls}>
-          <motion.input
-            className={styles.dragKnob}
-            onDrag={(e, info) => handleXYControls(e, info)}
-            whileHover={{ scale: 1.5 }}
-            drag
-            dragConstraints={{
-              top: -0,
-              left: -0,
-              right: 0,
-              bottom: 0,
-            }}
-            dragMomentum={false}
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-          />
-        </div>
-      </div>
+      <Joystick setDelay={setDelay} setBitcrusher={setBitcrusher} />
       <Row
         notes={notes}
         handleNoteChange={handleNoteChange}
