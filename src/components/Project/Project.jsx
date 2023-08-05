@@ -5,7 +5,7 @@ import Sequencer from '../Instruments/Sequencer/Sequencer';
 import GlobalControls from '../GlobalControls/GlobalControls';
 import Piano from '../Instruments/Piano/Piano';
 import styles from './Project.css';
-import DrumMachine from "../DrumMachine/DrumMachine";
+import DrumMachine from '../Instruments/DrumMachine/DrumMachine';
 
 export default function Project() {
   const {
@@ -36,7 +36,7 @@ export default function Project() {
             setAddingChannel={setAddingChannel}
             addingChannel={addingChannel}
           />
-          <DrumMachine project={project}/>
+          <DrumMachine project={project} />
         </Song>
         <Piano />
       </div>

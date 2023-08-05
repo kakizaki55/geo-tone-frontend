@@ -25,5 +25,5 @@
 .active {
   background-color: var(--lav);
   color: var(--lav);
-  transition: .1s all;
+  transition: 0.1s all;
 }
