@@ -70,26 +70,3 @@
   background-color: var(--purple);
   clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
 }
-
-.addChannelSelect {
-  border-radius: 10px;
-  border: var(--white-ish) double 5px;
-  font-family: 'Barlow';
-  align-self: center;
-  width: 180px;
-  height: 60px;
-  background-color: var(--black-ish);
-  color: var(--white-ish);
-}
-
-.dropDownPianoSelect {
-  border-radius: 10px;
-  border: var(--white-ish) double 5px;
-  font-family: 'Barlow';
-  align-self: center;
-  width: 180px;
-  height: 60px;
-  background-color: var(--black-ish);
-  color: var(--white-ish);
-  margin: 5px;
-}

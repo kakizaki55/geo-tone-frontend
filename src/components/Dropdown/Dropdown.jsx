@@ -2,7 +2,7 @@ import {
   sequencerInstrumentTypes,
   pianoInstrumentTypes,
 } from '../../utils/toneUtils';
-import styles from '../Project/Project.css';
+import styles from './Dropdown.css';
 
 export default function Dropdown({
   instrument,
@@ -12,10 +12,7 @@ export default function Dropdown({
   switch (instrument) {
     case 'piano':
       return (
-        <select
-          onChange={handleChangeType}
-          className={styles.dropDownPianoSelect}
-        >
+        <select onChange={handleChangeType} className={styles.select}>
           {pianoInstrumentTypes.map((synth, index) => (
             <option key={synth} value={synth}>
               {pianoInstrumentTypes[index]}
@@ -25,7 +22,7 @@ export default function Dropdown({
       );
     case 'sequencer':
       return (
-        <select onChange={handleAddChannel} className={styles.addChannelSelect}>
+        <select onChange={handleAddChannel} className={styles.select}>
           {sequencerInstrumentTypes.map((synth, index) => (
             <option key={synth} value={synth}>
               {sequencerInstrumentTypes[index]}
