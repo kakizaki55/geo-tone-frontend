@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Instrument, Track, Effect } from 'reactronica';
 import { pianoChromaticScale } from '../../../utils/toneUtils';
 import { pianoEffectTypes } from '../../../utils/toneUtils';
-import Dropdown from '../../Dropdown/Dropdown';
+import Dropdown from '../../Controls/Dropdown/Dropdown';
 import EffectsRack from '../../EffectsRack/EffectsRack';
 // import Oscilloscope from 'oscilloscope';
 

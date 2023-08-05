@@ -1,7 +1,7 @@
 import {
   sequencerInstrumentTypes,
   pianoInstrumentTypes,
-} from '../../utils/toneUtils';
+} from '../../../utils/toneUtils';
 import styles from './Dropdown.css';
 
 export default function Dropdown({
@@ -32,7 +32,7 @@ export default function Dropdown({
       );
     default:
       return (
-        <select>
+        <select className={styles.select}>
           <option>Instrument not provided.</option>
         </select>
       );
