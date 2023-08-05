@@ -6,12 +6,12 @@ const StyledInputRange = styled.input`
   /* Hide the default range input appearance */
   -webkit-appearance: none;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background: #f0f0f0;
   outline: none;
   opacity: 0.10;
   transition: opacity 0.2s;
-  border-radius: 100% 100% 0 0;
+  border-radius: 100px ;
 
 
   /* Custom thumb style */
@@ -57,7 +57,7 @@ const Dial = (props) => {
           top: '0%',
           originX: '50%',
           originY: '100%',
-          rotate: `${(value / 100) * 180 - 90}deg`,
+          rotate: `${(value / 100) * 240 - 120}deg`,
         }}
         />
       <StyledInputRange

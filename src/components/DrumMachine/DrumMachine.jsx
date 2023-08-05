@@ -4,11 +4,14 @@ import { Track, Instrument } from "reactronica"
 import { useProject } from "../../context/ProjectContext"
 import classNames from 'classnames';
 import Pad from './Pad'
+import Dial from "../Piano/Dial";
 
 const DrumMachine = (props) => {
   const { project } = props
 
   const { handleUpdateDrums } = useProject()
+  //need to port into from project
+  const [volume, setVolume] =useState(0)
   const [highHat, setHighHat] = useState(project.drums.hh)
   const [snare, setSnare] = useState(project.drums.snare)
   const [kick, setKick] = useState(project.drums.kick)
@@ -40,7 +43,6 @@ const DrumMachine = (props) => {
       const drums = document.querySelectorAll(`.${styles.drumPadOn}`);
       drums.forEach((stepDiv) => {
         const stepIndexId = Number(stepDiv.id.replace(/\D/g, ""))
-        console.log('stepDiv', stepIndexId)
       if (stepIndex === stepIndexId) {
         stepDiv.className = classNames(
           styles.drumPadOn,
@@ -68,12 +70,13 @@ const DrumMachine = (props) => {
 
               <Instrument
                 type="sampler"
-                samples={{ C3: `/assets/samples/${value[0]}.mp3` }} 
+                samples={{ C3: `/assets/samples/${value[0]}.mp3` }}
                 onLoad={(buffers) => {
                   // Runs when all samples are loaded
                 }}
                 />
             </Track>
+            <Dial></Dial>
           </>)
           })}
 

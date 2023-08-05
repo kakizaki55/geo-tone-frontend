@@ -11,19 +11,21 @@
 .drumPadOn {
   background-color: var(--purple);
   color: var(--purple);
-  width: 100px;
+  width: 80px;
   height: 40px;
+  transition: .2s ease-in;
 }
 
 .drumPadOff {
   background-color: var(--pennyroyal);
   color: var(--pennyroyal);
-  width: 100px;
+  width: 80px;
   height: 40px;
+  transition: .2s ease-in;
 }
 
 .active {
   background-color: var(--lav);
   color: var(--lav);
-  transition: .1s all;
+  transition: .1s ease-in;
 }
