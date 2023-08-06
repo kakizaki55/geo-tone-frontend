@@ -2,8 +2,8 @@ import styles from './VolumeFader.css';
 
 export default function VolumeFader({
   id,
-  volume,
-  setVolume,
+  value,
+  handleChange,
   isGlobal = false,
 }) {
   return (
@@ -15,8 +15,8 @@ export default function VolumeFader({
         min="-48"
         max="0"
         step="1"
-        value={volume}
-        onChange={(e) => setVolume(Number(e.target.value))}
+        value={value}
+        onChange={handleChange}
       />
     </label>
   );

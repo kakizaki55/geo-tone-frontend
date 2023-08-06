@@ -23,7 +23,11 @@ export default function GlobalControls({ start, setStart, volume, setVolume }) {
         cycleActive={cycleActive}
         play={play}
       />
-      <VolumeFader isGlobal volume={volume} setVolume={setVolume} />
+      <VolumeFader
+        isGlobal
+        value={volume}
+        handleChange={(e) => setVolume(e.target.value)}
+      />
       <BPMCounter project={project} handleSongBPM={handleSongBPM} />
     </div>
   );
