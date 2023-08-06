@@ -8,7 +8,7 @@ import {
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
 } from '../../../utils/toneUtils';
-import Controls from './Controls';
+import Controls from './TrackControls';
 import Row from './Row';
 import styles from './Channel.css';
 import Joystick from '../../Controls/Joystick/Joystick.jsx';
