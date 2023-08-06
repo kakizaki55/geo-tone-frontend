@@ -53,21 +53,19 @@ const DrumMachine = (props) => {
     <div className={styles.drumMachineContainer}>
       {Object.entries(project.drums).map((value) => {
         return (
-          <>
-            <Track
-              steps={value[1]}
-              key={value}
-              onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
-            >
-              <Instrument
-                type="sampler"
-                samples={{ C3: `/assets/samples/${value[0]}.mp3` }}
-                onLoad={(buffers) => {
-                  // Runs when all samples are loaded
-                }}
-              />
-            </Track>
-          </>
+          <Track
+            steps={value[1]}
+            key={value}
+            onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
+          >
+            <Instrument
+              type="sampler"
+              samples={{ C3: `/assets/samples/${value[0]}.mp3` }}
+              onLoad={(buffers) => {
+                // Runs when all samples are loaded
+              }}
+            />
+          </Track>
         );
       })}
 
