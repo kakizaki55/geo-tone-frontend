@@ -10,10 +10,9 @@ const DrumDial = (props) => {
   return (
     <motion.div
       style={{
-        width: '100px',
-        height: '100px',
+        // width: '100px',
+        height: '100%',
         position: 'relative',
-        borderRadius: '50% 50% 0 0 ',
       }}
     >
       <input

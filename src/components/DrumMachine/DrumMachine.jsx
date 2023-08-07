@@ -19,7 +19,6 @@ const DrumMachine = (props) => {
   const [snareVolume, setSnareVolume] = useState(project.drums[1].volume)
   const [kick, setKick] = useState(project.drums[2].steps)
   const [kickVolume, setKickVolume] = useState(project.drums[2].volume)
-  const [volume, setVolume] = useState(-48)
 
   //this use Effect makes a new drum object and send its back up in the Project Context
   useEffect(()=> {
@@ -73,13 +72,12 @@ const DrumMachine = (props) => {
     <div
       className={styles.drumMachineContainer}>
         { project.drums.map((value) => {
-          console.log('value', value)
           return (
             <Track
               steps={value.steps}
               key={value.type}
               onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex, styles)}
-              volume={volume}
+              volume={value.volume}
             >
               <Instrument
                 type="sampler"
@@ -91,19 +89,8 @@ const DrumMachine = (props) => {
             </Track>
         )})}
     {/* Render all visual components below*/}
-
-    <div>
-      Volume
-      <DrumDial value={volume} setValue={setVolume}/>
-    </div>
     <DrumSteps
-      highHat={highHat}
-      setHighHat={setHighHat}
-      snare={snare}
-      setSnare={setSnare}
-      kick={kick}
-      setKick={setKick}
-      handleDrumChange={handleDrumChange}
+      drumProps={drumProps}
     />
   </div>
   )

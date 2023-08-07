@@ -15,25 +15,35 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border:1px solid pink;
+  background-color:var(--aqua);
+  padding: 0.5rem;
+
 }
 
 .drumPadOn {
   background-color: var(--purple);
   color: var(--purple);
-  width: 65px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .drumPadOff {
   background-color: var(--pennyroyal);
   color: var(--pennyroyal);
-  width: 65px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .active {
   background-color: var(--lav);
   color: var(--lav);
   transition: .1s all;
+}
+
+.volume {
+  align-items: center;
+  color: black;
 }

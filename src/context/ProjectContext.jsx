@@ -23,17 +23,17 @@ const defaultProject = {
     {
       type: 'high-hat',
       steps: ['C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3'],
-      volume: -40
+      volume: -20
     },
     {
       type: 'snare',
       steps: [null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null,],
-      volume: -40
+      volume: -20
     },
     {
       type: 'kick',
       steps: ['C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null,],
-      volume: -40
+      volume: -20
     },
   ]
 };
