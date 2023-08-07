@@ -1,5 +1,5 @@
 import styles from './EffectsRack.css';
-import Dial from '../Controls/Dial/Dial';
+import Dial from '../../../Controls/Dial/Dial';
 
 const EffectsRack = (props) => {
   const { volume, setVolume, fx, pianoEffectTypes, handleEffectsRackChange } =

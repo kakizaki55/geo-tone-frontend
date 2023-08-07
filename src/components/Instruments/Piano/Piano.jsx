@@ -4,7 +4,7 @@ import { Instrument, Track, Effect } from 'reactronica';
 import { pianoChromaticScale } from '../../../utils/toneUtils';
 import { pianoEffectTypes } from '../../../utils/toneUtils';
 import Dropdown from '../../Controls/Dropdown/Dropdown';
-import EffectsRack from '../../EffectsRack/EffectsRack';
+import EffectsRack from './EffectsRack/EffectsRack';
 // import Oscilloscope from 'oscilloscope';
 
 const Piano = () => {

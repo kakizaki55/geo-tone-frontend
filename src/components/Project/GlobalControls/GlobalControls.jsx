@@ -1,9 +1,9 @@
 import { useCycle } from 'framer-motion';
-import { useProject } from '../../context/ProjectContext';
-import { playVariants as play } from '../../utils/framerUtils';
-import PlayButton from '../Controls/PlayButton/PlayButton.jsx';
-import VolumeFader from '../Controls/VolumeFader/VolumeFader.jsx';
-import BPMCounter from '../Controls/BPMCounter/BPMCounter.jsx';
+import { useProject } from '../../../context/ProjectContext';
+import { playVariants as play } from '../../../utils/framerUtils';
+import PlayButton from '../../Controls/PlayButton/PlayButton.jsx';
+import VolumeFader from '../../Controls/VolumeFader/VolumeFader.jsx';
+import BPMCounter from '../../Controls/BPMCounter/BPMCounter.jsx';
 import styles from './GlobalControls.css';
 
 export default function GlobalControls({ start, setStart, volume, setVolume }) {
