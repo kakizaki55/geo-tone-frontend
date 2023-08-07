@@ -25,7 +25,7 @@ const DrumMachine = (props) => {
   useEffect(()=> {
     const drumObj =[
       {
-        type: 'hh',
+        type: 'hightHat',
         steps: highHat,
         volume: highHatVolume
       },

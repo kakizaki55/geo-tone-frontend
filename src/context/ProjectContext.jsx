@@ -11,11 +11,17 @@ const defaultProject = {
   bpm: 120,
   volume: -48,
   channels: [
-    { id: uuid, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-6', reverb: '0.5' },
+    {
+      id: uuid,
+      type: 'synth',
+      osc: 'sine',
+      steps: [null, null, null, null, null, null, null, null],
+      volume: '-6',
+      reverb: '0.5' },
   ],
   drums:[
     {
-      type: 'hh',
+      type: 'highHat',
       steps: ['C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3'],
       volume: -40
     },
