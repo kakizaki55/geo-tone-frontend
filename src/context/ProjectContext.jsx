@@ -21,7 +21,7 @@ const defaultProject = {
   ],
   drums:[
     {
-      type: 'highHat',
+      type: 'high-hat',
       steps: ['C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3'],
       volume: -40
     },

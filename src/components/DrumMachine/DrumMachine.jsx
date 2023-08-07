@@ -25,7 +25,7 @@ const DrumMachine = (props) => {
   useEffect(()=> {
     const drumObj =[
       {
-        type: 'hightHat',
+        type: 'high-hat',
         steps: highHat,
         volume: highHatVolume
       },
@@ -44,11 +44,36 @@ const DrumMachine = (props) => {
     handleUpdateDrums(drumObj)
   },[highHat, snare, kick, highHatVolume, snareVolume, kickVolume ])
 
+    const drumProps = [
+      {
+        type: 'hightHat',
+        steps: highHat,
+        setSteps: setHighHat,
+        volume: highHatVolume,
+        setVolume: setHighHatVolume,
+        handleDrumChange: handleDrumChange
+      },{
+        type: 'snare',
+        steps: snare,
+        setSteps: setSnare,
+        volume: snareVolume,
+        setVolume: setSnareVolume,
+        handleDrumChange: handleDrumChange
+      },{
+        type: 'kick',
+        steps: kick,
+        setSteps: setKick,
+        volume: kickVolume,
+        setVolume: setKickVolume,
+        handleDrumChange: handleDrumChange
+      }
+  ]
 
   return (
     <div
       className={styles.drumMachineContainer}>
         { project.drums.map((value) => {
+          console.log('value', value)
           return (
             <Track
               steps={value.steps}
