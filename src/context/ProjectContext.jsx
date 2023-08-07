@@ -15,13 +15,13 @@ const defaultProject = {
   ],
   drums: {
     hh: [
-      'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3',
+      'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3',
     ],
     snare: [
-      null, null, 'C3', null, null, null, 'C3', null,
+      null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null,
     ],
     kick: [
-      'C3', null, null, null, 'C3', null, null, null,
+      'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null,
     ]}
 };
 

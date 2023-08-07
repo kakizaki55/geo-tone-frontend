@@ -4,6 +4,8 @@ import { Track, Instrument } from "reactronica"
 import { useProject } from "../../context/ProjectContext"
 import classNames from 'classnames';
 import Pad from './Pad'
+import DrumDial from './DrumDial'
+import DrumSteps from "./DrumSteps"
 
 const DrumMachine = (props) => {
   const { project } = props
@@ -12,6 +14,7 @@ const DrumMachine = (props) => {
   const [highHat, setHighHat] = useState(project.drums.hh)
   const [snare, setSnare] = useState(project.drums.snare)
   const [kick, setKick] = useState(project.drums.kick)
+  const [volume, setVolume] = useState(-48)
 
   useEffect(()=> {
     const drumObj ={
@@ -40,7 +43,6 @@ const DrumMachine = (props) => {
       const drums = document.querySelectorAll(`.${styles.drumPadOn}`);
       drums.forEach((stepDiv) => {
         const stepIndexId = Number(stepDiv.id.replace(/\D/g, ""))
-        console.log('stepDiv', stepIndexId)
       if (stepIndex === stepIndexId) {
         stepDiv.className = classNames(
           styles.drumPadOn,
@@ -60,61 +62,39 @@ const DrumMachine = (props) => {
         { Object.entries(project.drums).map((value) => {
           return (
             <>
-            <Track
-                steps={value[1]}
-                key={value}
-                onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
-                >
+              <Track
+                  steps={value[1]}
+                  key={value}
+                  onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
+                  volume={volume}
+                  >
 
-              <Instrument
-                type="sampler"
-                samples={{ C3: `/assets/samples/${value[0]}.mp3` }} 
-                onLoad={(buffers) => {
-                  // Runs when all samples are loaded
-                }}
-                />
-            </Track>
-          </>)
-          })}
-
+                <Instrument
+                  type="sampler"
+                  samples={{ C3: `/assets/samples/${value[0]}.mp3` }} 
+                  onLoad={(buffers) => {
+                    // Runs when all samples are loaded
+                  }}
+                  />
+              </Track>
+            </>
+        )})}
     {/* Render all visual components below*/}
-      <div>
-        { highHat.map((midi, index) => {
-            return <Pad
-                      key={`step-${index}`}
-                      note={midi}
-                      index={index}
-                      handleNoteChange={handleDrumChange}
-                      drums={highHat}
-                      setDrums={setHighHat}
-                    />
-          })}
-      </div>
-      <div>
-        { snare.map((midi, index) => {
-            return <Pad
-                      key={`step-${index}`}
-                      note={midi}
-                      index={index}
-                      handleNoteChange={handleDrumChange}
-                      drums={snare}
-                      setDrums={setSnare}
-                    />
-          })}
-      </div>
-      <div>
-        { kick.map((midi, index) => {
-            return <Pad
-                      key={`step-${index}`}
-                      note={midi}
-                      index={index}
-                      handleNoteChange={handleDrumChange}
-                      drums={kick}
-                      setDrums={setKick}
-                    />
-          })}
-      </div>
+
+    <div>
+      Volume
+      <DrumDial value={volume} setValue={setVolume}/>
     </div>
+    <DrumSteps
+      highHat={highHat}
+      setHighHat={setHighHat}
+      snare={snare}
+      setSnare={setSnare}
+      kick={kick}
+      setKick={setKick}
+      handleDrumChange={handleDrumChange}
+    />
+  </div>
   )
 }
 
