@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styles from './DrumMachine.css'
 import { Track, Instrument } from "reactronica"
 import { useProject } from "../../context/ProjectContext"
-import classNames from 'classnames';
 import DrumDial from './DrumDial'
 import DrumSteps from "./DrumSteps"
+import { handleDrumChange, highlightCurrentStep } from "../../utils/drumMachineUtils";
 import {mockDrums} from './mock'
 
 const DrumMachine = (props) => {
@@ -14,11 +14,12 @@ const DrumMachine = (props) => {
   const { handleUpdateDrums } = useProject()
 
   const [highHat, setHighHat] = useState(project.drums[0].steps)
+  const [highHatVolume, setHighHatVolume] = useState(project.drums[0].volume)
   const [snare, setSnare] = useState(project.drums[1].steps)
+  const [snareVolume, setSnareVolume] = useState(project.drums[1].volume)
   const [kick, setKick] = useState(project.drums[2].steps)
+  const [kickVolume, setKickVolume] = useState(project.drums[2].volume)
   const [volume, setVolume] = useState(-48)
-
-  console.log('highHat', highHat)
 
   //this use Effect makes a new drum object and send its back up in the Project Context
   useEffect(()=> {
@@ -26,74 +27,43 @@ const DrumMachine = (props) => {
       {
         type: 'hh',
         steps: highHat,
-        volume: 1
+        volume: highHatVolume
       },
       {
         type: 'snare',
         steps: snare,
-        volume: 1
+        volume: snareVolume
       },
       {
         type: 'kick',
         steps: kick,
-        volume: 1
+        volume: kickVolume
       },
     ]
 
     handleUpdateDrums(drumObj)
-  },[highHat, snare, kick])
+  },[highHat, snare, kick, highHatVolume, snareVolume, kickVolume ])
 
-  const handleDrumChange = (e, drums, setDrums ) => {
-    const indexOfStep = e.target.id.split('-')[1];
-    const newDrumsArray = drums.map((hit, index) => {
-      if(Number(indexOfStep) === index && hit === 'C3') {
-        return null
-      }
-      if(Number(indexOfStep) === index && hit === null) {
-        return 'C3'
-      }
-      return hit
-    })
-    setDrums(newDrumsArray)
-  }
-
-    const highlightCurrentStep = (stepIndex) => {
-      const drums = document.querySelectorAll(`.${styles.drumPadOn}`);
-      drums.forEach((stepDiv) => {
-        const stepIndexId = Number(stepDiv.id.replace(/\D/g, ""))
-      if (stepIndex === stepIndexId) {
-        stepDiv.className = classNames(
-          styles.drumPadOn,
-          styles.active,
-        );
-      } else {
-          stepDiv.className = classNames(
-          styles.drumPadOn,
-        );
-      }
-    });
-  };
 
   return (
     <div
       className={styles.drumMachineContainer}>
         { project.drums.map((value) => {
           return (
-              <Track
-                  steps={value.steps}
-                  key={value.type}
-                  onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
-                  volume={value.volume}
-                  >
-
-                <Instrument
-                  type="sampler"
-                  samples={{ C3: `/assets/samples/${value.type}.mp3` }} 
-                  onLoad={(buffers) => {
+            <Track
+              steps={value.steps}
+              key={value.type}
+              onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex, styles)}
+              volume={volume}
+            >
+              <Instrument
+                type="sampler"
+                samples={{ C3: `/assets/samples/${value.type}.mp3` }} 
+                onLoad={(buffers) => {
                     // Runs when all samples are loaded
-                  }}
-                  />
-              </Track>
+                }}
+              />
+            </Track>
         )})}
     {/* Render all visual components below*/}
 
