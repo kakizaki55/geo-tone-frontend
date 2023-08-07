@@ -22,7 +22,7 @@ const DrumSteps = (props) => {
             key={`step-${index}`}
             note={midi}
             index={index}
-            handleNoteChange={handleDrumChange}
+            handleDrumChange={handleDrumChange}
             drums={highHat}
             setDrums={setHighHat}
           />
@@ -34,7 +34,7 @@ const DrumSteps = (props) => {
             key={`step-${index}`}
             note={midi}
             index={index}
-            handleNoteChange={handleDrumChange}
+            handleDrumChange={handleDrumChange}
             drums={snare}
             setDrums={setSnare}
           />
@@ -46,7 +46,7 @@ const DrumSteps = (props) => {
             key={`step-${index}`}
             note={midi}
             index={index}
-            handleNoteChange={handleDrumChange}
+            handleDrumChange={handleDrumChange}
             drums={kick}
             setDrums={setKick}
           />

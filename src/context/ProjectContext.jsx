@@ -13,16 +13,23 @@ const defaultProject = {
   channels: [
     { id: uuid, type: 'synth', osc: 'sine', steps: [null, null, null, null, null, null, null, null], volume: '-6', reverb: '0.5' },
   ],
-  drums: {
-    hh: [
-      'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3',
-    ],
-    snare: [
-      null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null,
-    ],
-    kick: [
-      'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null,
-    ]}
+  drums:[
+    {
+      type: 'hh',
+      steps: ['C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3'],
+      volume: 1
+    },
+    {
+      type: 'snare',
+      steps: [null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null,],
+      volume: 1
+    },
+    {
+      type: 'kick',
+      steps: ['C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null,],
+      volume: 1
+    },
+  ]
 };
 
 function projectReducer(project, action) {

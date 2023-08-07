@@ -3,25 +3,43 @@ import styles from './DrumMachine.css'
 import { Track, Instrument } from "reactronica"
 import { useProject } from "../../context/ProjectContext"
 import classNames from 'classnames';
-import Pad from './Pad'
 import DrumDial from './DrumDial'
 import DrumSteps from "./DrumSteps"
+import {mockDrums} from './mock'
 
 const DrumMachine = (props) => {
+
   const { project } = props
 
   const { handleUpdateDrums } = useProject()
-  const [highHat, setHighHat] = useState(project.drums.hh)
-  const [snare, setSnare] = useState(project.drums.snare)
-  const [kick, setKick] = useState(project.drums.kick)
+
+  const [highHat, setHighHat] = useState(project.drums[0].steps)
+  const [snare, setSnare] = useState(project.drums[1].steps)
+  const [kick, setKick] = useState(project.drums[2].steps)
   const [volume, setVolume] = useState(-48)
 
+  console.log('highHat', highHat)
+
+  //this use Effect makes a new drum object and send its back up in the Project Context
   useEffect(()=> {
-    const drumObj ={
-      hh: highHat,
-      snare: snare,
-      kick: kick
-    }
+    const drumObj =[
+      {
+        type: 'hh',
+        steps: highHat,
+        volume: 1
+      },
+      {
+        type: 'snare',
+        steps: snare,
+        volume: 1
+      },
+      {
+        type: 'kick',
+        steps: kick,
+        volume: 1
+      },
+    ]
+
     handleUpdateDrums(drumObj)
   },[highHat, snare, kick])
 
@@ -59,25 +77,23 @@ const DrumMachine = (props) => {
   return (
     <div
       className={styles.drumMachineContainer}>
-        { Object.entries(project.drums).map((value) => {
+        { project.drums.map((value) => {
           return (
-            <>
               <Track
-                  steps={value[1]}
-                  key={value}
+                  steps={value.steps}
+                  key={value.type}
                   onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
-                  volume={volume}
+                  volume={value.volume}
                   >
 
                 <Instrument
                   type="sampler"
-                  samples={{ C3: `/assets/samples/${value[0]}.mp3` }} 
+                  samples={{ C3: `/assets/samples/${value.type}.mp3` }} 
                   onLoad={(buffers) => {
                     // Runs when all samples are loaded
                   }}
                   />
               </Track>
-            </>
         )})}
     {/* Render all visual components below*/}
 

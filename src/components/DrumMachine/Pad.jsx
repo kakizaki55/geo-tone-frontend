@@ -4,14 +4,14 @@ import styles from './DrumMachine.css'
 
 const Pad = (props) => {
 
-  const { note, index, handleNoteChange, drums, setDrums } = props
+  const { note, index, handleDrumChange, drums, setDrums } = props
 
   return (
     <motion.button
       id={`step-${index}`}
       className={ note ? styles.drumPadOn : styles.drumPadOff }
       onClick={(e) => {
-        handleNoteChange(e, drums, setDrums);
+        handleDrumChange(e, drums, setDrums);
       }}
     >
     </motion.button>

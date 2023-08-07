@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 
 const DrumDial = (props) => {
   const { value, setValue } = props
-  console.log('props', props)
-
-
   const handleOnChange = (event) => {
     setValue(event.target.value);
   };
