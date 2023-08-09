@@ -11,6 +11,7 @@
   height: 100%;
   width: 100vw;
   overflow-y: hidden;
+  border: 1px red solid
 }
 
 .fixedProject {
@@ -20,7 +21,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 90%;
-  width: 80%;
+  width: 95%;
   min-width: 1200px;
   overflow: scroll;
   overflow-x: hidden;
