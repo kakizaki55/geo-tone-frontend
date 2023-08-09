@@ -31,31 +31,10 @@ const Piano = () => {
     setFx({...fx, [e.target.name] : e.target.value} )
   }
 
-  // const useEffect= (() => {
-  //   inputGain.connect(panner);
-  //   panner.connect(outputGain);
-  //   outputGain.connect(audioCtx.destination);
-  //   scope = new Oscilloscope(outputGain);
-  //   const context = canvas.getContext('2d');
-  //   context.strokeStyle = '#00ff9f';
-  //   context.lineWidth = 3;
-  //   // console.log(context);
-  //   OScope = scope.animate(context);
-  // }, [third])
-
-
-
 return (
   <div className={styles.pianoContainer}>
     <div>
       <Dropdown handleChangeType={handleChangeInstrumentType}/>
-      {/* <Faders envelope={envelope} setEnvelope={setEnvelope}/> */}
-      <EffectsRack
-        volume={volume}
-        setVolume={setVolume}
-        fx={fx}
-        pianoEffectTypes={pianoEffectTypes}
-        handleEffectsRackChange={handleEffectsRackChange} />
     </div>
     {/* this is the sound generating part of the piano*/}
     <Track
@@ -74,17 +53,25 @@ return (
       })}
     </Track>
     {/* this is the visual buttons of the of the piano*/}
-    {pianoChromaticScale.map((note) => (
+    <EffectsRack
+        volume={volume}
+        setVolume={setVolume}
+        fx={fx}
+        pianoEffectTypes={pianoEffectTypes}
+        handleEffectsRackChange={handleEffectsRackChange} />
+    <div className={styles.pianoKeyContainer}>
+      { pianoChromaticScale.map((note) => (
         <button
-          key={`piano-${note}`}
-          onMouseDown={() => setNotes([{ name: note }])}
-          onMouseUp={() => setNotes(null)}
-          value={note}
-          className={ (note.length === 2 ) ? styles.pianoKeyWhite : styles.pianoKeyBlack }
+        key={`piano-${note}`}
+        onMouseDown={() => setNotes([{ name: note }])}
+        onMouseUp={() => setNotes(null)}
+        value={note}
+        className={ (note.length === 2 ) ? styles.pianoKeyWhite : styles.pianoKeyBlack }
         >
-          {note}
-        </button>
-      ))}
+            {note}
+          </button>
+        ))}
+    </div>
   </div>
   )
 }

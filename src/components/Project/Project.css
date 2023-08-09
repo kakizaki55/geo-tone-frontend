@@ -20,7 +20,8 @@
   align-items: center;
   justify-content: flex-start;
   height: 90%;
-  width: 80%;
+  width: 95%;
+  max-width: 1600px;
   min-width: 1200px;
   overflow: scroll;
   overflow-x: hidden;

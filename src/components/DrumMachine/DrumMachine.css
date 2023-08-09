@@ -26,15 +26,15 @@
 .drumPadOn {
   background-color: var(--purple);
   color: var(--purple);
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
 }
 
 .drumPadOff {
   background-color: var(--pennyroyal);
   color: var(--pennyroyal);
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
 }
 
 .active {
