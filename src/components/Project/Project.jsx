@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { useProject } from '../../context/ProjectContext';
+import { useProject } from '@context/ProjectContext';
 import { Song } from 'reactronica';
-import Sequencer from '../Sequencer/Sequencer';
-import GlobalControls from '@components/editor/controls/GlobalControls/GlobalControls.jsx';
-import Piano from '../Piano/Paino';
+import { DrumMachine, Piano, Sequencer } from '@components/editor/interfaces';
+import { GlobalControls } from '@components/editor/controls';
 import styles from './Project.css';
-import DrumMachine from '../DrumMachine/DrumMachine';
 
 export default function Project() {
   const {

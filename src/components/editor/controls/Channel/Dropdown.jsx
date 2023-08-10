@@ -1,5 +1,5 @@
-import { sequencerInstrumentsTypes } from '../../utils/tone-utils';
-import styles from '../Project/Project.css';
+import { sequencerInstrumentsTypes } from '@utils/tone-utils';
+import styles from '@components/Project/Project.css';
 
 export default function Dropdown({ handleAddChannel }) {
   return (

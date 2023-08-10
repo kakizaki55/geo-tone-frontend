@@ -1,11 +1,9 @@
 import styles from './Piano.css';
 import { useState } from 'react';
 import { Instrument, Track, Effect } from 'reactronica';
-import { pianoChromaticScale } from '../../utils/tone-utils';
-import { pianoEffectTypes } from '../../utils/tone-utils';
+import { pianoChromaticScale, pianoEffectTypes } from '@utils/tone-utils';
 import Dropdown from './DropDown';
 import EffectsRack from './EffectsRack';
-// import Oscilloscope from 'oscilloscope';
 
 const Piano = () => {
   const [volume, setVolume] = useState(-40);
