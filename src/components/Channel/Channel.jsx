@@ -8,7 +8,7 @@ import {
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   setPitchColor,
-} from '../../utils/toneUtils';
+} from '../../utils/tone-utils.js';
 import Controls from './Controls';
 import Row from './Row';
 import styles from './Channel.css';
@@ -154,9 +154,7 @@ export default function Channel({ channel }) {
           />
         </div>
       </div>
-      <Row
-        notes={notes}
-        handleNoteChange={handleNoteChange} />
+      <Row notes={notes} handleNoteChange={handleNoteChange} />
       <Controls
         channelId={channelId}
         volume={volume}

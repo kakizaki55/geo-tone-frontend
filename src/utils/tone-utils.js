@@ -1,6 +1,8 @@
 // global data for sequencer
 import styles from '../components/Channel/Channel.css';
 
+// tonejs constants
+
 const keyCMajorPentatonic4 = ['C4', 'D4', 'E4', 'G4', 'A4', 'C5'];
 const keyCMajorPentatonic3 = ['C3', 'D3', 'E3', 'G3', 'A3', 'C4'];
 const keyCMajorPentatonic2 = ['C2', 'D2', 'E2', 'G2', 'A2', 'C3'];
@@ -21,24 +23,42 @@ const pianoInstrumentType = [
   'membraneSynth',
   'monoSynth',
   'pluckSynth',
-]
+];
 
 const pianoEffectTypes = [
-  'autoFilter' ,
-  'autoPanner' ,
-  'autoWah' ,
-  'bitCrusher' ,
-  'distortion' ,
-  'feedbackDelay' ,
-  'freeverb' ,
-  'panVol' ,
-  'tremolo'
-]
+  'autoFilter',
+  'autoPanner',
+  'autoWah',
+  'bitCrusher',
+  'distortion',
+  'feedbackDelay',
+  'freeverb',
+  'panVol',
+  'tremolo',
+];
 
 const pianoChromaticScale = [
-  'C3','C#3', 'D3','D#3', 'E3','F3','F#3','G3','G#3','A3','A#3','B3',
-  'C4','C#4', 'D4','D#4', 'E4','F4'
-]
+  'C3',
+  'C#3',
+  'D3',
+  'D#3',
+  'E3',
+  'F3',
+  'F#3',
+  'G3',
+  'G#3',
+  'A3',
+  'A#3',
+  'B3',
+  'C4',
+  'C#4',
+  'D4',
+  'D#4',
+  'E4',
+  'F4',
+];
+
+// tonejs utility functions
 
 const setPitchColor = (string) => {
   return {
@@ -49,6 +69,8 @@ const setPitchColor = (string) => {
     [styles.A]: string?.includes('A'),
   };
 };
+
+// exports
 
 export {
   keyCMajorPentatonic2,

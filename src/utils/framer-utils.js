@@ -1,3 +1,5 @@
+// framer-motion constants
+
 const shapeVariants = {
   circle: {
     scale: 1.0,
@@ -43,5 +45,7 @@ const playVariants = {
     clipPath: 'polygon(0% 0%,0% 100%,100% 50%)',
   },
 };
+
+// framer-motion utility functions
 
 export { shapeVariants, playVariants };
