@@ -1,4 +1,4 @@
-import styles from './Channel.css';
+import styles from './TrackControls.css';
 
 export default function Controls({ channelId, volume, setVolume, fx, setFx }) {
   return (
