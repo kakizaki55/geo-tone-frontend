@@ -1,5 +1,6 @@
 import styles from './Channel.css';
 import Step from './Step';
+import Sequencer from '@components/Sequencer/Sequencer.jsx';
 
 export default function Row({ notes, handleNoteChange }) {
   return (

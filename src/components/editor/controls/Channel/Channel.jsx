@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import { useProject } from '../../context/ProjectContext';
+import { useProject } from '@context/ProjectContext';
 import {
   keyCMajorPentatonic2,
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   setPitchColor,
-} from '../../utils/tone-utils.js';
+} from '@utils/tone-utils.js';
 import Controls from './Controls';
 import Row from './Row';
 import styles from './Channel.css';

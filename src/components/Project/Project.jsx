@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useProject } from '../../context/ProjectContext';
 import { Song } from 'reactronica';
 import Sequencer from '../Sequencer/Sequencer';
-import GlobalControls from '../Controls/GlobalControls';
+import GlobalControls from '@components/editor/controls/GlobalControls/GlobalControls.jsx';
 import Piano from '../Piano/Paino';
 import styles from './Project.css';
-import DrumMachine from "../DrumMachine/DrumMachine";
+import DrumMachine from '../DrumMachine/DrumMachine';
 
 export default function Project() {
   const {
@@ -36,7 +36,7 @@ export default function Project() {
             setAddingChannel={setAddingChannel}
             addingChannel={addingChannel}
           />
-          <DrumMachine project={project}/>
+          <DrumMachine project={project} />
         </Song>
         <Piano />
       </div>
