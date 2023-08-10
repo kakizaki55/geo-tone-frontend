@@ -1,6 +1,6 @@
 import { motion, useCycle } from 'framer-motion';
-import { useProject } from '../../../../context/ProjectContext';
-import { playVariants as play } from '../../../../utils/framer-utils';
+import { useProject } from '@context/ProjectContext';
+import { playVariants as play } from '@utils/framer-constants';
 import styles from './GlobalControls.css';
 
 export default function GlobalControls({ start, setStart, volume, setVolume }) {

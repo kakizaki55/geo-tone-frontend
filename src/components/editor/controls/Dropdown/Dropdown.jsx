@@ -1,4 +1,4 @@
-import { sequencerInstrumentsTypes } from '@utils/tone-utils';
+import { sequencerInstrumentsTypes } from '@utils/tone-constants';
 import styles from './Dropdown.css';
 
 export default function Dropdown({ handleAddChannel }) {

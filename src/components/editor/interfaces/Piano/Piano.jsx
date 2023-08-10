@@ -1,7 +1,10 @@
 import styles from './Piano.css';
 import { useState } from 'react';
 import { Instrument, Track, Effect } from 'reactronica';
-import { pianoChromaticScale, pianoEffectTypes } from '@utils/tone-utils';
+import {
+  pianoChromaticScale,
+  pianoEffectTypes,
+} from '@utils/tone-constants.js';
 import Dropdown from './DropDown';
 import EffectsRack from './EffectsRack';
 

@@ -14,16 +14,16 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { motion, useCycle } from 'framer-motion';
-import classNames from 'classnames';
-import { useProject } from '@context/ProjectContext';
 import {
   keyCMajorPentatonic2,
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
   setPitchColor,
-} from '@utils/tone-utils.js';
+} from '@utils/tone-constants.js';
+import { shapeVariants as shapes } from '@utils/framer-constants';
+import { useProject } from '@context/ProjectContext';
 import Controls from '../TrackControls/TrackControls';
-import { shapeVariants as shapes } from '@utils/framer-utils';
+import classNames from 'classnames';
 import styles from './Channel.css';
 
 export default function Channel({ channel }) {

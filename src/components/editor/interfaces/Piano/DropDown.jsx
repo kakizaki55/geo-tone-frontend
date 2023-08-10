@@ -1,4 +1,4 @@
-import { pianoInstrumentType } from '@utils/tone-utils';
+import { pianoInstrumentType } from '@utils/tone-constants.js';
 import styles from './Piano.css';
 
 export default function Dropdown({ handleChangeType }) {

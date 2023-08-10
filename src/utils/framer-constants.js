@@ -46,6 +46,4 @@ const playVariants = {
   },
 };
 
-// framer-motion utility functions
-
 export { shapeVariants, playVariants };

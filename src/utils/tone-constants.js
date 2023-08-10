@@ -58,7 +58,7 @@ const pianoChromaticScale = [
   'F4',
 ];
 
-// tonejs utility functions
+// TODO: move tonejs utility function to interface-utils
 
 const setPitchColor = (string) => {
   return {
@@ -69,8 +69,6 @@ const setPitchColor = (string) => {
     [styles.A]: string?.includes('A'),
   };
 };
-
-// exports
 
 export {
   keyCMajorPentatonic2,

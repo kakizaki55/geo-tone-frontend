@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import styles from './DrumMachine.css';
+import { useEffect, useState } from 'react';
 import { Track, Instrument } from 'reactronica';
-import { useProject } from '../../../../context/ProjectContext';
-import DrumDial from './DrumDial';
+import { useProject } from '@context/ProjectContext';
+import { handleDrumChange, highlightCurrentStep } from '@utils/interface-utils';
 import DrumSteps from './DrumSteps';
-import {
-  handleDrumChange,
-  highlightCurrentStep,
-} from '../../../../utils/drumMachineUtils';
-import { mockDrums } from './mock';
+import styles from './DrumMachine.css';
 
 const DrumMachine = (props) => {
   const { project } = props;
