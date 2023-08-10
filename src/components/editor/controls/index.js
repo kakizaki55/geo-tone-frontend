@@ -3,8 +3,6 @@
 import Channel from './Channel/Channel.jsx';
 import Controls from './Channel/Controls.jsx';
 import Dropdown from './Channel/Dropdown.jsx';
-import Row from './Channel/Row.jsx';
-import Step from './Channel/Step.jsx';
 import GlobalControls from './GlobalControls/GlobalControls.jsx';
 
-export { Channel, Controls, Dropdown, Row, Step, GlobalControls };
+export { Channel, Controls, Dropdown, GlobalControls };

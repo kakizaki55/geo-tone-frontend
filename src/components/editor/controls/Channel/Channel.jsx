@@ -1,6 +1,19 @@
+/**
+ * TODO: Create a more functional means of setting color values for active sequence steps
+ *
+ * Currently, this component houses two child components: Step and Row. This is due to an issue
+ * created by the stylesheet cascade in which the Row and Step components had their base styling
+ * applied -after- styles implemented by setPitchColor() from Channel.css.
+ *
+ * Solutions to consider:
+ *   1. If relocating Row and Step (child components) to their own folders:
+ *      a. ...move highlightCurrentStep into tone-utils (similar to DrumMachine approach)
+ *      b. ...export to Row or Step component directly during refactoring
+ */
+
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
-import { motion } from 'framer-motion';
+import { motion, useCycle } from 'framer-motion';
 import classNames from 'classnames';
 import { useProject } from '@context/ProjectContext';
 import {
@@ -9,8 +22,8 @@ import {
   keyCMajorPentatonic4,
   setPitchColor,
 } from '@utils/tone-utils.js';
-import Controls from './Controls';
-import Row from './Row';
+import Controls from '../TrackControls/TrackControls';
+import { shapeVariants as shapes } from '@utils/framer-utils';
 import styles from './Channel.css';
 
 export default function Channel({ channel }) {
@@ -166,5 +179,46 @@ export default function Channel({ channel }) {
         Delete Channel
       </motion.button>
     </div>
+  );
+}
+
+function Row({ notes, handleNoteChange }) {
+  return (
+    <div className={styles.row}>
+      {notes.map((note, index) => (
+        <Step
+          key={`step-${index}`}
+          note={note}
+          index={index}
+          handleNoteChange={handleNoteChange}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Step({ note, index, handleNoteChange }) {
+  const [currentShape, cycleCurrentShape] = useCycle(
+    'circle',
+    'square',
+    'rhombus',
+    'triangle',
+    'pentagon',
+    'hexagon'
+  );
+
+  return (
+    <motion.button
+      id={`step-${index}`}
+      className={classNames(styles.step, setPitchColor(note))}
+      onClick={(e) => {
+        cycleCurrentShape();
+        handleNoteChange(e);
+      }}
+      animate={currentShape}
+      variants={shapes}
+    >
+      {note}
+    </motion.button>
   );
 }
