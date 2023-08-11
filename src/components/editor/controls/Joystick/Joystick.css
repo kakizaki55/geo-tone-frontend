@@ -1,0 +1,15 @@
+.dragControls {
+  border: var(--white-ish) solid 5px;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.dragKnob {
+  background-color: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

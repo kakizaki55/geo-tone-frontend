@@ -22,6 +22,7 @@ import {
 } from '@utils/tone-constants.js';
 import { shapeVariants as shapes } from '@utils/framer-constants';
 import { useProject } from '@context/ProjectContext';
+import { Joystick } from '../index.js';
 import Controls from '../TrackControls/TrackControls';
 import classNames from 'classnames';
 import styles from './Channel.css';
@@ -104,25 +105,6 @@ export default function Channel({ channel }) {
     setNotes(newNotes);
   };
 
-  const handleXYControls = (e, info) => {
-    let x = Number(info.offset.x) / 100;
-    let y = Number(info.offset.y) / 100;
-    if (x > 1) {
-      x = 1;
-    }
-    if (y > 1) {
-      y = 1;
-    }
-    if (x < 0) {
-      x = 0;
-    }
-    if (y < 0) {
-      y = 0;
-    }
-    setBitcrusher(x);
-    setDelay(y);
-  };
-
   const deleteChannel = () => {
     handleDeleteChannel(channelId);
   };
@@ -146,27 +128,7 @@ export default function Channel({ channel }) {
 
       {/* Render all visual components below*/}
 
-      <div className={styles.dragContainer}>
-        <div className={styles.dragControls}>
-          <motion.input
-            className={styles.dragKnob}
-            onDrag={(e, info) => handleXYControls(e, info)}
-            whileHover={{ scale: 1.5 }}
-            drag
-            dragConstraints={{
-              top: -0,
-              left: -0,
-              right: 0,
-              bottom: 0,
-            }}
-            dragMomentum={false}
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-          />
-        </div>
-      </div>
+      <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
       <Row notes={notes} handleNoteChange={handleNoteChange} />
       <Controls
         channelId={channelId}
