@@ -13,6 +13,8 @@ const { volume, fx } = globalParams;
 
 function projectReducer(project, action) {
   switch (action.type) {
+    case 'update song volume':
+      return { ...project, volume: action.value };
     case 'update song BPM':
       return { ...project, bpm: action.value };
     case 'add new channel':
@@ -43,6 +45,10 @@ const ProjectProvider = ({ children }) => {
     setChannelArray(project.channels);
     setIsLoading(false);
   }, []);
+
+  const handleSongVolume = (e) => {
+    dispatch({ type: 'update song volume', value: Number(e.target.value) });
+  };
 
   const handleSongBPM = (e) => {
     dispatch({ type: 'update song BPM', value: Number(e.target.value) });
@@ -101,10 +107,11 @@ const ProjectProvider = ({ children }) => {
   };
 
   const contextValue = {
+    project,
     isLoading,
     addingChannel,
     setAddingChannel,
-    project,
+    handleSongVolume,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,

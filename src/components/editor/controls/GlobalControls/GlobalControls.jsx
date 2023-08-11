@@ -2,8 +2,8 @@ import { useProject } from '@context/ProjectContext';
 import { BPMCounter, PlayButton, VolumeFader } from '../index.js';
 import styles from './GlobalControls.css';
 
-export default function GlobalControls({ start, setStart, volume, setVolume }) {
-  const { project, handleSongBPM } = useProject();
+export default function GlobalControls({ start, setStart, volume }) {
+  const { project, handleSongBPM, handleSongVolume } = useProject();
 
   return (
     <div id="global-controls" className={styles.container}>
@@ -11,10 +11,10 @@ export default function GlobalControls({ start, setStart, volume, setVolume }) {
       <VolumeFader
         isGlobal
         id={'global'}
-        value={volume}
-        handleChange={(e) => setVolume(e.target.value)}
+        value={project.volume}
+        handleChange={handleSongVolume}
       />
-      <BPMCounter project={project} handleSongBPM={handleSongBPM} />
+      <BPMCounter value={project.bpm} handleChange={handleSongBPM} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { globalParams } from '@utils/tone-constants.js';
 import styles from './BPMCounter.css';
 
 const BPMCounter = (props) => {
-  const { project, handleSongBPM } = props;
+  const { value, handleChange } = props;
   const { bpm } = globalParams;
 
   return (
@@ -14,8 +14,8 @@ const BPMCounter = (props) => {
         min={bpm.min}
         max={bpm.max}
         step={bpm.step}
-        value={project.bpm}
-        onChange={handleSongBPM}
+        value={value}
+        onChange={handleChange}
         className={styles.bpmCounter}
       />
     </label>

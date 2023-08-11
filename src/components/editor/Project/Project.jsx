@@ -7,15 +7,14 @@ import styles from './Project.css';
 
 export default function Project() {
   const {
+    project,
     isLoading,
     addingChannel,
     setAddingChannel,
-    project,
     handleAddChannel,
   } = useProject();
 
   const [start, setStart] = useState(false);
-  const [volume, setVolume] = useState(-12);
 
   if (isLoading) return <div> loading ... </div>;
 
@@ -26,11 +25,10 @@ export default function Project() {
         <GlobalControls
           start={start}
           setStart={setStart}
-          volume={volume}
-          setVolume={setVolume}
+          volume={project.volume}
         />
         <h2 className={styles.instrumentHeader}>tRacKs</h2>
-        <Song isPlaying={start} bpm={project.bpm} volume={volume}>
+        <Song isPlaying={start} bpm={project.bpm} volume={project.volume}>
           <Sequencer
             project={project}
             handleAddChannel={handleAddChannel}
