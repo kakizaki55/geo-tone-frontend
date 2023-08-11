@@ -14,7 +14,7 @@ const { volume, fx } = globalParams;
 function projectReducer(project, action) {
   switch (action.type) {
     case 'update song BPM':
-      return { ...project, bpm: Number(action.value) };
+      return { ...project, bpm: action.value };
     case 'add new channel':
       return { ...project, channels: [...project.channels, action.value] };
     case 'delete channel':
@@ -43,7 +43,7 @@ const ProjectProvider = ({ children }) => {
   }, []);
 
   const handleSongBPM = (e) => {
-    dispatch({ type: 'update song BPM', value: e.target.value });
+    dispatch({ type: 'update song BPM', value: Number(e.target.value) });
   };
 
   const handleAddChannel = (e) => {
