@@ -60,6 +60,18 @@ const synthTypes = {
     'monoSynth',
     'pluckSynth',
   ],
+  all: [
+    'amSynth',
+    'duoSynth',
+    'fmSynth',
+    'membraneSynth',
+    'metalSynth',
+    'monoSynth',
+    'pluckSynth',
+    'sampler',
+    'synth',
+  ],
+  default: ['duoSynth', 'monoSynth', 'membraneSynth'],
 };
 
 const fxTypes = [

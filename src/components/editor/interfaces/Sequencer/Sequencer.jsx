@@ -1,8 +1,10 @@
-import { Channel, Dropdown } from '@components/editor/controls';
+import { AddControl, Channel, Dropdown } from '@components/editor/controls';
+import { useProject } from '@context/ProjectContext.jsx';
 import styles from './Sequencer.css';
 
-const Sequencer = (props) => {
-  const { project, handleAddChannel, setAddingChannel, addingChannel } = props;
+const Sequencer = () => {
+  const { project, handleAddChannel, setAddingChannel, addingChannel } =
+    useProject();
 
   return (
     <div className={styles.sequencerContainer}>
@@ -10,14 +12,9 @@ const Sequencer = (props) => {
         <Channel key={`channel-${channel.id}`} channel={channel} />
       ))}
       {addingChannel ? (
-        <Dropdown handleAddChannel={handleAddChannel} />
+        <Dropdown instrument="sequencer" handleChange={handleAddChannel} />
       ) : (
-        <button
-          onClick={() => setAddingChannel(true)}
-          className={styles.addChannel}
-        >
-          +
-        </button>
+        <AddControl handleClick={() => setAddingChannel(true)} />
       )}
     </div>
   );
