@@ -5,38 +5,11 @@ import {
   useEffect,
   useState,
 } from 'react';
-let uuid = self.crypto.randomUUID();
+import projectTemplate from '@utils/project-template.js';
+import { globalParams } from '@utils/tone-constants.js';
 
-const defaultProject = {
-  bpm: 120,
-  volume: -48,
-  channels: [
-    {
-      id: uuid,
-      type: 'synth',
-      osc: 'sine',
-      steps: [null, null, null, null, null, null, null, null],
-      volume: '-6',
-      reverb: '0.5' },
-  ],
-  drums:[
-    {
-      type: 'high-hat',
-      steps: ['C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3','C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3', 'C3'],
-      volume: -20
-    },
-    {
-      type: 'snare',
-      steps: [null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null,],
-      volume: -20
-    },
-    {
-      type: 'kick',
-      steps: ['C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null, 'C3', null, null, null,],
-      volume: -20
-    },
-  ]
-};
+const currentProject = structuredClone(projectTemplate);
+const { volume, fx } = globalParams;
 
 function projectReducer(project, action) {
   switch (action.type) {
@@ -49,7 +22,7 @@ function projectReducer(project, action) {
     case 'update channels':
       return { ...project, channels: action.value };
     case 'update drums':
-      return { ...project, drums: action.value }
+      return { ...project, drums: action.value };
     default:
       throw new Error(`Unknown action ${action.type}`);
   }
@@ -62,11 +35,11 @@ const ProjectProvider = ({ children }) => {
   const [addingChannel, setAddingChannel] = useState(false);
   const [channelArray, setChannelArray] = useState([]);
 
-  const [project, dispatch] = useReducer(projectReducer, defaultProject);
+  const [project, dispatch] = useReducer(projectReducer, currentProject);
 
   useEffect(() => {
-      setChannelArray(project.channels);
-      setIsLoading(false);
+    setChannelArray(project.channels);
+    setIsLoading(false);
   }, []);
 
   const handleSongBPM = (e) => {
@@ -74,13 +47,15 @@ const ProjectProvider = ({ children }) => {
   };
 
   const handleAddChannel = (e) => {
+    const synthType = e.target.value;
+
     const newChannel = {
       id: self.crypto.randomUUID(),
-      type: e.target.value,
-      osc: 'sine',
+      type: synthType,
+      osc: 'triangle',
       steps: [null, null, null, null, null, null, null, null],
-      volume: -6,
-      reverb: 0.5,
+      volume: volume.default,
+      reverb: fx.default,
     };
     dispatch({
       type: 'add new channel',
@@ -117,12 +92,11 @@ const ProjectProvider = ({ children }) => {
   };
 
   const handleUpdateDrums = (drums) => {
-
     dispatch({
       type: 'update drums',
       value: drums,
     });
-  }
+  };
 
   const contextValue = {
     project: { isLoading, addingChannel, setAddingChannel, project },
