@@ -2,7 +2,7 @@ import { useProject } from '@context/ProjectContext';
 import { BPMCounter, PlayButton, VolumeFader } from '../index.js';
 import styles from './GlobalControls.css';
 
-export default function GlobalControls({ start, setStart, volume }) {
+export default function GlobalControls({ start, setStart }) {
   const { project, handleSongBPM, handleSongVolume } = useProject();
 
   return (
