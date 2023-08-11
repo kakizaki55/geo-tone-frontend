@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { useProject } from '@context/ProjectContext';
 import { Song } from 'reactronica';
+import { useProject } from '@context/ProjectContext';
 import { DrumMachine, Piano, Sequencer } from '@components/editor/interfaces';
 import { GlobalControls } from '@components/editor/controls';
 import styles from './Project.css';
 
 export default function Project() {
   const {
-    project: { isLoading, addingChannel, setAddingChannel, project },
+    isLoading,
+    addingChannel,
+    setAddingChannel,
+    project,
     handleAddChannel,
   } = useProject();
 
   const [start, setStart] = useState(false);
-  const [volume, setVolume] = useState(-48);
+  const [volume, setVolume] = useState(-12);
 
   if (isLoading) return <div> loading ... </div>;
 

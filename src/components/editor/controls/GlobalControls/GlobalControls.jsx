@@ -4,10 +4,7 @@ import { playVariants as play } from '@utils/framer-constants';
 import styles from './GlobalControls.css';
 
 export default function GlobalControls({ start, setStart, volume, setVolume }) {
-  const {
-    project: { project },
-    handleSongBPM,
-  } = useProject();
+  const { project, handleSongBPM } = useProject();
 
   const [active, cycleActive] = useCycle('play', 'stop');
 

@@ -32,6 +32,8 @@ const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+
+  // ? How might the following states by managed by Sequencer instead? (JL)
   const [addingChannel, setAddingChannel] = useState(false);
   const [channelArray, setChannelArray] = useState([]);
 
@@ -99,7 +101,10 @@ const ProjectProvider = ({ children }) => {
   };
 
   const contextValue = {
-    project: { isLoading, addingChannel, setAddingChannel, project },
+    isLoading,
+    addingChannel,
+    setAddingChannel,
+    project,
     handleSongBPM,
     handleAddChannel,
     handleDeleteChannel,
