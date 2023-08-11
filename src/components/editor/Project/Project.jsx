@@ -6,13 +6,7 @@ import { GlobalControls } from '@components/editor/controls';
 import styles from './Project.css';
 
 export default function Project() {
-  const {
-    project,
-    isLoading,
-    addingChannel,
-    setAddingChannel,
-    handleAddChannel,
-  } = useProject();
+  const { project, isLoading } = useProject();
 
   const [start, setStart] = useState(false);
 
@@ -21,23 +15,14 @@ export default function Project() {
   return (
     <div className={styles.currentProject}>
       <div className={styles.fixedProject}>
-        <h2 className={styles.controlHeader}>Global controls</h2>
-        <GlobalControls
-          start={start}
-          setStart={setStart}
-          volume={project.volume}
-        />
-        <h2 className={styles.instrumentHeader}>tRacKs</h2>
+        <h2>Global controls</h2>
+        <GlobalControls start={start} setStart={setStart} />
+        <h2>tRacKs</h2>
         <Song isPlaying={start} bpm={project.bpm} volume={project.volume}>
-          <Sequencer
-            project={project}
-            handleAddChannel={handleAddChannel}
-            setAddingChannel={setAddingChannel}
-            addingChannel={addingChannel}
-          />
-          <DrumMachine project={project} />
+          <Sequencer />
+          <DrumMachine />
+          <Piano />
         </Song>
-        <Piano />
       </div>
     </div>
   );

@@ -1,8 +1,3 @@
-.controlHeader,
-.instrumentHeader {
-  font-family: 'Major Mono Display', monospace;
-}
-
 .currentProject {
   display: flex;
   box-sizing: border-box;
@@ -49,6 +44,10 @@
     var(--aqua)
   );
   border-radius: 50px;
+}
+
+.fixedProject > h2 {
+  font-family: 'Major Mono Display', monospace;
 }
 
 .fixedProject > * {
