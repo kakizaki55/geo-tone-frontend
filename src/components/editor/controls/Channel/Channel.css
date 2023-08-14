@@ -16,76 +16,6 @@
   border-radius: 10px;
 }
 
-.row {
-  display: flex;
-}
-
-.step {
-  border: none;
-  color: rgb(60, 60, 60);
-  background-color: rgb(60, 60, 60);
-  height: 6rem;
-  width: 6rem;
-  padding: 2px;
-  margin: 2px;
-  cursor: pointer;
-}
-
-.step:hover,
-.step:focus {
-  animation-name: pulse;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 0.5s;
-}
-
-.active {
-  border: var(--black-ish) solid 15px;
-  border-radius: 50%;
-  transition: 0.5s all;
-}
-
-.C {
-  background-color: var(--pink);
-  color: var(--pink);
-}
-
-.D {
-  background-color: var(--purple);
-  color: var(--purple);
-}
-
-.E {
-  background-color: var(--aqua);
-  color: var(--aqua);
-}
-
-.G {
-  background-color: var(--lav);
-  color: var(--lav);
-}
-
-.A {
-  background-color: var(--pennyroyal);
-  color: var(--pennyroyal);
-}
-
-.dragControls {
-  border: var(--white-ish) solid 5px;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-.dragKnob {
-  background-color: black;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
 .deleteChannel {
   width: 60px;
   height: 60px;
@@ -106,11 +36,4 @@
     80% 0%,
     50% 30%
   );
-}
-
-@keyframes pulse {
-  50% {
-    color: rgb(120, 120, 120);
-    background-color: rgb(120, 120, 120);
-  }
 }

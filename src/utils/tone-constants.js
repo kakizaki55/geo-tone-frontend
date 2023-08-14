@@ -3,7 +3,7 @@ import styles from '@components/editor/controls/Channel/Channel.css';
 
 const globalParams = {
   volume: {
-    default: '-12',
+    default: -12,
     min: -60, // no standard decibel minimum could be identified; -60 dB is arbitrary (JL)
     max: 0,
     step: 1,
@@ -144,25 +144,12 @@ const pianoChromaticScale = [
   'F4',
 ];
 
-// TODO: move tonejs utility function to interface-utils
-
-const setPitchColor = (string) => {
-  return {
-    [styles.C]: string?.includes('C'),
-    [styles.D]: string?.includes('D'),
-    [styles.E]: string?.includes('E'),
-    [styles.G]: string?.includes('G'),
-    [styles.A]: string?.includes('A'),
-  };
-};
-
 export {
   globalParams,
   keys,
   oscillators,
   synthTypes,
   fxTypes,
-  setPitchColor,
   // ! Items below are deprecated - check above for alternatives
   pianoEffectTypes,
   keyCMajorPentatonic4,

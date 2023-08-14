@@ -13,19 +13,18 @@
 
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
-import { motion, useCycle } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   keyCMajorPentatonic2,
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
-  setPitchColor,
 } from '@utils/tone-constants.js';
-import { shapeVariants as shapes } from '@utils/framer-constants';
+import { highlightCurrentSequenceStep } from '@utils/interface-utils.js';
 import { useProject } from '@context/ProjectContext';
-import { Joystick } from '../index.js';
+import { Joystick, Row } from '../index.js';
 import Controls from '../TrackControls/TrackControls';
-import classNames from 'classnames';
 import styles from './Channel.css';
+import stepStyles from '../../controls/Step/Step.css';
 
 export default function Channel({ channel }) {
   const channelId = channel.id;
@@ -67,43 +66,7 @@ export default function Channel({ channel }) {
     handleUpdateChannel(channelObj);
   }, [instrument, oscillator, volume, notes, fx]);
 
-  const highlightCurrentStep = (stepIndex) => {
-    const sequence = document
-      .getElementById(`channel-${channelId}`)
-      .querySelectorAll(`.${styles.step}`);
-
-    sequence.forEach((stepDiv, stepDivIndex) => {
-      if (stepIndex === stepDivIndex) {
-        stepDiv.className = classNames(
-          styles.active,
-          styles.step,
-          setPitchColor(stepDiv.textContent)
-        );
-      } else {
-        stepDiv.className = classNames(
-          styles.step,
-          setPitchColor(stepDiv.textContent)
-        );
-      }
-    });
-  };
-
-  const handleNoteChange = (e) => {
-    const indexOfStep = e.target.id.split('-')[1];
-
-    const indexOfKeyArray = keyArray.findIndex(
-      (note) => note === e.target.textContent
-    );
-
-    const newNotes = notes.map((note, index) => {
-      if (Number(indexOfStep) === index) {
-        return keyArray[indexOfKeyArray + 1];
-      }
-      return note;
-    });
-
-    setNotes(newNotes);
-  };
+  // TODO: move this function to utilities
 
   const deleteChannel = () => {
     handleDeleteChannel(channelId);
@@ -114,7 +77,9 @@ export default function Channel({ channel }) {
       <Track
         steps={notes}
         volume={volume}
-        onStepPlay={(step, stepIndex) => highlightCurrentStep(stepIndex)}
+        onStepPlay={(step, stepIndex) =>
+          highlightCurrentSequenceStep(channelId, stepIndex, stepStyles)
+        }
       >
         <Instrument
           type={instrument}
@@ -129,7 +94,7 @@ export default function Channel({ channel }) {
       {/* Render all visual components below*/}
 
       <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
-      <Row notes={notes} handleNoteChange={handleNoteChange} />
+      <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
       <Controls
         channelId={channelId}
         volume={volume}
@@ -141,46 +106,5 @@ export default function Channel({ channel }) {
         Delete Channel
       </motion.button>
     </div>
-  );
-}
-
-function Row({ notes, handleNoteChange }) {
-  return (
-    <div className={styles.row}>
-      {notes.map((note, index) => (
-        <Step
-          key={`step-${index}`}
-          note={note}
-          index={index}
-          handleNoteChange={handleNoteChange}
-        />
-      ))}
-    </div>
-  );
-}
-
-function Step({ note, index, handleNoteChange }) {
-  const [currentShape, cycleCurrentShape] = useCycle(
-    'circle',
-    'square',
-    'rhombus',
-    'triangle',
-    'pentagon',
-    'hexagon'
-  );
-
-  return (
-    <motion.button
-      id={`step-${index}`}
-      className={classNames(styles.step, setPitchColor(note))}
-      onClick={(e) => {
-        cycleCurrentShape();
-        handleNoteChange(e);
-      }}
-      animate={currentShape}
-      variants={shapes}
-    >
-      {note}
-    </motion.button>
   );
 }

@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Track, Instrument } from 'reactronica';
 import { useProject } from '@context/ProjectContext';
-import { handleDrumChange, highlightCurrentStep } from '@utils/interface-utils';
+import {
+  handleDrumChange,
+  highlightCurrentDrumStep,
+} from '@utils/interface-utils';
 import DrumSteps from './DrumSteps';
 import styles from './DrumMachine.css';
 
-const DrumMachine = (props) => {
-  const { project } = props;
-
-  const { handleUpdateDrums } = useProject();
+const DrumMachine = () => {
+  const { project, handleUpdateDrums } = useProject();
 
   const [highHat, setHighHat] = useState(project.drums[0].steps);
   const [highHatVolume, setHighHatVolume] = useState(project.drums[0].volume);
@@ -75,7 +76,7 @@ const DrumMachine = (props) => {
             steps={value.steps}
             key={value.type}
             onStepPlay={(step, stepIndex) =>
-              highlightCurrentStep(stepIndex, styles)
+              highlightCurrentDrumStep(stepIndex, styles)
             }
             volume={value.volume}
           >
