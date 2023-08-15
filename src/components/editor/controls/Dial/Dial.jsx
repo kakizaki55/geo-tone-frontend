@@ -14,26 +14,26 @@ const Dial = (props) => {
     handleEffectsRackChange(event);
   };
 
+  // ? ...should this component be labeled here or in EffectsRack / parent component?
+
   return (
-    <label className={styles.label}>
-      {type}
-      <motion.div className={styles.dialBackground}>
-        <motion.div
-          className={styles.dialTuner}
-          style={{ rotate: `${value * 180 - 90}deg` }}
-        />
-        <input
-          id={`fx-${type}`}
-          type="range"
-          min={fx.min}
-          max={fx.max}
-          step={fx.step}
-          value={value}
-          onChange={handleOnChange}
-          className={styles.range}
-        />
-      </motion.div>
-    </label>
+    <motion.div className={styles.dialBackground}>
+      <motion.div
+        className={styles.dialTuner}
+        style={{ rotate: `${value * 180 - 90}deg` }}
+      />
+      <input
+        id={`fx-${type}`}
+        name={type}
+        type="range"
+        min={fx.min}
+        max={fx.max}
+        step={fx.step}
+        value={value}
+        onChange={handleOnChange}
+        className={styles.range}
+      />
+    </motion.div>
   );
 };
 
