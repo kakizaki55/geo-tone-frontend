@@ -1,0 +1,46 @@
+.dialBackground {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 200px;
+  background-color: transparent;
+}
+
+.dialTuner {
+  width: 10px;
+  height: 50px;
+  background: pink;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  -ms-transform-origin-x: 50%;
+  -ms-transform-origin-y: 100%;
+  -webkit-transform-origin-x: 50%;
+  -webkit-transform-origin-y: 100%;
+}
+
+.range {
+  /* Hide the default range input appearance */
+  -webkit-appearance: none;
+  width: 100%;
+  height: 50%;
+  background: #f0f0f0;
+  outline: none;
+  opacity: 0.1;
+  transition: opacity 0.2s;
+  border-radius: 100px 100px 0 0;
+
+  /* Custom thumb style */
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: hidden;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
