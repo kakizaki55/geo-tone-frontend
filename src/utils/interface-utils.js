@@ -14,48 +14,23 @@ export const handleDrumChange = (e, drums, setDrums) => {
   setDrums(newDrumsArray);
 };
 
-export const highlightCurrentDrumStep = (stepIndex, styles) => {
-  const drums = document.querySelectorAll(`.${styles.drumPadOn}`);
-  drums.forEach((stepDiv) => {
-    const stepIndexId = Number(stepDiv.id.replace(/\D/g, ''));
-    if (stepIndex === stepIndexId) {
-      stepDiv.className = classNames(styles.drumPadOn, styles.active);
-    } else {
-      stepDiv.className = classNames(styles.drumPadOn);
-    }
-  });
-};
-
-export const highlightCurrentSequenceStep = (channelId, stepIndex, styles) => {
-  const sequence = document
-    .getElementById(`channel-${channelId}`)
-    .querySelectorAll(`.${styles.step}`);
+export const highlightCurrentStep = (element, index, styles) => {
+  const sequence = document.querySelectorAll(`.${styles[element]}`);
 
   const getClasses = (element) => {
-    return element.className.split(' ').map((each) => each);
+    return element.className
+      .split(' ')
+      .map((each) => (each === styles.active ? null : each));
   };
 
-  sequence.forEach((stepDiv, stepDivIndex) => {
-    const prevClasses = getClasses(stepDiv);
-    const classIsStep = prevClasses[0];
-    const classPitchValue = prevClasses[1] ? prevClasses[1] : null;
+  sequence.forEach((step) => {
+    const stepIndexId = Number(step.id.replace(/\D/g, ''));
+    const prevClasses = getClasses(step);
 
-    let active = {
-      [`${classIsStep}`]: true,
-      [`${classPitchValue}`]: true,
-      [`${styles.active}`]: true,
-    };
-
-    let inactive = {
-      [`${classIsStep}`]: true,
-      [`${classPitchValue}`]: true,
-      [`${styles.active}`]: false,
-    };
-
-    if (stepIndex === stepDivIndex) {
-      stepDiv.className = classNames(active);
+    if (index === stepIndexId) {
+      step.className = classNames(prevClasses, styles.active);
     } else {
-      stepDiv.className = classNames(inactive);
+      step.className = classNames(prevClasses);
     }
   });
 };

@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Track, Instrument } from 'reactronica';
 import { useProject } from '@context/ProjectContext';
-import {
-  handleDrumChange,
-  highlightCurrentDrumStep,
-} from '@utils/interface-utils';
+import { handleDrumChange, highlightCurrentStep } from '@utils/interface-utils';
 import DrumSteps from './DrumSteps';
 import styles from './DrumMachine.css';
 
@@ -76,7 +73,7 @@ const DrumMachine = () => {
             steps={value.steps}
             key={value.type}
             onStepPlay={(step, stepIndex) =>
-              highlightCurrentDrumStep(stepIndex, styles)
+              highlightCurrentStep('drumPadOn', stepIndex, styles)
             }
             volume={value.volume}
           >

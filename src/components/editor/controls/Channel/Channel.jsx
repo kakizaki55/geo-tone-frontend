@@ -1,16 +1,3 @@
-/**
- * TODO: Create a more functional means of setting color values for active sequence steps
- *
- * Currently, this component houses two child components: Step and Row. This is due to an issue
- * created by the stylesheet cascade in which the Row and Step components had their base styling
- * applied -after- styles implemented by setPitchColor() from Channel.css.
- *
- * Solutions to consider:
- *   1. If relocating Row and Step (child components) to their own folders:
- *      a. ...move highlightCurrentStep into tone-utils (similar to DrumMachine approach)
- *      b. ...export to Row or Step component directly during refactoring
- */
-
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { motion } from 'framer-motion';
@@ -19,7 +6,7 @@ import {
   keyCMajorPentatonic3,
   keyCMajorPentatonic4,
 } from '@utils/tone-constants.js';
-import { highlightCurrentSequenceStep } from '@utils/interface-utils.js';
+import { highlightCurrentStep } from '@utils/interface-utils.js';
 import { useProject } from '@context/ProjectContext';
 import { Joystick, Row } from '../index.js';
 import Controls from '../TrackControls/TrackControls';
@@ -66,8 +53,6 @@ export default function Channel({ channel }) {
     handleUpdateChannel(channelObj);
   }, [instrument, oscillator, volume, notes, fx]);
 
-  // TODO: move this function to utilities
-
   const deleteChannel = () => {
     handleDeleteChannel(channelId);
   };
@@ -78,7 +63,7 @@ export default function Channel({ channel }) {
         steps={notes}
         volume={volume}
         onStepPlay={(step, stepIndex) =>
-          highlightCurrentSequenceStep(channelId, stepIndex, stepStyles)
+          highlightCurrentStep('step', stepIndex, stepStyles)
         }
       >
         <Instrument
