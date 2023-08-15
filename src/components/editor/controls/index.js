@@ -8,6 +8,7 @@ import Dial from './Dial/Dial.jsx';
 import Dropdown from './Dropdown/Dropdown.jsx';
 import EffectsRack from './EffectsRack/EffectsRack.jsx';
 import Joystick from './Joystick/Joystick.jsx';
+import KeyController from './KeyController/KeyController.jsx';
 import PlayButton from './PlayButton/PlayButton.jsx';
 import Step from './Step/Step.jsx';
 import Row from './Row/Row.jsx';
@@ -23,6 +24,7 @@ export {
   Dropdown,
   EffectsRack,
   Joystick,
+  KeyController,
   PlayButton,
   Step,
   Row,
