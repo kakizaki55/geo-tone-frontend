@@ -1,4 +1,4 @@
-import { AddControl, Channel, Dropdown } from '@components/editor/controls';
+import { AddTrack, Channel, Dropdown } from '@components/editor/controls';
 import { useProject } from '@context/ProjectContext.jsx';
 import styles from './Sequencer.css';
 
@@ -17,7 +17,7 @@ const Sequencer = () => {
       {addingChannel ? (
         <Dropdown instrument="sequencer" handleChange={handleAddChannel} />
       ) : (
-        <AddControl handleClick={() => setAddingChannel(true)} />
+        <AddTrack handleClick={() => setAddingChannel(true)} />
       )}
     </div>
   );
