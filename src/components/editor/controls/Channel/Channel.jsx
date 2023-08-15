@@ -2,15 +2,11 @@ import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { keys } from '@utils/tone-constants.js';
 import { highlightCurrentStep } from '@utils/interface-utils.js';
-import { useProject } from '@context/ProjectContext';
-import { DeleteTrack, Joystick, Row } from '../index.js';
-import Controls from '../TrackControls/TrackControls';
+import { DeleteTrack, Joystick, Row, VolumeFader } from '../index.js';
 import styles from './Channel.css';
 import stepStyles from '../../controls/Step/Step.css';
 
-export default function Channel({ channel }) {
-  const { handleDeleteChannel, handleUpdateChannel } = useProject();
-
+export default function Channel({ channel, handleUpdate, handleDelete }) {
   const [volume, setVolume] = useState(channel.volume);
   const [notes, setNotes] = useState(channel.steps);
   const [fx, setFx] = useState(channel.fx);
@@ -38,11 +34,11 @@ export default function Channel({ channel }) {
       volume: volume,
       reverb: fx.reverb,
     };
-    handleUpdateChannel(updatedChannel);
+    handleUpdate(updatedChannel);
   }, [volume, notes, fx]);
 
   const deleteChannel = () => {
-    handleDeleteChannel(channel.id);
+    handleDelete(channel.id);
   };
 
   return (
@@ -67,12 +63,10 @@ export default function Channel({ channel }) {
         {/* VISUAL COMPONENTS */}
         <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
         <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
-        <Controls
-          channelId={channel.id}
-          volume={volume}
-          setVolume={setVolume}
-          fx={fx}
-          setFx={setFx}
+        <VolumeFader
+          id={channel.id}
+          value={volume}
+          handleChange={(e) => setVolume(e.target.value)}
         />
         <DeleteTrack handleClick={deleteChannel} />
       </Track>

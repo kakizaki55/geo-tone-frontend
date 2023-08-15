@@ -6,10 +6,8 @@ import {
   useState,
 } from 'react';
 import projectTemplate from '@utils/project-template.js';
-import { globalParams } from '@utils/tone-constants.js';
 
 const currentProject = structuredClone(projectTemplate);
-const { volume, fx } = globalParams;
 
 function projectReducer(project, action) {
   switch (action.type) {
@@ -17,12 +15,6 @@ function projectReducer(project, action) {
       return { ...project, volume: action.value };
     case 'update song BPM':
       return { ...project, bpm: action.value };
-    case 'add new channel':
-      return { ...project, channels: [...project.channels, action.value] };
-    case 'delete channel':
-      return { ...project, channels: action.value };
-    case 'update channels':
-      return { ...project, channels: action.value };
     case 'update drums':
       return { ...project, drums: action.value };
     default:
@@ -35,14 +27,9 @@ const ProjectContext = createContext();
 const ProjectProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // ? How might the following states by managed by Sequencer instead? (JL)
-  const [addingChannel, setAddingChannel] = useState(false);
-  const [channelArray, setChannelArray] = useState([]);
-
   const [project, dispatch] = useReducer(projectReducer, currentProject);
 
   useEffect(() => {
-    setChannelArray(project.channels);
     setIsLoading(false);
   }, []);
 
@@ -52,54 +39,6 @@ const ProjectProvider = ({ children }) => {
 
   const handleSongBPM = (e) => {
     dispatch({ type: 'update song BPM', value: Number(e.target.value) });
-  };
-
-  const handleAddChannel = (e) => {
-    const synthType = e.target.value;
-
-    const newChannel = {
-      id: self.crypto.randomUUID(),
-      type: synthType,
-      osc: 'triangle',
-      steps: [null, null, null, null, null, null, null, null],
-      volume: volume.default,
-      fx: {
-        reverb: fx.max,
-      },
-    };
-
-    dispatch({
-      type: 'add new channel',
-      value: newChannel,
-    });
-    setChannelArray((prevState) => [...prevState, newChannel]);
-    setAddingChannel(false);
-  };
-
-  const handleDeleteChannel = (channelId) => {
-    const newChannelArray = channelArray.filter((item) => {
-      if (item.id !== channelId) {
-        return item;
-      }
-    });
-    setChannelArray(newChannelArray);
-    dispatch({ type: 'delete channel', value: newChannelArray });
-  };
-
-  const handleUpdateChannel = (channel) => {
-    const newChannelArray = channelArray.map((item) => {
-      if (item.id === channel.id) {
-        return channel;
-      } else {
-        return item;
-      }
-    });
-    setChannelArray(newChannelArray);
-
-    dispatch({
-      type: 'update channels',
-      value: newChannelArray,
-    });
   };
 
   const handleUpdateDrums = (drums) => {
@@ -112,13 +51,8 @@ const ProjectProvider = ({ children }) => {
   const contextValue = {
     project,
     isLoading,
-    addingChannel,
-    setAddingChannel,
     handleSongVolume,
     handleSongBPM,
-    handleAddChannel,
-    handleDeleteChannel,
-    handleUpdateChannel,
     handleUpdateDrums,
   };
 

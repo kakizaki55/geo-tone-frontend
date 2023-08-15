@@ -5,8 +5,10 @@ const VolumeFader = (props) => {
   const { id, value, handleChange, isGlobal = false } = props;
   const { volume } = globalParams;
 
+  const labelStyle = isGlobal ? styles.globalVolume : styles.trackVolume;
+
   return (
-    <label className={styles.label}>
+    <label className={labelStyle}>
       {isGlobal ? 'Project Volume' : 'Volume'}
       <input
         id={`${id}-volume`}

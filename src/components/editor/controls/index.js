@@ -3,7 +3,6 @@
 import AddTrack from './AddTrack/AddTrack.jsx';
 import BPMCounter from './BPMCounter/BPMCounter.jsx';
 import Channel from './Channel/Channel.jsx';
-import Controls from './TrackControls/TrackControls.jsx';
 import DeleteTrack from './DeleteTrack/DeleteTrack.jsx';
 import Dropdown from './Dropdown/Dropdown.jsx';
 import Joystick from './Joystick/Joystick.jsx';
@@ -17,7 +16,6 @@ export {
   AddTrack,
   BPMCounter,
   Channel,
-  Controls,
   DeleteTrack,
   Dropdown,
   Joystick,
