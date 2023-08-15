@@ -1,12 +1,12 @@
-import styles from './Piano.css';
 import { useState } from 'react';
-import { Instrument, Track, Effect } from 'reactronica';
+import { Track, Instrument, Effect } from 'reactronica';
+import { keys, pianoEffectTypes } from '@utils/tone-constants.js';
 import {
-  pianoChromaticScale,
-  pianoEffectTypes,
-} from '@utils/tone-constants.js';
-import Dropdown from './DropDown';
-import EffectsRack from './EffectsRack';
+  Dropdown,
+  EffectsRack,
+  VolumeFader,
+} from '@components/editor/controls/index.js';
+import styles from './Piano.css';
 
 const Piano = () => {
   const [volume, setVolume] = useState(-40);
@@ -34,39 +34,37 @@ const Piano = () => {
 
   return (
     <div className={styles.pianoContainer}>
-      <div>
-        <Dropdown handleChangeType={handleChangeInstrumentType} />
-      </div>
-      {/* this is the sound generating part of the piano*/}
+      <Dropdown instrument="piano" handleChange={handleChangeInstrumentType} />
+      {/* AUDIO COMPONENTS */}
       <Track volume={volume}>
-        <Instrument type={instrumentType} notes={notes}></Instrument>
-        {pianoEffectTypes.map((type) => {
-          return <Effect key={`effect-${type}`} type={type} wet={fx[type]} />;
-        })}
+        <Instrument type={instrumentType} notes={notes} />
+        <EffectsRack
+          fx={fx}
+          fxList={pianoEffectTypes}
+          handleChange={handleEffectsRackChange}
+        />
+        <VolumeFader
+          id={'piano'}
+          value={volume}
+          handleChange={(e) => setVolume(e.target.value)}
+        />
+        {/* this is the visual buttons of the of the piano*/}
+        <div className={styles.pianoKeyContainer}>
+          {keys.pianoChromatic.map((note) => (
+            <button
+              key={`piano-${note}`}
+              onMouseDown={() => setNotes([{ name: note }])}
+              onMouseUp={() => setNotes(null)}
+              value={note}
+              className={
+                note.length === 2 ? styles.pianoKeyWhite : styles.pianoKeyBlack
+              }
+            >
+              {note}
+            </button>
+          ))}
+        </div>
       </Track>
-      {/* this is the visual buttons of the of the piano*/}
-      <EffectsRack
-        volume={volume}
-        setVolume={setVolume}
-        fx={fx}
-        pianoEffectTypes={pianoEffectTypes}
-        handleEffectsRackChange={handleEffectsRackChange}
-      />
-      <div className={styles.pianoKeyContainer}>
-        {pianoChromaticScale.map((note) => (
-          <button
-            key={`piano-${note}`}
-            onMouseDown={() => setNotes([{ name: note }])}
-            onMouseUp={() => setNotes(null)}
-            value={note}
-            className={
-              note.length === 2 ? styles.pianoKeyWhite : styles.pianoKeyBlack
-            }
-          >
-            {note}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };

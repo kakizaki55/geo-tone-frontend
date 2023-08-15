@@ -4,14 +4,14 @@ import { globalParams } from '@utils/tone-constants.js';
 import styles from './Dial.css';
 
 const Dial = (props) => {
-  const { type, handleEffectsRackChange } = props;
+  const { type, handleChange } = props;
   const { fx } = globalParams;
 
   const [value, setValue] = useState(fx.default);
 
   const handleOnChange = (event) => {
     setValue(event.target.value);
-    handleEffectsRackChange(event);
+    handleChange(event);
   };
 
   // ? ...should this component be labeled here or in EffectsRack / parent component?
