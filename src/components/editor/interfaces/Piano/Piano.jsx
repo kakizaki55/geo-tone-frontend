@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Track, Instrument, Effect } from 'reactronica';
+import { Track, Instrument } from 'reactronica';
 import { keys, pianoEffectTypes } from '@utils/tone-constants.js';
 import {
   Dropdown,
   EffectsRack,
+  KeyController,
   VolumeFader,
 } from '@components/editor/controls/index.js';
 import styles from './Piano.css';
@@ -48,22 +49,7 @@ const Piano = () => {
           value={volume}
           handleChange={(e) => setVolume(e.target.value)}
         />
-        {/* this is the visual buttons of the of the piano*/}
-        <div className={styles.pianoKeyContainer}>
-          {keys.pianoChromatic.map((note) => (
-            <button
-              key={`piano-${note}`}
-              onMouseDown={() => setNotes([{ name: note }])}
-              onMouseUp={() => setNotes(null)}
-              value={note}
-              className={
-                note.length === 2 ? styles.pianoKeyWhite : styles.pianoKeyBlack
-              }
-            >
-              {note}
-            </button>
-          ))}
-        </div>
+        <KeyController keys={keys} setNotes={setNotes} />
       </Track>
     </div>
   );

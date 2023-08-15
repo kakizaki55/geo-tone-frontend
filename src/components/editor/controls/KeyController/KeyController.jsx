@@ -1,20 +1,11 @@
+import { PianoKey } from '../index.js';
 import styles from './KeyController.css';
 
 const KeyController = ({ keys, setNotes }) => {
   return (
-    <div>
+    <div className={styles.keyController}>
       {keys.pianoChromatic.map((note) => (
-        <button
-          key={`piano-${note}`}
-          onMouseDown={() => setNotes([{ name: note }])}
-          onMouseUp={() => setNotes(null)}
-          value={note}
-          className={
-            note.length === 2 ? styles.pianoKeyWhite : styles.pianoKeyBlack
-          }
-        >
-          {note}
-        </button>
+        <PianoKey note={note} setNotes={setNotes} />
       ))}
     </div>
   );

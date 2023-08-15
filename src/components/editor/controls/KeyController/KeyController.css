@@ -1,15 +1,4 @@
-.pianoKeyWhite {
-  height: 380px;
-  width: 100px;
-  padding-bottom: 20px;
-}
-
-.pianoKeyBlack {
-  height: 250px;
-  width: 70px;
-  background-color: rgb(41, 41, 41);
-  color: white;
-  position: absolute;
-  margin-left: -40px;
-  border-radius: 5px;
+.keyController {
+  width: max-content;
+  border: solid 2px var(--white-ish);
 }
