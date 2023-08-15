@@ -5,7 +5,11 @@ const KeyController = ({ keys, setNotes }) => {
   return (
     <div className={styles.keyController}>
       {keys.pianoChromatic.map((note) => (
-        <PianoKey note={note} setNotes={setNotes} />
+        <PianoKey
+          key={`keycontroller-${note}`}
+          note={note}
+          setNotes={setNotes}
+        />
       ))}
     </div>
   );
