@@ -5,6 +5,7 @@ const { volume, fx, bpm } = globalParams;
 const projectTemplate = {
   bpm: bpm.default,
   volume: volume.default,
+  // TODO: Update to 'sequencer: {channels: {...}}
   channels: [
     {
       id: self.crypto.randomUUID(),
@@ -12,7 +13,10 @@ const projectTemplate = {
       osc: 'triangle',
       steps: [null, null, null, null, null, null, null, null],
       volume: volume.default,
-      reverb: fx.default,
+      // TODO: replace with FX rack
+      fx: {
+        reverb: fx.max,
+      },
     },
   ],
   drums: [

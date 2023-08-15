@@ -63,8 +63,11 @@ const ProjectProvider = ({ children }) => {
       osc: 'triangle',
       steps: [null, null, null, null, null, null, null, null],
       volume: volume.default,
-      reverb: fx.default,
+      fx: {
+        reverb: fx.max,
+      },
     };
+
     dispatch({
       type: 'add new channel',
       value: newChannel,

@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { motion } from 'framer-motion';
-import {
-  keyCMajorPentatonic2,
-  keyCMajorPentatonic3,
-  keyCMajorPentatonic4,
-} from '@utils/tone-constants.js';
+import { keys } from '@utils/tone-constants.js';
 import { highlightCurrentStep } from '@utils/interface-utils.js';
 import { useProject } from '@context/ProjectContext';
 import { Joystick, Row } from '../index.js';
@@ -14,51 +10,45 @@ import styles from './Channel.css';
 import stepStyles from '../../controls/Step/Step.css';
 
 export default function Channel({ channel }) {
-  const channelId = channel.id;
-
   const { handleDeleteChannel, handleUpdateChannel } = useProject();
 
-  const [instrument, setInstrument] = useState(channel.type);
-  const [oscillator, setOscillator] = useState(channel.osc);
   const [volume, setVolume] = useState(channel.volume);
   const [notes, setNotes] = useState(channel.steps);
-  const [fx, setFx] = useState({
-    reverb: channel.reverb,
-  });
+  const [fx, setFx] = useState(channel.fx);
   const [bitcrusher, setBitcrusher] = useState(0);
   const [delay, setDelay] = useState(0);
 
   const [keyArray, setKeyArray] = useState(() => {
-    switch (instrument) {
+    switch (channel.type) {
       case 'duoSynth':
-        return keyCMajorPentatonic4;
+        return keys.CMajorPentatonic4;
       case 'monoSynth':
-        return keyCMajorPentatonic3;
+        return keys.CMajorPentatonic3;
       case 'membraneSynth':
-        return keyCMajorPentatonic2;
+        return keys.CMajorPentatonic2;
       default:
-        return keyCMajorPentatonic4;
+        return keys.CMajorPentatonic4;
     }
   });
 
   useEffect(() => {
     const channelObj = {
-      id: channelId,
-      type: instrument,
-      osc: oscillator,
+      id: channel.id,
+      type: channel.type,
+      osc: channel.osc,
       steps: notes,
       volume: volume,
       reverb: fx.reverb,
     };
     handleUpdateChannel(channelObj);
-  }, [instrument, oscillator, volume, notes, fx]);
+  }, [volume, notes, fx]);
 
   const deleteChannel = () => {
-    handleDeleteChannel(channelId);
+    handleDeleteChannel(channel.id);
   };
 
   return (
-    <div id={`channel-${channelId}`} className={styles.channel}>
+    <div id={`channel-${channel.id}`} className={styles.channel}>
       <Track
         steps={notes}
         volume={volume}
@@ -67,8 +57,8 @@ export default function Channel({ channel }) {
         }
       >
         <Instrument
-          type={instrument}
-          oscillator={{ type: 'triangle' }}
+          type={channel.type}
+          oscillator={{ type: channel.osc }}
           envelope={{ attack: 0.1, release: 0.1 }}
         />
         <Effect type="bitCrusher" wet={bitcrusher} />
@@ -81,7 +71,7 @@ export default function Channel({ channel }) {
       <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
       <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
       <Controls
-        channelId={channelId}
+        channelId={channel.id}
         volume={volume}
         setVolume={setVolume}
         fx={fx}
