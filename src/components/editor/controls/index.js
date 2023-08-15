@@ -9,6 +9,7 @@ import Dropdown from './Dropdown/Dropdown.jsx';
 import EffectsRack from './EffectsRack/EffectsRack.jsx';
 import Joystick from './Joystick/Joystick.jsx';
 import KeyController from './KeyController/KeyController.jsx';
+import PianoKey from './PianoKey/PianoKey.jsx';
 import PlayButton from './PlayButton/PlayButton.jsx';
 import Step from './Step/Step.jsx';
 import Row from './Row/Row.jsx';
@@ -25,6 +26,7 @@ export {
   EffectsRack,
   Joystick,
   KeyController,
+  PianoKey,
   PlayButton,
   Step,
   Row,
