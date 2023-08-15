@@ -5,8 +5,6 @@
   border: rgb(232, 229, 229) 2px solid;
 }
 
-.pianoKeyContainer {
-}
 .pianoKeyWhite {
   height: 380px;
   width: 100px;
@@ -22,25 +20,3 @@
   margin-left: -40px;
   border-radius: 5px;
 }
-
-.dropDownPianoSelect {
-  border-radius: 10px;
-  border: var(--white-ish) double 5px;
-  font-family: 'Barlow';
-  align-self: center;
-  width: 180px;
-  height: 60px;
-  background-color: var(--black-ish);
-  color: var(--white-ish);
-  margin: 5px;
-}
-
-.effectsRack {
-  width: 100%;
-  cursor: grab;
-  user-select: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .25rem;
-}
-
