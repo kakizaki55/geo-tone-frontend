@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
-import { motion } from 'framer-motion';
 import { keys } from '@utils/tone-constants.js';
 import { highlightCurrentStep } from '@utils/interface-utils.js';
 import { useProject } from '@context/ProjectContext';
-import { Joystick, Row } from '../index.js';
+import { DeleteTrack, Joystick, Row } from '../index.js';
 import Controls from '../TrackControls/TrackControls';
 import styles from './Channel.css';
 import stepStyles from '../../controls/Step/Step.css';
@@ -75,9 +74,7 @@ export default function Channel({ channel }) {
           fx={fx}
           setFx={setFx}
         />
-        <motion.button onClick={deleteChannel} className={styles.deleteChannel}>
-          Delete Channel
-        </motion.button>
+        <DeleteTrack handleClick={deleteChannel} />
       </Track>
     </div>
   );
