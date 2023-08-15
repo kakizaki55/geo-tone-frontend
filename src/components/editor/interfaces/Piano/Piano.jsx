@@ -7,23 +7,20 @@ import {
   KeyController,
   VolumeFader,
 } from '@components/editor/controls/index.js';
+import { useProject } from '@context/ProjectContext.jsx';
 import styles from './Piano.css';
 
 const Piano = () => {
-  const [volume, setVolume] = useState(-40);
-  const [fx, setFx] = useState({
-    autoFilter: 0,
-    autoPanner: 0,
-    autoWah: 0,
-    bitCrusher: 0,
-    distortion: 0,
-    feedbackDelay: 0,
-    freeverb: 0,
-    panVol: 0,
-    tremolo: 0,
-  });
-  const [notes, setNotes] = useState(null);
+  const { project } = useProject();
+
+  const [volume, setVolume] = useState(project.piano.volume);
+  const [fx, setFx] = useState(project.piano.fx);
+  const [notes, setNotes] = useState(project.piano.steps);
   const [instrumentType, setInstrumentType] = useState(null);
+
+  const handleVolumeChange = (e) => {
+    setVolume(e.target.value);
+  };
 
   const handleChangeInstrumentType = (e) => {
     setInstrumentType(e.target.value);
@@ -35,10 +32,13 @@ const Piano = () => {
 
   return (
     <div className={styles.pianoContainer}>
-      <Dropdown instrument="piano" handleChange={handleChangeInstrumentType} />
-      {/* AUDIO COMPONENTS */}
       <Track volume={volume}>
         <Instrument type={instrumentType} notes={notes} />
+
+        <Dropdown
+          instrument={'piano'}
+          handleChange={handleChangeInstrumentType}
+        />
         <EffectsRack
           fx={fx}
           fxList={pianoEffectTypes}
@@ -47,7 +47,7 @@ const Piano = () => {
         <VolumeFader
           id={'piano'}
           value={volume}
-          handleChange={(e) => setVolume(e.target.value)}
+          handleChange={handleVolumeChange}
         />
         <KeyController keys={keys} setNotes={setNotes} />
       </Track>

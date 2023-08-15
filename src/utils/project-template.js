@@ -1,4 +1,4 @@
-import { globalParams } from '@utils/tone-constants.js';
+import { globalParams, keys } from '@utils/tone-constants.js';
 
 const { volume, fx, bpm } = globalParams;
 
@@ -15,7 +15,7 @@ const projectTemplate = {
       volume: volume.default,
       // TODO: replace with FX rack
       fx: {
-        reverb: fx.max,
+        freeverb: fx.max,
       },
     },
   ],
@@ -87,6 +87,21 @@ const projectTemplate = {
       volume: volume.default,
     },
   ],
+  piano: {
+    volume: volume.default,
+    steps: keys.pianoChromatic,
+    fx: {
+      autoFilter: fx.default,
+      autoPanner: fx.default,
+      autoWah: fx.default,
+      bitCrusher: fx.default,
+      distortion: fx.default,
+      feedbackDelay: fx.default,
+      freeverb: fx.default,
+      panVol: fx.default,
+      tremolo: fx.default,
+    },
+  },
 };
 
 export default projectTemplate;
