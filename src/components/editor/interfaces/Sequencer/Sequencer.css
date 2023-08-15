@@ -1,9 +1,9 @@
 .sequencerContainer {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   margin-top: 20px;
   border-radius: 10px;
   border: rgb(232, 229, 229) 2px solid;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }

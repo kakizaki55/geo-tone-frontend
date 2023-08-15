@@ -8,9 +8,12 @@ const Sequencer = () => {
 
   return (
     <div className={styles.sequencerContainer}>
+      {/* CHANNELS ARRAY */}
       {project.channels.map((channel) => (
         <Channel key={`channel-${channel.id}`} channel={channel} />
       ))}
+
+      {/* CONDITIONALLY DISPLAY ADD BUTTON OR DROPDOWN */}
       {addingChannel ? (
         <Dropdown instrument="sequencer" handleChange={handleAddChannel} />
       ) : (

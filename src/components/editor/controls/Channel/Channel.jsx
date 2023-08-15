@@ -17,7 +17,6 @@ export default function Channel({ channel }) {
   const [fx, setFx] = useState(channel.fx);
   const [bitcrusher, setBitcrusher] = useState(0);
   const [delay, setDelay] = useState(0);
-
   const [keyArray, setKeyArray] = useState(() => {
     switch (channel.type) {
       case 'duoSynth':
@@ -32,7 +31,7 @@ export default function Channel({ channel }) {
   });
 
   useEffect(() => {
-    const channelObj = {
+    const updatedChannel = {
       id: channel.id,
       type: channel.type,
       osc: channel.osc,
@@ -40,7 +39,7 @@ export default function Channel({ channel }) {
       volume: volume,
       reverb: fx.reverb,
     };
-    handleUpdateChannel(channelObj);
+    handleUpdateChannel(updatedChannel);
   }, [volume, notes, fx]);
 
   const deleteChannel = () => {
@@ -48,7 +47,8 @@ export default function Channel({ channel }) {
   };
 
   return (
-    <div id={`channel-${channel.id}`} className={styles.channel}>
+    <div className={styles.channel}>
+      {/* AUDIO COMPONENTS */}
       <Track
         steps={notes}
         volume={volume}
@@ -64,22 +64,21 @@ export default function Channel({ channel }) {
         <Effect type="bitCrusher" wet={bitcrusher} />
         <Effect type="feedbackDelay" wet={delay} />
         <Effect type="freeverb" wet={fx.reverb} />
+
+        {/* VISUAL COMPONENTS */}
+        <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
+        <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
+        <Controls
+          channelId={channel.id}
+          volume={volume}
+          setVolume={setVolume}
+          fx={fx}
+          setFx={setFx}
+        />
+        <motion.button onClick={deleteChannel} className={styles.deleteChannel}>
+          Delete Channel
+        </motion.button>
       </Track>
-
-      {/* Render all visual components below*/}
-
-      <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
-      <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
-      <Controls
-        channelId={channel.id}
-        volume={volume}
-        setVolume={setVolume}
-        fx={fx}
-        setFx={setFx}
-      />
-      <motion.button onClick={deleteChannel} className={styles.deleteChannel}>
-        Delete Channel
-      </motion.button>
     </div>
   );
 }

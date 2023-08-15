@@ -9,6 +9,7 @@
 
 .channel {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: double var(--white-ish) 3px;
