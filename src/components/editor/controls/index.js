@@ -6,6 +6,7 @@ import Channel from './Channel/Channel.jsx';
 import DeleteTrack from './DeleteTrack/DeleteTrack.jsx';
 import Dial from './Dial/Dial.jsx';
 import Dropdown from './Dropdown/Dropdown.jsx';
+import EffectsRack from './EffectsRack/EffectsRack.jsx';
 import Joystick from './Joystick/Joystick.jsx';
 import PlayButton from './PlayButton/PlayButton.jsx';
 import Step from './Step/Step.jsx';
@@ -20,6 +21,7 @@ export {
   DeleteTrack,
   Dial,
   Dropdown,
+  EffectsRack,
   Joystick,
   PlayButton,
   Step,
