@@ -1,0 +1,19 @@
+.drumPadOn {
+  background-color: var(--purple);
+  color: var(--purple);
+  width: 55px;
+  height: 55px;
+}
+
+.drumPadOff {
+  background-color: var(--pennyroyal);
+  color: var(--pennyroyal);
+  width: 55px;
+  height: 55px;
+}
+
+.drumPadOn.active {
+  background-color: var(--lav);
+  color: var(--lav);
+  transition: 0.1s all;
+}
