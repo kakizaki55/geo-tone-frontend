@@ -4,7 +4,9 @@ import { keys } from '@utils/tone-constants.js';
 import { highlightCurrentStep } from '@utils/interface-utils.js';
 import { DeleteTrack, Joystick, Row, VolumeFader } from '../index.js';
 import styles from './Channel.css';
-import stepStyles from '../../controls/Step/Step.css';
+
+// TODO: remove import after refactoring highlightCurrentStep
+import stepStyles from '../Step/Step.css';
 
 export default function Channel({ channel, handleUpdate, handleDelete }) {
   const [volume, setVolume] = useState(channel.volume);
