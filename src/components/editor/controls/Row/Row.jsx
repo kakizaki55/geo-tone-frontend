@@ -1,24 +1,7 @@
 import { Step } from '../index.js';
 import styles from './Row.css';
 
-const Row = ({ notes, setNotes, keyArray }) => {
-  const handleNoteChange = (e) => {
-    const indexOfStep = e.target.id.split('-')[1];
-
-    const indexOfKeyArray = keyArray.findIndex(
-      (note) => note === e.target.textContent
-    );
-
-    const newNotes = notes.map((note, index) => {
-      if (Number(indexOfStep) === index) {
-        return keyArray[indexOfKeyArray + 1];
-      }
-      return note;
-    });
-
-    setNotes(newNotes);
-  };
-
+const Row = ({ notes, handleChange }) => {
   return (
     <div className={styles.row}>
       {notes.map((note, index) => (
@@ -26,7 +9,7 @@ const Row = ({ notes, setNotes, keyArray }) => {
           key={`step-${index}`}
           note={note}
           index={index}
-          handleNoteChange={handleNoteChange}
+          handleClick={handleChange}
         />
       ))}
     </div>

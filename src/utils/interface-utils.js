@@ -1,17 +1,28 @@
 import classNames from 'classnames';
 
-export const handleDrumChange = (e, drums, setDrums) => {
-  const indexOfStep = e.target.id.split('-')[1];
-  const newDrumsArray = drums.map((hit, index) => {
-    if (Number(indexOfStep) === index && hit === 'C3') {
-      return null;
-    }
-    if (Number(indexOfStep) === index && hit === null) {
-      return 'C3';
-    }
-    return hit;
+// ? ...should these be replaced with custom hooks? (JL)
+export const cycleStepValue = (e, notes, setNotes, keyArray) => {
+  const noteIndex = e.target.id.split('-')[1];
+  const keyArrayIndex = keyArray.findIndex(
+    (note) => note === e.target.textContent
+  );
+
+  const updatedNotes = notes.map((note, index) => {
+    if (Number(noteIndex) === index)
+      if (note === null) {
+        // toggle ON for single-note keys (e.g. samples)
+        return keyArray[0];
+      } else if (keyArray.length > 1) {
+        // increment keys of more than one note
+        return keyArray[keyArrayIndex + 1];
+      } else if (keyArray.length === 1) {
+        // toggle OFF single-note keys
+        return null;
+      }
+    return note;
   });
-  setDrums(newDrumsArray);
+
+  setNotes(updatedNotes);
 };
 
 export const highlightCurrentStep = (element, index, styles) => {

@@ -1,7 +1,7 @@
 import { Pad } from '../index.js';
 import styles from './DrumRow.css';
 
-const DrumRow = ({ notes, setNotes }) => {
+const DrumRow = ({ notes, togglePad }) => {
   return (
     <div className={styles.row}>
       {notes.map((midi, index) => {
@@ -10,8 +10,7 @@ const DrumRow = ({ notes, setNotes }) => {
             key={`step-${index}`}
             note={midi}
             index={index}
-            drums={notes}
-            setDrums={setNotes}
+            handleToggle={togglePad}
           />
         );
       })}

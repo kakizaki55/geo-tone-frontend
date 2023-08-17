@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument } from 'reactronica';
-import { highlightCurrentStep } from '@utils/interface-utils';
+import { cycleStepValue, highlightCurrentStep } from '@utils/interface-utils';
+import { keys } from '@utils/tone-constants.js';
 import { DrumRow, VolumeFader } from '../index.js';
 import styles from './DrumChannel.css';
 
@@ -21,6 +22,10 @@ const DrumChannel = ({ drum, handleUpdate }) => {
     handleUpdate(updatedDrum);
   }, [notes, volume]);
 
+  const handlePadToggle = (e) => {
+    cycleStepValue(e, notes, setNotes, keys.drumHit);
+  };
+
   return (
     <div className={styles.channel}>
       {/* AUDIO COMPONENTS */}
@@ -40,7 +45,7 @@ const DrumChannel = ({ drum, handleUpdate }) => {
         />
 
         {/* VISUAL COMPONENTS*/}
-        <DrumRow notes={notes} setNotes={setNotes} />
+        <DrumRow notes={notes} togglePad={handlePadToggle} />
         <VolumeFader
           id={drum.type}
           value={volume}

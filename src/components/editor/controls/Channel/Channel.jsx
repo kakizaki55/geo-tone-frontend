@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
 import { keys } from '@utils/tone-constants.js';
-import { highlightCurrentStep } from '@utils/interface-utils.js';
+import {
+  cycleStepValue,
+  highlightCurrentStep,
+} from '@utils/interface-utils.js';
 import { DeleteTrack, Joystick, Row, VolumeFader } from '../index.js';
 import styles from './Channel.css';
 
@@ -11,9 +14,9 @@ import stepStyles from '../Step/Step.css';
 export default function Channel({ channel, handleUpdate, handleDelete }) {
   const [volume, setVolume] = useState(channel.volume);
   const [notes, setNotes] = useState(channel.steps);
-  const [fx, setFx] = useState(channel.fx);
   const [bitcrusher, setBitcrusher] = useState(0);
   const [delay, setDelay] = useState(0);
+
   const [keyArray, setKeyArray] = useState(() => {
     switch (channel.type) {
       case 'duoSynth':
@@ -29,18 +32,23 @@ export default function Channel({ channel, handleUpdate, handleDelete }) {
 
   useEffect(() => {
     const updatedChannel = {
-      id: channel.id,
-      type: channel.type,
-      osc: channel.osc,
+      ...channel,
       steps: notes,
       volume: volume,
-      reverb: fx.reverb,
     };
     handleUpdate(updatedChannel);
-  }, [volume, notes, fx]);
+  }, [volume, notes]);
 
   const deleteChannel = () => {
     handleDelete(channel.id);
+  };
+
+  const updateVolume = (e) => {
+    setVolume(e.target.value);
+  };
+
+  const updateStepCycle = (e) => {
+    cycleStepValue(e, notes, setNotes, keyArray);
   };
 
   return (
@@ -60,15 +68,15 @@ export default function Channel({ channel, handleUpdate, handleDelete }) {
         />
         <Effect type="bitCrusher" wet={bitcrusher} />
         <Effect type="feedbackDelay" wet={delay} />
-        <Effect type="freeverb" wet={fx.reverb} />
+        <Effect type="freeverb" wet={channel.fx.reverb} />
 
         {/* VISUAL COMPONENTS */}
         <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
-        <Row notes={notes} setNotes={setNotes} keyArray={keyArray} />
+        <Row notes={notes} handleChange={updateStepCycle} />
         <VolumeFader
           id={channel.id}
           value={volume}
-          handleChange={(e) => setVolume(e.target.value)}
+          handleChange={updateVolume}
         />
         <DeleteTrack handleClick={deleteChannel} />
       </Track>

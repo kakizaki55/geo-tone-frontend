@@ -23,6 +23,7 @@ const globalParams = {
 };
 
 const keys = {
+  drumHit: ['C3'],
   CMajorPentatonic2: ['C2', 'D2', 'E2', 'G2', 'A2', 'C3'],
   CMajorPentatonic3: ['C3', 'D3', 'E3', 'G3', 'A3', 'C4'],
   CMajorPentatonic4: ['C4', 'D4', 'E4', 'G4', 'A4', 'C5'],

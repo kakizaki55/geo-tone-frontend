@@ -3,7 +3,7 @@ import { motion, useCycle } from 'framer-motion';
 import classNames from 'classnames';
 import styles from './Step.css';
 
-const Step = ({ note, index, handleNoteChange }) => {
+const Step = ({ note, index, handleClick }) => {
   const [currentShape, cycleCurrentShape] = useCycle(
     'circle',
     'triangle',
@@ -30,7 +30,7 @@ const Step = ({ note, index, handleNoteChange }) => {
       className={classNames(styles.step, setPitchColor(note))}
       onClick={(e) => {
         cycleCurrentShape();
-        handleNoteChange(e);
+        handleClick(e);
       }}
       animate={currentShape}
       variants={shapeVariants}
