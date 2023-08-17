@@ -3,6 +3,7 @@
   color: var(--purple);
   width: 55px;
   height: 55px;
+  cursor: pointer;
 }
 
 .drumPadOff {
@@ -10,6 +11,7 @@
   color: var(--pennyroyal);
   width: 55px;
   height: 55px;
+  cursor: pointer;
 }
 
 .drumPadOn.active {

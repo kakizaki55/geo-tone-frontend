@@ -7,6 +7,7 @@
   padding: 2px;
   margin: 2px;
   cursor: pointer;
+  user-select: none;
 }
 
 .step:hover,

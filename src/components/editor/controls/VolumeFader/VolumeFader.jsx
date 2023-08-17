@@ -5,7 +5,7 @@ const VolumeFader = (props) => {
   const { id, value, handleChange, isGlobal = false } = props;
   const { volume } = globalParams;
 
-  const labelStyle = isGlobal ? styles.globalVolume : styles.trackVolume;
+  const labelStyle = isGlobal ? styles.global : styles.track;
 
   return (
     <label className={labelStyle}>
@@ -18,6 +18,7 @@ const VolumeFader = (props) => {
         step={volume.step}
         value={value}
         onChange={handleChange}
+        className={styles.slider}
       />
     </label>
   );
