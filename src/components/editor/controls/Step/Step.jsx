@@ -6,11 +6,12 @@ import styles from './Step.css';
 const Step = ({ note, index, handleNoteChange }) => {
   const [currentShape, cycleCurrentShape] = useCycle(
     'circle',
+    'triangle',
     'square',
     'rhombus',
-    'triangle',
     'pentagon',
-    'hexagon'
+    'hexagon',
+    'octagon'
   );
 
   const setPitchColor = (string) => {

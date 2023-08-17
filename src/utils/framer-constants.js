@@ -3,11 +3,12 @@
 const shapeVariants = {
   circle: {
     scale: 1.0,
-    rotate: 90,
+    rotate: -45,
     clipPath: 'circle(40%)',
   },
   triangle: {
     scale: 0.8,
+    rotate: 0,
     clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
   },
   square: {
@@ -27,8 +28,14 @@ const shapeVariants = {
   },
   hexagon: {
     scale: 0.8,
-    rotate: 90,
+    rotate: 270,
     clipPath: 'polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)',
+  },
+  octagon: {
+    scale: 0.8,
+    rotate: 315,
+    clipPath:
+      'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
   },
 };
 
