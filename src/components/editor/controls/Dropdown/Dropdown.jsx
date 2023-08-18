@@ -1,7 +1,7 @@
 import { synthTypes } from '@utils/tone-constants.js';
 import styles from './Dropdown.css';
 
-export default function Dropdown({ instrument, handleChange }) {
+const Dropdown = ({ instrument, handleChange }) => {
   if (!synthTypes[instrument])
     return <Dropdown instrument="default" handleChange={handleChange} />;
 
@@ -15,4 +15,6 @@ export default function Dropdown({ instrument, handleChange }) {
       ))}
     </select>
   );
-}
+};
+
+export default Dropdown;

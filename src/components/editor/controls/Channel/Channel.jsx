@@ -11,7 +11,7 @@ import styles from './Channel.css';
 // TODO: remove import after refactoring highlightCurrentStep
 import stepStyles from '../Step/Step.css';
 
-export default function Channel({ channel, handleUpdate, handleDelete }) {
+const Channel = ({ channel, handleUpdate, handleDelete }) => {
   const [volume, setVolume] = useState(channel.volume);
   const [notes, setNotes] = useState(channel.steps);
   const [bitcrusher, setBitcrusher] = useState(0);
@@ -82,4 +82,6 @@ export default function Channel({ channel, handleUpdate, handleDelete }) {
       </Track>
     </div>
   );
-}
+};
+
+export default Channel;

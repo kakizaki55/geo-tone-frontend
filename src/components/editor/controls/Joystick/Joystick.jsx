@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styles from './Joystick.css';
 
-export default function Joystick({ setEffectX, setEffectY }) {
+const Joystick = ({ setEffectX, setEffectY }) => {
   const handleXYControls = (e, info) => {
     let x = Number(info.offset.x) / 100;
     let y = Number(info.offset.y) / 100;
@@ -44,4 +44,6 @@ export default function Joystick({ setEffectX, setEffectY }) {
       </div>
     </div>
   );
-}
+};
+
+export default Joystick;

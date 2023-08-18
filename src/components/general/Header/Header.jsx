@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from '../Layout/Layout.css';
 
-export default function Header() {
+const Header = () => {
   return (
     <header>
       <NavLink className={styles.logo} to="/">
@@ -13,4 +13,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

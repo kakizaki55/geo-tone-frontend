@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import shapes from '../../../public/assets/shapes.png';
 import styles from './Home.css';
 
-export default function Home() {
+const Home = () => {
   return (
     <section className={styles.section}>
       <div className={styles.homeBanner}>
@@ -16,4 +16,6 @@ export default function Home() {
       </NavLink>
     </section>
   );
-}
+};
+
+export default Home;

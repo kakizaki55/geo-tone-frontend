@@ -1,4 +1,4 @@
-export default function Footer() {
+const Footer = () => {
   return (
     <footer>
       <a target="_blank" href="https://github.com/kakizaki55/geo-tone-frontend">
@@ -9,4 +9,6 @@ export default function Footer() {
       </a>
     </footer>
   );
-}
+};
+
+export default Footer;

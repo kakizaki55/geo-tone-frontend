@@ -5,7 +5,7 @@ import { DrumMachine, Piano, Sequencer } from '@components/editor/interfaces';
 import { GlobalControls } from '@components/editor/controls';
 import styles from './Project.css';
 
-export default function Project() {
+const Project = () => {
   const { project, isLoading } = useProject();
 
   const [start, setStart] = useState(false);
@@ -27,3 +27,5 @@ export default function Project() {
     </div>
   );
 }
+
+export default Project;

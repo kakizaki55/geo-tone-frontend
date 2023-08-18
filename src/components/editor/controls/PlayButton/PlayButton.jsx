@@ -2,7 +2,7 @@ import { motion, useCycle } from 'framer-motion';
 import { playVariants } from '@utils/framer-constants';
 import styles from './PlayButton.css';
 
-export default function PlayButton({ start, setStart }) {
+const PlayButton = ({ start, setStart }) => {
   const [active, cycleActive] = useCycle('play', 'stop');
 
   return (
@@ -19,4 +19,6 @@ export default function PlayButton({ start, setStart }) {
       {start ? 'stop' : 'play'}
     </motion.button>
   );
-}
+};
+
+export default PlayButton;
