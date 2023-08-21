@@ -28,15 +28,6 @@ main {
   overflow-x: hidden;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100vw;
-  padding-top: 1rem;
-  margin: 0;
-}
-
 footer {
   display: flex;
   align-items: center;
@@ -47,7 +38,6 @@ footer {
   bottom: 0%;
 }
 
-header a,
 footer a {
   color: var(--pennyroyal);
   font-weight: 400;
@@ -60,8 +50,6 @@ footer a {
   border-bottom: solid transparent 1px;
 }
 
-header a:hover,
-header a:focus,
 footer a:hover,
 footer a:focus {
   color: var(--aqua);
