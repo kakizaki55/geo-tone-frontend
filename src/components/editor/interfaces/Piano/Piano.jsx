@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Track, Instrument } from 'reactronica';
-import { keys, fxTypes } from '@utils/tone-constants.js';
+import { globalParams, keys, fxTypes } from '@utils/tone-constants.js';
 import {
   Dropdown,
   EffectsRack,
@@ -17,6 +17,9 @@ const Piano = () => {
   const [fx, setFx] = useState(project.piano.fx);
   const [notes, setNotes] = useState(project.piano.steps);
   const [instrumentType, setInstrumentType] = useState(null);
+
+  // Initial setter to ramp up volume, prevents audio peaking on render
+  useEffect(() => setVolume(globalParams.volume.default), []);
 
   const handleVolumeChange = (e) => {
     setVolume(e.target.value);

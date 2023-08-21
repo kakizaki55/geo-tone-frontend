@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument } from 'reactronica';
 import { cycleStepValue, highlightCurrentStep } from '@utils/interface-utils';
-import { keys } from '@utils/tone-constants.js';
+import { globalParams, keys } from '@utils/tone-constants.js';
 import { DrumRow, VolumeFader } from '../index.js';
 import styles from './DrumChannel.css';
 
@@ -11,6 +11,9 @@ import padStyles from '../../controls/Pad/Pad.css';
 const DrumChannel = ({ drum, handleUpdate }) => {
   const [volume, setVolume] = useState(drum.volume);
   const [notes, setNotes] = useState(drum.steps);
+
+  // Initial setter to ramp up volume, prevents audio peaking on render
+  useEffect(() => setVolume(globalParams.volume.default), []);
 
   useEffect(() => {
     const updatedDrum = {

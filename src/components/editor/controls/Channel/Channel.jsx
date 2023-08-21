@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Track, Instrument, Effect } from 'reactronica';
-import { keys } from '@utils/tone-constants.js';
+import { globalParams, keys } from '@utils/tone-constants.js';
 import {
   cycleStepValue,
   highlightCurrentStep,
@@ -29,6 +29,9 @@ const Channel = ({ channel, handleUpdate, handleDelete }) => {
         return keys.CMajorPentatonic4;
     }
   });
+
+  // Initial setter to ramp up volume, prevents audio peaking on render
+  useEffect(() => setVolume(globalParams.volume.default), []);
 
   useEffect(() => {
     const updatedChannel = {

@@ -4,7 +4,7 @@ const { volume, fx, bpm } = globalParams;
 
 const projectTemplate = {
   bpm: bpm.default,
-  volume: volume.default,
+  volume: volume.min,
   sequencer: {
     channels: [
       {
@@ -12,7 +12,7 @@ const projectTemplate = {
         type: 'monoSynth',
         osc: 'triangle',
         steps: [null, null, null, null, null, null, null, null],
-        volume: volume.default,
+        volume: volume.min,
         // TODO: replace with FX rack
         fx: {
           freeverb: fx.max,
@@ -41,7 +41,7 @@ const projectTemplate = {
         'C3',
         'C3',
       ],
-      volume: volume.default,
+      volume: volume.min,
     },
     {
       type: 'snare',
@@ -63,7 +63,7 @@ const projectTemplate = {
         'C3',
         null,
       ],
-      volume: volume.default,
+      volume: volume.min,
     },
     {
       type: 'kick',
@@ -85,11 +85,11 @@ const projectTemplate = {
         null,
         null,
       ],
-      volume: volume.default,
+      volume: volume.min,
     },
   ],
   piano: {
-    volume: volume.default,
+    volume: volume.min,
     steps: keys.pianoChromatic,
     fx: {
       autoFilter: fx.default,

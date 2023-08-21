@@ -68,7 +68,7 @@ function sequencerReducer(channels, action) {
           type: action.synthType,
           osc: 'triangle',
           steps: [null, null, null, null, null, null, null, null],
-          volume: volume.default,
+          volume: volume.min,
           fx: {
             reverb: fx.max,
           },
