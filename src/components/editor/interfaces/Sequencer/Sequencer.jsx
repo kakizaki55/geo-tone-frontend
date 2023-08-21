@@ -7,7 +7,10 @@ import styles from './Sequencer.css';
 const Sequencer = () => {
   const { project } = useProject();
 
-  const [channels, dispatch] = useReducer(sequencerReducer, project.channels);
+  const [channels, dispatch] = useReducer(
+    sequencerReducer,
+    project.sequencer.channels
+  );
   const [addingChannel, setAddingChannel] = useState(false);
 
   const handleAddChannel = (e) => {
@@ -82,7 +85,7 @@ function sequencerReducer(channels, action) {
     }
     case 'delete channel': {
       return channels.filter((channel) => {
-        channel.id !== action.id;
+        return channel.id !== action.id;
       });
     }
     default:

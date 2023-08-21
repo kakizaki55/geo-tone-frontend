@@ -5,20 +5,21 @@ const { volume, fx, bpm } = globalParams;
 const projectTemplate = {
   bpm: bpm.default,
   volume: volume.default,
-  // TODO: Update to 'sequencer: {channels: {...}}
-  channels: [
-    {
-      id: self.crypto.randomUUID(),
-      type: 'monoSynth',
-      osc: 'triangle',
-      steps: [null, null, null, null, null, null, null, null],
-      volume: volume.default,
-      // TODO: replace with FX rack
-      fx: {
-        freeverb: fx.max,
+  sequencer: {
+    channels: [
+      {
+        id: self.crypto.randomUUID(),
+        type: 'monoSynth',
+        osc: 'triangle',
+        steps: [null, null, null, null, null, null, null, null],
+        volume: volume.default,
+        // TODO: replace with FX rack
+        fx: {
+          freeverb: fx.max,
+        },
       },
-    },
-  ],
+    ],
+  },
   drums: [
     {
       type: 'high-hat',

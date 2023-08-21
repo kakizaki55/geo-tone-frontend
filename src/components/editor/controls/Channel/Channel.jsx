@@ -40,7 +40,7 @@ const Channel = ({ channel, handleUpdate, handleDelete }) => {
   }, [volume, notes]);
 
   const deleteChannel = () => {
-    handleDelete(channel.id);
+    handleDelete(channel);
   };
 
   const updateVolume = (e) => {
