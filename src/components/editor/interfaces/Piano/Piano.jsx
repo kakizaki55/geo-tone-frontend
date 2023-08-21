@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Track, Instrument } from 'reactronica';
-import { keys, pianoEffectTypes } from '@utils/tone-constants.js';
+import { keys, fxTypes } from '@utils/tone-constants.js';
 import {
   Dropdown,
   EffectsRack,
@@ -41,7 +41,7 @@ const Piano = () => {
         />
         <EffectsRack
           fx={fx}
-          fxList={pianoEffectTypes}
+          fxList={fxTypes}
           handleChange={handleEffectsRackChange}
         />
         <VolumeFader
