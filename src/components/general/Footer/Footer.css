@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--pennyroyal);
+  width: 100vw;
+  position: fixed;
+  bottom: 0%;
+}
+
+.footer a {
+  color: var(--pennyroyal);
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  border-bottom: solid transparent 1px;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: var(--aqua);
+  border-bottom: solid var(--white-ish) 1px;
+}
+
+.footer img {
+  width: 4rem;
+}
