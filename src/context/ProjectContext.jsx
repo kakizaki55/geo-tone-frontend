@@ -4,6 +4,7 @@ import {
   useReducer,
   useEffect,
   useState,
+  useRef,
 } from 'react';
 import projectTemplate from '@utils/project-template.js';
 
@@ -15,8 +16,6 @@ function projectReducer(project, action) {
       return { ...project, volume: action.value };
     case 'update song BPM':
       return { ...project, bpm: action.value };
-    case 'update drums':
-      return { ...project, drums: action.value };
     default:
       throw new Error(`Unknown action ${action.type}`);
   }
@@ -26,7 +25,6 @@ const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-
   const [project, dispatch] = useReducer(projectReducer, currentProject);
 
   useEffect(() => {
@@ -41,19 +39,11 @@ const ProjectProvider = ({ children }) => {
     dispatch({ type: 'update song BPM', value: Number(e.target.value) });
   };
 
-  const handleUpdateDrums = (drums) => {
-    dispatch({
-      type: 'update drums',
-      value: drums,
-    });
-  };
-
   const contextValue = {
     project,
     isLoading,
     handleSongVolume,
     handleSongBPM,
-    handleUpdateDrums,
   };
 
   return (
