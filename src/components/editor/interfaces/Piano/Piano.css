@@ -2,5 +2,5 @@
   padding: 15px;
   width: 100%;
   border-radius: 10px;
-  border: rgb(232, 229, 229) 2px solid;
+  border: var(--white-ish) 2px solid;
 }

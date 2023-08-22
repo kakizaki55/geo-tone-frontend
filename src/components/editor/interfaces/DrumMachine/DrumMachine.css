@@ -2,33 +2,8 @@
   padding: 1rem;
   margin-top: 20px;
   border-radius: 10px;
-  border: rgb(232, 229, 229) 2px solid;
+  border: var(--white-ish) 2px solid;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.drumPadOn {
-  background-color: var(--purple);
-  color: var(--purple);
-  width: 55px;
-  height: 55px;
-}
-
-.drumPadOff {
-  background-color: var(--pennyroyal);
-  color: var(--pennyroyal);
-  width: 55px;
-  height: 55px;
-}
-
-.active {
-  background-color: var(--lav);
-  color: var(--lav);
-  transition: 0.1s all;
-}
-
-.volume {
-  align-items: center;
-  color: black;
 }

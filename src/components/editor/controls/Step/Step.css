@@ -1,7 +1,7 @@
 .step {
   border: none;
-  color: rgb(60, 60, 60);
-  background-color: rgb(60, 60, 60);
+  color: var(--inactive);
+  background-color: var(--inactive);
   height: 6rem;
   width: 6rem;
   padding: 2px;
@@ -10,12 +10,18 @@
   user-select: none;
 }
 
-.step:hover,
-.step:focus {
+.step:hover {
   animation-name: pulse;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
+}
+
+.step:focus {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
 }
 
 .active {
@@ -51,7 +57,6 @@
 
 @keyframes pulse {
   50% {
-    color: rgb(120, 120, 120);
-    background-color: rgb(120, 120, 120);
+    opacity: 0.5;
   }
 }

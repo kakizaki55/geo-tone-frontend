@@ -9,8 +9,8 @@
 .pianoKeyBlack {
   height: 250px;
   width: 70px;
-  background-color: rgb(41, 41, 41);
-  color: white;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
   position: absolute;
   margin-left: -40px;
   border-radius: 5px;

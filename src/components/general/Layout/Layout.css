@@ -6,8 +6,9 @@
   --aqua: #33bfca;
   --lav: #c47fdb;
   --pennyroyal: #8080ff;
-  --white-ish: rgb(240, 240, 240);
-  --black-ish: rgb(10, 10, 10);
+  --white-ish: #f0f0f0;
+  --black-ish: #0a0a0a;
+  --inactive: #3c3c3c;
 }
 
 body {

@@ -7,8 +7,8 @@
 }
 
 .drumPadOff {
-  background-color: var(--pennyroyal);
-  color: var(--pennyroyal);
+  background-color: var(--inactive);
+  color: var(--inactive);
   width: 55px;
   height: 55px;
   cursor: pointer;
