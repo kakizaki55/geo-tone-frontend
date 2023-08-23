@@ -29,6 +29,7 @@ const DrumChannel = ({ drum, handleUpdate }) => {
     cycleStepValue(e, notes, setNotes, keys.drumHit);
   };
 
+
   return (
     <div className={styles.channel}>
       {/* AUDIO COMPONENTS */}

@@ -4,6 +4,8 @@
   width: 55px;
   height: 55px;
   cursor: pointer;
+  clip-path:polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  
 }
 
 .drumPadOff {
@@ -12,6 +14,7 @@
   width: 55px;
   height: 55px;
   cursor: pointer;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .drumPadOn.active {
