@@ -1,7 +1,7 @@
 import { Step } from '../index.js';
-import styles from './Row.css';
+import styles from './SequencerRow.css';
 
-const Row = ({ notes, handleChange }) => {
+const SequencerRow = ({ notes, handleChange }) => {
   return (
     <div className={styles.row}>
       {notes.map((note, index) => (
@@ -16,4 +16,4 @@ const Row = ({ notes, handleChange }) => {
   );
 };
 
-export default Row;
+export default SequencerRow;

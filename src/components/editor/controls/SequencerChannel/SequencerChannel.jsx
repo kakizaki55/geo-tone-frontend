@@ -5,13 +5,13 @@ import {
   cycleStepValue,
   highlightCurrentStep,
 } from '@utils/interface-utils.js';
-import { DeleteTrack, Joystick, Row, VolumeFader } from '../index.js';
-import styles from './Channel.css';
+import { DeleteTrack, Joystick, SequencerRow, VolumeFader } from '../index.js';
+import styles from './SequencerChannel.css';
 
 // TODO: remove import after refactoring highlightCurrentStep
 import stepStyles from '../Step/Step.css';
 
-const Channel = ({ channel, handleUpdate, handleDelete }) => {
+const SequencerChannel = ({ channel, handleUpdate, handleDelete }) => {
   const [volume, setVolume] = useState(channel.volume);
   const [notes, setNotes] = useState(channel.steps);
   const [bitcrusher, setBitcrusher] = useState(0);
@@ -75,7 +75,7 @@ const Channel = ({ channel, handleUpdate, handleDelete }) => {
 
         {/* VISUAL COMPONENTS */}
         <Joystick setEffectX={setBitcrusher} setEffectY={setDelay} />
-        <Row notes={notes} handleChange={updateStepCycle} />
+        <SequencerRow notes={notes} handleChange={updateStepCycle} />
         <VolumeFader
           id={channel.id}
           value={volume}
@@ -87,4 +87,4 @@ const Channel = ({ channel, handleUpdate, handleDelete }) => {
   );
 };
 
-export default Channel;
+export default SequencerChannel;

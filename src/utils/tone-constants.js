@@ -1,5 +1,5 @@
 // global data for sequencer
-import styles from '@components/editor/controls/Channel/Channel.css';
+import styles from '@components/editor/controls/SequencerChannel/SequencerChannel.css';
 
 const globalParams = {
   volume: {

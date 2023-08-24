@@ -1,6 +1,10 @@
 import { useReducer, useState } from 'react';
 import { globalParams } from '@utils/tone-constants.js';
-import { AddTrack, Channel, Dropdown } from '@components/editor/controls';
+import {
+  AddTrack,
+  SequencerChannel,
+  Dropdown,
+} from '@components/editor/controls';
 import { useProject } from '@context/ProjectContext.jsx';
 import styles from './Sequencer.css';
 
@@ -38,7 +42,7 @@ const Sequencer = () => {
     <div className={styles.sequencerContainer}>
       {/* CHANNELS ARRAY */}
       {channels.map((channel) => (
-        <Channel
+        <SequencerChannel
           key={`channel-${channel.id}`}
           channel={channel}
           handleUpdate={handleUpdateChannel}
