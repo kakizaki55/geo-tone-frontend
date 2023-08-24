@@ -3,7 +3,7 @@ import styles from './Header.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className={styles.header}>
       <nav className={styles.navigation}>
         <NavLink className={styles.logo} to="/">
           GEo TONe
