@@ -4,8 +4,6 @@
   background-color: var(--inactive);
   height: 6rem;
   width: 6rem;
-  padding: 2px;
-  margin: 2px;
   cursor: pointer;
   user-select: none;
 }

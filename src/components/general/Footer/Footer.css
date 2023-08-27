@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-end;
   background-color: var(--pennyroyal);
-  width: 100vw;
+  width: 100%;
   position: fixed;
   bottom: 0%;
 }
