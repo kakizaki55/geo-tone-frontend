@@ -1,0 +1,19 @@
+.pianoKeyWhite {
+  height: 380px;
+  width: 100px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pianoKeyBlack {
+  height: 250px;
+  width: 70px;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
+  position: absolute;
+  margin-left: -40px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}

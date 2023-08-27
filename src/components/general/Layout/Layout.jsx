@@ -1,7 +1,7 @@
 import { Header, Footer } from '@components/general';
 import styles from './Layout.css';
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header />
@@ -9,4 +9,6 @@ export default function Layout({ children }) {
       <Footer />
     </div>
   );
-}
+};
+
+export default Layout;

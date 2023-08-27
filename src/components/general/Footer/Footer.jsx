@@ -1,6 +1,8 @@
-export default function Footer() {
+import styles from './Footer.css';
+
+const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <a target="_blank" href="https://github.com/kakizaki55/geo-tone-frontend">
         <img
           src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"
@@ -9,4 +11,6 @@ export default function Footer() {
       </a>
     </footer>
   );
-}
+};
+
+export default Footer;

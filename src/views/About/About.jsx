@@ -1,4 +1,3 @@
-import styles from './About.css';
 import { aboutUs } from '../../../public/assets/aboutUs.js';
 import githubLogo from '../../../public/assets/github.png';
 import linkedInLogo from '../../../public/assets/linkedin.png';
@@ -6,8 +5,9 @@ import tetrahedron from '../../../public/assets/tetrahedron.png';
 import diamond from '../../../public/assets/diamond.png';
 import square from '../../../public/assets/square.png';
 import triangle from '../../../public/assets/mobiusTriangle.png';
+import styles from './About.css';
 
-export default function About() {
+const About = () => {
   return (
     <section className={styles.aboutContainer}>
       {aboutUs.map((each) => (
@@ -40,4 +40,6 @@ export default function About() {
       ))}
     </section>
   );
-}
+};
+
+export default About;

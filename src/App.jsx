@@ -6,7 +6,7 @@ import NoMatch from './views/NoMatch/NoMatch.jsx';
 import Create from './views/Create/Create';
 import Home from './views/Home/Home';
 
-export default function App() {
+const App = () => {
   return (
     <MotionConfig reducedMotion="user">
       <Router>
@@ -21,4 +21,6 @@ export default function App() {
       </Router>
     </MotionConfig>
   );
-}
+};
+
+export default App;

@@ -1,0 +1,21 @@
+.drumPadOn {
+  background-color: var(--purple);
+  color: var(--purple);
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+}
+
+.drumPadOff {
+  background-color: var(--inactive);
+  color: var(--inactive);
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+}
+
+.drumPadOn.active {
+  background-color: var(--lav);
+  color: var(--lav);
+  transition: 0.1s all;
+}

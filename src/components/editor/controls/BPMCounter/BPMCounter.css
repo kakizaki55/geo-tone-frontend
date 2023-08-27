@@ -1,0 +1,15 @@
+.label {
+  font-size: 150%;
+}
+
+.bpmCounter {
+  border-radius: 10px;
+  margin: 1rem;
+  align-self: center;
+  font-family: 'Major Mono Display';
+  width: 120px;
+  height: 60px;
+  background-color: var(--black-ish);
+  color: var(--white-ish);
+  font-size: 120%;
+}

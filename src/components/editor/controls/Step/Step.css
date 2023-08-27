@@ -1,0 +1,60 @@
+.step {
+  border: none;
+  color: var(--inactive);
+  background-color: var(--inactive);
+  height: 6rem;
+  width: 6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.step:hover {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+
+.step:focus {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+.active {
+  border: var(--black-ish) solid 15px;
+  border-radius: 50%;
+  transition: 0.5s all;
+}
+
+.step.C {
+  background-color: var(--pink);
+  color: var(--pink);
+}
+
+.step.D {
+  background-color: var(--purple);
+  color: var(--purple);
+}
+
+.step.E {
+  background-color: var(--aqua);
+  color: var(--aqua);
+}
+
+.step.G {
+  background-color: var(--lav);
+  color: var(--lav);
+}
+
+.step.A {
+  background-color: var(--pennyroyal);
+  color: var(--pennyroyal);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

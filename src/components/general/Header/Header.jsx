@@ -1,16 +1,20 @@
 import { NavLink } from 'react-router-dom';
-import styles from '../Layout/Layout.css';
+import styles from './Header.css';
 
-export default function Header() {
+const Header = () => {
   return (
-    <header>
-      <NavLink className={styles.logo} to="/">
-        GEo TONe
-      </NavLink>
-      <div>
-        <NavLink to="/create">Create</NavLink>
-        <NavLink to="/about">About</NavLink>
-      </div>
+    <header className={styles.header}>
+      <nav className={styles.navigation}>
+        <NavLink className={styles.logo} to="/">
+          GEo TONe
+        </NavLink>
+        <div>
+          <NavLink to="/create">Create</NavLink>
+          <NavLink to="/about">About</NavLink>
+        </div>
+      </nav>
     </header>
   );
-}
+};
+
+export default Header;

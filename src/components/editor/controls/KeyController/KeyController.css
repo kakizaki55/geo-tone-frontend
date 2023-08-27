@@ -1,0 +1,4 @@
+.keyController {
+  width: max-content;
+  border: solid 2px var(--white-ish);
+}

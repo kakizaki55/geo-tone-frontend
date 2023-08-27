@@ -1,15 +1,10 @@
-.controlHeader,
-.instrumentHeader {
-  font-family: 'Major Mono Display', monospace;
-}
-
 .currentProject {
   display: flex;
   box-sizing: border-box;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   overflow-y: hidden;
 }
 
@@ -49,6 +44,10 @@
     var(--aqua)
   );
   border-radius: 50px;
+}
+
+.fixedProject > h2 {
+  font-family: 'Major Mono Display', monospace;
 }
 
 .fixedProject > * {

@@ -1,0 +1,17 @@
+.global,
+.track {
+  font-size: 150%;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+}
+
+.slider {
+  cursor: grab;
+  width: 6rem;
+}
