@@ -14,6 +14,7 @@ const Step = ({ note, index, handleClick }) => {
     'octagon'
   );
 
+  
   const setPitchColor = (string) => {
     return {
       [styles.C]: string?.includes('C'),
